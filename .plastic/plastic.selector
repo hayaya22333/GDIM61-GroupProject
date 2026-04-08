@@ -1,0 +1,4 @@
+repository "GDIM61 2026-04-08_15-09-41/GDIM61@1375859598888@cloud"
+  path "/"
+    br "/main"
+    co "/main"
