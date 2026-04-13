@@ -6,15 +6,14 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI coinText;
-    [SerializeField] private GameManager gameManager;
 
     private void Start()
     {
-        gameManager.UpdateCoin += HandleUpdateCoin;
+        Locator.Instance.Controller.UpdateCoin += HandleUpdateCoin;
     }
 
-    private void HandleUpdateCoin(int coinCnt)
+    private void HandleUpdateCoin(int coinCount)
     {
-        coinText.text = coinCnt.ToString();
+        coinText.text = coinCount.ToString();
     }
 }
