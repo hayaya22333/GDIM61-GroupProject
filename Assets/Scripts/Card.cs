@@ -18,4 +18,5 @@ public class Card : DragObject
             CardSold.Invoke(20);
         }
     }
+
 }
