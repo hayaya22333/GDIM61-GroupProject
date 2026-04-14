@@ -4,9 +4,24 @@ using UnityEngine;
 
 public abstract class ClickObject : MonoBehaviour
 {
+    private bool mouseDowned;
+
     private void OnMouseDown()
     {
-        HandleClicked();
+        mouseDowned = true;
+    }
+
+    private void OnMouseExit()
+    {
+        mouseDowned = false;
+    }
+
+    private void OnMouseUp()
+    {
+        if (mouseDowned)
+        {
+            HandleClicked();
+        }
     }
 
     public abstract void HandleClicked();

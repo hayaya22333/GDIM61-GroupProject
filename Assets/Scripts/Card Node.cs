@@ -6,7 +6,7 @@ using UnityEngine;
 public class CardNode : ScriptableObject
 {
     public int _cardName;
-    public float _cardHP;
+    public int _cardHP;
     public int _cardATK;
     public int _cardSPD;
 }
