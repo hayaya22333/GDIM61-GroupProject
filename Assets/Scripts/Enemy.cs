@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private FightNode _fightNode;
-    [SerializeField] private MeshRenderer _meshRenderer;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     private float life;
     private int attack;
     private int speed;
@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
 
     public void HowEnemyAttack(int no)
     {
-        _meshRenderer.material.color = Color.blue;
+        _spriteRenderer.color = Color.blue;
         attackColorInterval = flashDuration;
         Flash();
         Debug.Log($"{no} attacks");
@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour
 
     public void HowEnemyHurt(int no)
     {
-        _meshRenderer.material.color = Color.red;
+        _spriteRenderer.color = Color.red;
         hurtColorInterval = flashDuration;
         Flash();
         Debug.Log($"{no} hurts");
@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour
             attackColorInterval -= Time.deltaTime;
             if(attackColorInterval <= 0f)
             {
-                _meshRenderer.material.color = Color.white;
+                _spriteRenderer.color = Color.white;
             }
         }
         
@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
             hurtColorInterval -= Time.deltaTime;
             if(hurtColorInterval <= 0f)
             {
-                _meshRenderer.material.color = Color.white;
+                _spriteRenderer.color = Color.white;
             }
         }
     }
