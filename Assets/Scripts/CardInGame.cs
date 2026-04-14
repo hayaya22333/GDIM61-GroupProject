@@ -2,57 +2,63 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardInGame : MonoBehaviour
+public class CardInGame : DragObject
 {
     [SerializeField] private CardNode _cardNode;
+    [SerializeField] private Fightcontroller _fightcontroller;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     private float life;
     public int attack;
-    //public int speed;
+    public int speed;
     public bool die;
     public int ID;
 
-    private float interval = 0.01f;
+    public float av;
+
+    private float attackColorInterval;
+    private float hurtColorInterval;
+    [SerializeField] private float flashDuration = 0.05f;
 
     void Start()
     {
         life = _cardNode._cardHP;
         attack = _cardNode._cardATK;
-        //speed = _cardNode._cardSPD;
+        speed = _cardNode._cardSPD;
         ID = _cardNode._cardName;
 
-        Fightcontroller.Instance.PlayerAttackEnemy += HowPlayerAttack;
-        Fightcontroller.Instance.EnemyAttackPlayer += HowPlayerHurt;
-        Fightcontroller.Instance.PlayerDie += dieing;
+        _fightcontroller.PlayerAttackEnemy += HowPlayerAttack;
+        _fightcontroller.EnemyAttackPlayer += HowPlayerHurt;
+        _fightcontroller.PlayerDie += dieing;
+
         die = false;
+        av = 100/speed;
     }
 
-    private int av;
-    private float attackTime;
+    void Update()
+    {
+        CheckDeath();
+    }
+
     public bool Attack()
     {
         if(die == true)
         {
             return false;
         }
-        //av = 10000/speed;
-        //for(int i = av; i <= 0; i --)
-        {
-            if(Fightcontroller.Instance.canCount == true)
-            {
-                attackTime -= Time.deltaTime;
-                if(attackTime <= 0f)
-                {
-                    attackTime = interval;
-                    //i -= 1;
-                    return true;
-                }
-            }
-        }
+
         return false;
+    }
+
+    public void avIncrease()
+    {
+        av += 100/speed;
     }
     public void HowPlayerAttack(int no, int harm)
     {
-        
+        _spriteRenderer.color = Color.blue;
+        attackColorInterval = flashDuration;
+        Flash();
+        Debug.Log($"{no} attacks");
     }
 
     public void HowPlayerHurt(int no, int harm)
@@ -64,6 +70,10 @@ public class CardInGame : MonoBehaviour
         else
         {
             life -= harm;
+            _spriteRenderer.color = Color.red;
+            hurtColorInterval = flashDuration;
+            Flash();
+            Debug.Log($"{no} hurts");
         }
 
         if(life <= 0)
@@ -82,6 +92,40 @@ public class CardInGame : MonoBehaviour
         if(die == true)
         {
             gameObject.SetActive(false);
+        }
+    }
+
+    public bool CheckDeath()
+    {
+        if(life <= 0)
+        {
+            die = true;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void Flash()
+    {
+        if(attackColorInterval > 0)
+        {
+            attackColorInterval -= Time.deltaTime;
+            if(attackColorInterval <= 0f)
+            {
+                _spriteRenderer.color = Color.white;
+            }
+        }
+        
+        if(hurtColorInterval > 0)
+        {
+            hurtColorInterval -= Time.deltaTime;
+            if(hurtColorInterval <= 0f)
+            {
+                _spriteRenderer.color = Color.white;
+            }
         }
     }
 }

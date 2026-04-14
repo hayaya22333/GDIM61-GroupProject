@@ -23,6 +23,7 @@ public class Fightcontroller : MonoBehaviour
     public event Action FightEnd;
 
     public bool canCount;
+    public bool fightEnd = false;
 
     private Dictionary<string, int> collectDrop = new Dictionary<string, int>();
 
@@ -33,8 +34,13 @@ public class Fightcontroller : MonoBehaviour
 
     void Update()
     {
+        if(fightEnd == true)
+        {
+            return;
+        }
         WatchEnemy();
         WatchPlayer();
+        CheckEnd();
     }
     public void CollectDrop(string item, int amount)
     {
@@ -43,11 +49,6 @@ public class Fightcontroller : MonoBehaviour
             collectDrop[item] += amount;
             collectDrop.Clear();
         }
-    }
-
-    public void TellPlayerHurt(int no)
-    {
-        
     }
 
     public void Die()
@@ -135,9 +136,10 @@ public class Fightcontroller : MonoBehaviour
 
     public void CheckEnd()
     {
-        if(_enemies[0].die && _enemies[1].die && _cards[0].die && _cards[1].die)
+        if((_enemies[0].die && _enemies[1].die) || (_cards[0].die && _cards[1].die))
         {
             FightEnd?.Invoke();
+            fightEnd = true;
         }
     }
 

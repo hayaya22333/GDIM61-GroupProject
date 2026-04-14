@@ -3,17 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private FightNode _fightNode;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Fightcontroller _fightcontroller;
     private float life;
     public int attack;
-    //public int speed;
+    public int speed;
     public bool die;
     public int ID;
-    private float interval = 0.01f;
+
+    public float av;
 
     private float attackColorInterval;
     private float hurtColorInterval;
@@ -24,12 +27,14 @@ public class Enemy : MonoBehaviour
     {
         life = _fightNode.enemyHP;
         attack = _fightNode.enemyATK;
-        //speed = _fightNode.enemySPD;
+        speed = _fightNode.enemySPD;
         ID = _fightNode.enemyName;
 
-        Fightcontroller.Instance.EnemyAttackPlayer += HowEnemyAttack;
-        Fightcontroller.Instance.PlayerAttackEnemy += HowEnemyHurt;
-        Fightcontroller.Instance.EnemyDie += dying;
+        _fightcontroller.EnemyAttackPlayer += HowEnemyAttack;
+        _fightcontroller.PlayerAttackEnemy += HowEnemyHurt;
+        _fightcontroller.EnemyDie += dying;
+
+        av = 100/speed;
         die = false;
     }
 
@@ -64,30 +69,18 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    public int av;
-    private float attackTime;
     public bool Attack()
     {
         if(die == true)
         {
             return false;
         }
-        //av = 10000/speed;
-        //for(int i = av; i <= 0; i --)
-        {
-            if(Fightcontroller.Instance.canCount == true)
-            {
-                attackTime -= Time.deltaTime;
-                if(attackTime <= 0f)
-                {
-                    //HowEnemyAttack(ID);
-                    attackTime = interval;
-                    //i -= 1;
-                    return true;
-                }
-            }
-        }
-        return false;
+        return true;
+    }
+
+    public void avIncrease()
+    {
+        av += 100/speed;
     }
 
     public void HowEnemyAttack(int no, int harm)
