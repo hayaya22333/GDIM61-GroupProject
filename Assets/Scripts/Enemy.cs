@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     private float life;
     public int attack;
-    public int speed;
+    //public int speed;
     public bool die;
     public int ID;
     private float interval = 0.01f;
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     {
         life = _fightNode.enemyHP;
         attack = _fightNode.enemyATK;
-        speed = _fightNode.enemySPD;
+        //speed = _fightNode.enemySPD;
         ID = _fightNode.enemyName;
 
         Fightcontroller.Instance.EnemyAttackPlayer += HowEnemyAttack;
@@ -72,8 +72,8 @@ public class Enemy : MonoBehaviour
         {
             return false;
         }
-        av = 10000/speed;
-        for(int i = av; i <= 0; i --)
+        //av = 10000/speed;
+        //for(int i = av; i <= 0; i --)
         {
             if(Fightcontroller.Instance.canCount == true)
             {
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
                 {
                     //HowEnemyAttack(ID);
                     attackTime = interval;
-                    i -= 1;
+                    //i -= 1;
                     return true;
                 }
             }

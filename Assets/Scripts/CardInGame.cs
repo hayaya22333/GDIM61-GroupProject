@@ -7,7 +7,7 @@ public class CardInGame : MonoBehaviour
     [SerializeField] private CardNode _cardNode;
     private float life;
     public int attack;
-    public int speed;
+    //public int speed;
     public bool die;
     public int ID;
 
@@ -17,7 +17,7 @@ public class CardInGame : MonoBehaviour
     {
         life = _cardNode._cardHP;
         attack = _cardNode._cardATK;
-        speed = _cardNode._cardSPD;
+        //speed = _cardNode._cardSPD;
         ID = _cardNode._cardName;
 
         Fightcontroller.Instance.PlayerAttackEnemy += HowPlayerAttack;
@@ -34,8 +34,8 @@ public class CardInGame : MonoBehaviour
         {
             return false;
         }
-        av = 10000/speed;
-        for(int i = av; i <= 0; i --)
+        //av = 10000/speed;
+        //for(int i = av; i <= 0; i --)
         {
             if(Fightcontroller.Instance.canCount == true)
             {
@@ -43,7 +43,7 @@ public class CardInGame : MonoBehaviour
                 if(attackTime <= 0f)
                 {
                     attackTime = interval;
-                    i -= 1;
+                    //i -= 1;
                     return true;
                 }
             }
