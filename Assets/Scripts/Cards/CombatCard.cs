@@ -8,9 +8,10 @@ public class CombatCard : DragObject
     private CombatController combatController;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
-    private float life;
+    [SerializeField] private float life;
     public int attack;
     public int speed;
+    public int turnCountDown;
     public bool die;
     public bool onTurn = false;
     public int ID;
@@ -34,6 +35,7 @@ public class CombatCard : DragObject
         av = 100/speed;
         startPos = transform.position;
     }
+
     void Start()
     {
         combatController = Locator_Combat.Instance.CmbtController;
@@ -41,6 +43,7 @@ public class CombatCard : DragObject
         combatController.EnemyAttackPlayer += HandlePlayerHurt;
         combatController.PlayerDie += HandlePlayerDie;
         combatController.PlayerTurn += HandlePlayerTurn;
+        combatController.NextTurn += HandleNextTurn;
 
         locked = true;
     }
@@ -48,6 +51,11 @@ public class CombatCard : DragObject
     void Update()
     {
         CheckDeath();
+    }
+
+    public void InitOrder(int order)
+    {
+        turnCountDown = order;
     }
 
     public bool PlayerOnTurn()
@@ -70,8 +78,38 @@ public class CombatCard : DragObject
         av += 100/speed;
     }
 
+    public void HandleNextTurn()
+    {
+        if (turnCountDown == 0)
+        {
+            HandlePlayerTurn(ID);
+            return;
+        }
+        if (turnCountDown < 0)
+        {
+            Debug.Log("ERROR: Negative count down: " + turnCountDown);
+            return;
+        }
+        turnCountDown -= 1;
+    }
+
+    public void Scoot(int insertedCountDown)
+    {
+        if (turnCountDown >= insertedCountDown)
+        {
+            turnCountDown += 1;
+        }
+    }
+
+
+    public int GetCountDown()
+    {
+        return turnCountDown;
+    }
+
     public void HandlePlayerTurn(int activeID)
     {
+        combatController.inPlayerTurn = true;
         if (activeID != ID)
         {
             return;
@@ -81,6 +119,7 @@ public class CombatCard : DragObject
         _spriteRenderer.color = Color.green;
         onTurn = true;
         locked = false;
+        // End turn: uses OnTriggerStay2D() to call PlayerAttack()
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -91,6 +130,9 @@ public class CombatCard : DragObject
             {
                 // using 0 for now.
                 combatController.PlayerAttack(0, attack);
+                turnCountDown += speed;
+                combatController.ScootCards(ID, turnCountDown);
+
                 transform.position = startPos;
                 locked = true;
             }

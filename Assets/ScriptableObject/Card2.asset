@@ -15,4 +15,4 @@ MonoBehaviour:
   _cardName: 1
   _cardHP: 10
   _cardATK: 6
-  _cardSPD: 1
+  _cardSPD: 2

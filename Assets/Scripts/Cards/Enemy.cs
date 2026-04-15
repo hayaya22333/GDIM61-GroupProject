@@ -10,8 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private FightNode _fightNode;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     private CombatController combatController;
-    
-    private float life;
+
+    [SerializeField] private float life;
     public int attack;
     public int speed;
     public bool die;
@@ -43,7 +43,10 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        CheckDeath();
+        if (CheckDeath())
+        {
+            combatController.Die(ID);
+        }
     }
 
     public bool CheckDeath()
@@ -51,12 +54,8 @@ public class Enemy : MonoBehaviour
         if(life <= 0)
         {
             die = true;
-            return true;
         }
-        else
-        {
-            return false;
-        }
+            return die;
     }
 
     public void dying(int no)

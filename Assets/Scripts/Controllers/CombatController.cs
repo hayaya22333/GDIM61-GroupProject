@@ -12,6 +12,8 @@ public class CombatController : MonoBehaviour
         Instance = this;
     }
 
+    // TODO: change list item types
+    [SerializeField] private List<CombatCard> _allCards;
     [SerializeField] private Enemy[] _enemies;
     [SerializeField] private CombatCard[] _cards;
     [SerializeField] private int gameLevel;
@@ -21,6 +23,7 @@ public class CombatController : MonoBehaviour
     public event Action<int> EnemyDie;
     public event Action<int> PlayerDie;
     public event Action FightEnd;
+    public event Action NextTurn;
 
     public event Action<int> PlayerTurn;
 
@@ -32,7 +35,14 @@ public class CombatController : MonoBehaviour
 
     void Start()
     {
-        
+        int startCountDown = 0;
+        foreach (CombatCard card in _cards)
+        {
+            _allCards.Add(card);
+            card.InitOrder(startCountDown);
+            startCountDown += 1;
+        }
+        //NextTurn += HandleNextTurn;
     }
 
     void Update()
@@ -41,18 +51,34 @@ public class CombatController : MonoBehaviour
         {
             return;
         }
-        
-        WatchEnemy();
-        WatchPlayer();
-        CheckEnd();
+        TryNextTurn();
+
+        //WatchEnemy();
+        //WatchPlayer();
+        //CheckEnd();
     }
-    
-    public enum CombatState
+
+    public void TryNextTurn()
     {
-        Player,
-        Enemy,
-        End
+        if (inPlayerTurn)
+        {
+            return;
+        }
+        NextTurn.Invoke();
     }
+
+    public void ScootCards(int skipID, int insertedCountDown)
+    {
+        foreach (CombatCard card in _allCards)
+        {
+            if (card.ID != skipID)
+            {
+                card.Scoot(insertedCountDown);
+            }
+            Debug.Log("Placement: " + card.GetCountDown());
+        }
+    }
+
     public void CollectDrop(string item, int amount)
     {
         if (collectDrop.ContainsKey(item))
@@ -62,16 +88,9 @@ public class CombatController : MonoBehaviour
         }
     }
 
-    public void Die()
+    public void Die(int ID)
     {
-        if(_enemies[0].die == true)
-        {
-            EnemyDie?.Invoke(0);  
-        }
-        else if(_enemies[1].die == true)
-        {
-            EnemyDie?.Invoke(1);
-        }
+        EnemyDie?.Invoke(ID);
     }
 
     public void WatchEnemy()
