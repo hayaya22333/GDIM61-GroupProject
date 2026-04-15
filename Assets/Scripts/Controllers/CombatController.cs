@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Fightcontroller : MonoBehaviour
+public class CombatController : MonoBehaviour
 {
-    public static Fightcontroller Instance {get; private set;}
+    public static CombatController Instance {get; private set;}
 
     void Awake()
     {
@@ -13,7 +13,7 @@ public class Fightcontroller : MonoBehaviour
     }
 
     [SerializeField] private Enemy[] _enemies;
-    [SerializeField] private CardInGame[] _cards;
+    [SerializeField] private CombatCard[] _cards;
     [SerializeField] private int gameLevel;
 
     public event Action<int, int> EnemyAttackPlayer;
@@ -22,8 +22,11 @@ public class Fightcontroller : MonoBehaviour
     public event Action<int> PlayerDie;
     public event Action FightEnd;
 
+    public event Action<int> PlayerTurn;
+
     public bool canCount;
     public bool fightEnd = false;
+    public bool inPlayerTurn = false;
 
     private Dictionary<string, int> collectDrop = new Dictionary<string, int>();
 
@@ -38,9 +41,17 @@ public class Fightcontroller : MonoBehaviour
         {
             return;
         }
+        
         WatchEnemy();
         WatchPlayer();
         CheckEnd();
+    }
+    
+    public enum CombatState
+    {
+        Player,
+        Enemy,
+        End
     }
     public void CollectDrop(string item, int amount)
     {
@@ -65,7 +76,12 @@ public class Fightcontroller : MonoBehaviour
 
     public void WatchEnemy()
     {
-        if (_enemies[0].Attack())
+        if (inPlayerTurn)
+        {
+            return;
+        }
+
+        if (_enemies[0].CanAttack())
         {
             EnemyAttackPlayer?.Invoke(0, _enemies[0].attack);
             canCount = false;
@@ -82,7 +98,7 @@ public class Fightcontroller : MonoBehaviour
             Debug.Log("0 die");
         }
 
-        if (_enemies[1].Attack())
+        if (_enemies[1].CanAttack())
         {
             EnemyAttackPlayer?.Invoke(1, _enemies[1].attack);
             canCount = false;
@@ -100,17 +116,29 @@ public class Fightcontroller : MonoBehaviour
         }
     }
 
+    public void PlayerAttack(int targetID, int damage)
+    {
+        PlayerAttackEnemy?.Invoke(targetID, damage);
+        inPlayerTurn = false;
+        Debug.Log("Player dealt " + damage + " damage to enemy " + targetID);
+    }
+
     public void WatchPlayer()
     {
-        if (_cards[0].Attack())
+        if (_cards[0].CanAttack())
         {
-            PlayerAttackEnemy?.Invoke(0, _cards[0].attack);
+            if (inPlayerTurn)
+            {
+                return;
+            }
+            inPlayerTurn = true;
+            PlayerTurn.Invoke(0);
+
             canCount = false;
             if(1f - Time.deltaTime <= 0f)
             {
                 canCount = true;
             }
-            Debug.Log("0 attack");
         }
 
         if (_cards[0].die == true)
@@ -118,15 +146,20 @@ public class Fightcontroller : MonoBehaviour
             PlayerDie?.Invoke(0);
         }
 
-        if (_cards[1].Attack())
+        if (_cards[1].CanAttack())
         {
-            PlayerAttackEnemy?.Invoke(1, _cards[1].attack);
+            if (inPlayerTurn)
+            {
+                return;
+            }
+            inPlayerTurn = true;
+            PlayerTurn.Invoke(1);
+
             canCount = false;
             if(1f - Time.deltaTime <= 0f)
             {
                 canCount = true;
             }
-            Debug.Log("1 attack");
         }
         if (_cards[1].die == true)
         {

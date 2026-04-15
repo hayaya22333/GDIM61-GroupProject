@@ -2,36 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardInGame : DragObject
+public class CombatCard : DragObject
 {
     [SerializeField] private CardNode _cardNode;
-    [SerializeField] private Fightcontroller _fightcontroller;
+    private CombatController combatController;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+
     private float life;
     public int attack;
     public int speed;
     public bool die;
+    public bool onTurn = false;
     public int ID;
 
     public float av;
 
     private float attackColorInterval;
     private float hurtColorInterval;
-    [SerializeField] private float flashDuration = 0.05f;
+    [SerializeField] private float flashDuration = 0.001f;
 
-    void Start()
+    private Vector3 startPos;
+
+    void Awake()
     {
         life = _cardNode._cardHP;
         attack = _cardNode._cardATK;
         speed = _cardNode._cardSPD;
         ID = _cardNode._cardName;
 
-        _fightcontroller.PlayerAttackEnemy += HowPlayerAttack;
-        _fightcontroller.EnemyAttackPlayer += HowPlayerHurt;
-        _fightcontroller.PlayerDie += dieing;
-
         die = false;
         av = 100/speed;
+        startPos = transform.position;
+    }
+    void Start()
+    {
+        combatController = Locator_Combat.Instance.CmbtController;
+        combatController.PlayerAttackEnemy += HandlePlayerAttack;
+        combatController.EnemyAttackPlayer += HandlePlayerHurt;
+        combatController.PlayerDie += HandlePlayerDie;
+        combatController.PlayerTurn += HandlePlayerTurn;
+
+        locked = true;
     }
 
     void Update()
@@ -39,21 +50,54 @@ public class CardInGame : DragObject
         CheckDeath();
     }
 
-    public bool Attack()
+    public bool PlayerOnTurn()
+    {
+        return onTurn;
+    }
+
+    public bool CanAttack()
     {
         if(die == true)
         {
             return false;
         }
 
-        return false;
+        return true;
     }
 
     public void avIncrease()
     {
         av += 100/speed;
     }
-    public void HowPlayerAttack(int no, int harm)
+
+    public void HandlePlayerTurn(int activeID)
+    {
+        if (activeID != ID)
+        {
+            return;
+        }
+        Debug.Log("It's player card " + ID + "'s turn.");
+
+        _spriteRenderer.color = Color.green;
+        onTurn = true;
+        locked = false;
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (!isDragging)
+        {
+            if (other.CompareTag("Enemy"))
+            {
+                // using 0 for now.
+                combatController.PlayerAttack(0, attack);
+                transform.position = startPos;
+                locked = true;
+            }
+        }
+    }
+
+    public void HandlePlayerAttack(int no, int harm)
     {
         _spriteRenderer.color = Color.blue;
         attackColorInterval = flashDuration;
@@ -61,7 +105,7 @@ public class CardInGame : DragObject
         Debug.Log($"{no} attacks");
     }
 
-    public void HowPlayerHurt(int no, int harm)
+    public void HandlePlayerHurt(int no, int harm)
     {
         if(no != ID && die == false)
         {
@@ -82,7 +126,7 @@ public class CardInGame : DragObject
         }
     }
 
-    public void dieing(int no)
+    public void HandlePlayerDie(int no)
     {
         if(no != ID)
         {

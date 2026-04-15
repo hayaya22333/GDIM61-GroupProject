@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private FightNode _fightNode;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private Fightcontroller _fightcontroller;
+    private CombatController combatController;
+    
     private float life;
     public int attack;
     public int speed;
@@ -22,20 +23,22 @@ public class Enemy : MonoBehaviour
     private float hurtColorInterval;
     [SerializeField] private float flashDuration = 0.05f;
 
-
-    void Start()
+    void Awake()
     {
         life = _fightNode.enemyHP;
         attack = _fightNode.enemyATK;
         speed = _fightNode.enemySPD;
         ID = _fightNode.enemyName;
 
-        _fightcontroller.EnemyAttackPlayer += HowEnemyAttack;
-        _fightcontroller.PlayerAttackEnemy += HowEnemyHurt;
-        _fightcontroller.EnemyDie += dying;
-
         av = 100/speed;
         die = false;
+    }
+    void Start()
+    {
+        combatController = Locator_Combat.Instance.CmbtController;
+        combatController.EnemyAttackPlayer += HowEnemyAttack;
+        combatController.PlayerAttackEnemy += HowEnemyHurt;
+        combatController.EnemyDie += dying;
     }
 
     void Update()
@@ -69,7 +72,7 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    public bool Attack()
+    public bool CanAttack()
     {
         if(die == true)
         {
