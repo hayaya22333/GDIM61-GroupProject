@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Jing's Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/Scenes/Hayaya's Scene.unity
+    guid: 017a495a709077841a63bc7a1c9159c9
+  - enabled: 1
+    path: Assets/Scenes/Tina's Scene.unity
+    guid: 463a971d0d0db47c4b6d4334aee774a4
   m_configObjects: {}
