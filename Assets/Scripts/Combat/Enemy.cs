@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     }
     void Start()
     {
-        combatController = Locator_Combat.Instance.Controller;
+        combatController = CombatLocator.Instance.Controller;
         combatController.EnemyAttackPlayer += HowEnemyAttack;
         combatController.PlayerAttackEnemy += HowEnemyHurt;
         combatController.EnemyDie += dying;

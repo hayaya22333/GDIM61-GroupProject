@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        Locator_Trade.Instance.Controller.UpdateCoin += HandleUpdateCoin;
+        TradeLocator.Instance.Controller.UpdateCoin += HandleUpdateCoin;
     }
 
     private void HandleUpdateCoin(int coinCount)

@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        Locator_Trade.Instance.Controller.UpdateCoin += HandleUpdateCoin;
+        TradeLocator.Instance.Controller.UpdateCoin += HandleUpdateCoin;
     }
 
     void HandleUpdateCoin(int x)

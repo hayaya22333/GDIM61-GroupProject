@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Locator_Combat : MonoBehaviour
+public class CombatLocator : MonoBehaviour
 {
-    public static Locator_Combat Instance { get; private set; }
+    public static CombatLocator Instance { get; private set; }
     public CombatController Controller { get; private set; }
 
 

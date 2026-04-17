@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Locator_Farm : MonoBehaviour
+public class FarmLocator : MonoBehaviour
 {
-    public static Locator_Farm Instance { get; private set; }
+    public static FarmLocator Instance { get; private set; }
     public FarmController Controller { get; private set; }
 
 

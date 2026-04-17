@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Locator_Trade : MonoBehaviour
+public class TradeLocator : MonoBehaviour
 {
-    public static Locator_Trade Instance { get; private set; }
+    public static TradeLocator Instance { get; private set; }
     public TradeController Controller { get; private set; }
 
 

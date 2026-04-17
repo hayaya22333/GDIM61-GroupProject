@@ -10,7 +10,7 @@ public class Tradable : ClickObject
     public static event IntDelegate TradableBought;
 
     public override void HandleClicked(){
-        if (Locator_Trade.Instance.Controller.coinCount >= price)
+        if (TradeLocator.Instance.Controller.coinCount >= price)
         {
             TradableBought.Invoke(price);
             Destroy(gameObject);
