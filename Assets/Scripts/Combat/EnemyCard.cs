@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Enemy : MonoBehaviour
+public class EnemyCard : MonoBehaviour
 {
     [SerializeField] private FightNode _fightNode;
     [SerializeField] private SpriteRenderer _spriteRenderer;

@@ -13,8 +13,8 @@ public class CombatController : MonoBehaviour
     }
 
     // TODO: change list item types
-    [SerializeField] private List<CombatCard> _allCards;
-    [SerializeField] private Enemy[] _enemies;
+    [SerializeField] private List<GeneralCombatCard> _allCards;
+    [SerializeField] private EnemyCard[] _enemies;
     [SerializeField] private CombatCard[] _cards;
     [SerializeField] private int gameLevel;
 
@@ -29,20 +29,25 @@ public class CombatController : MonoBehaviour
 
     public bool canCount;
     public bool fightEnd = false;
-    public bool inPlayerTurn = false;
+    public bool inTurn = false;
 
     private Dictionary<string, int> collectDrop = new Dictionary<string, int>();
 
     void Start()
     {
-        int startCountDown = 0;
-        foreach (CombatCard card in _cards)
+        int startCountDown = 1;
+
+        foreach (GeneralCombatCard card in _allCards)
+        {
+            card.SetCountDown(startCountDown);
+            startCountDown += 1;
+        }
+        /*foreach (CombatCard card in _cards)
         {
             _allCards.Add(card);
             card.InitOrder(startCountDown);
             startCountDown += 1;
-        }
-        //NextTurn += HandleNextTurn;
+        }*/
     }
 
     void Update()
@@ -60,7 +65,7 @@ public class CombatController : MonoBehaviour
 
     public void TryNextTurn()
     {
-        if (inPlayerTurn)
+        if (inTurn)
         {
             return;
         }
@@ -69,13 +74,12 @@ public class CombatController : MonoBehaviour
 
     public void ScootCards(int skipID, int insertedCountDown)
     {
-        foreach (CombatCard card in _allCards)
+        foreach (GeneralCombatCard card in _allCards)
         {
-            if (card.ID != skipID)
+            if (card.id != skipID)
             {
                 card.Scoot(insertedCountDown);
             }
-            Debug.Log("Placement: " + card.GetCountDown());
         }
     }
 
@@ -95,7 +99,7 @@ public class CombatController : MonoBehaviour
 
     public void WatchEnemy()
     {
-        if (inPlayerTurn)
+        if (inTurn)
         {
             return;
         }
@@ -135,10 +139,28 @@ public class CombatController : MonoBehaviour
         }
     }
 
+    public void Attack(int attackerID, int targetID, int damage)
+    {
+        foreach (GeneralCombatCard _card in _allCards)
+        {
+            if (_card.id == targetID)
+            {
+                _card.TakeDamage(damage);
+            }
+        }
+        EndTurn();
+    }
+
+    private void EndTurn()
+    {
+        Debug.Log("End of turn.");
+        inTurn = false;
+    }
+
     public void PlayerAttack(int targetID, int damage)
     {
         PlayerAttackEnemy?.Invoke(targetID, damage);
-        inPlayerTurn = false;
+        inTurn = false;
         Debug.Log("Player dealt " + damage + " damage to enemy " + targetID);
     }
 
@@ -146,11 +168,11 @@ public class CombatController : MonoBehaviour
     {
         if (_cards[0].CanAttack())
         {
-            if (inPlayerTurn)
+            if (inTurn)
             {
                 return;
             }
-            inPlayerTurn = true;
+            inTurn = true;
             PlayerTurn.Invoke(0);
 
             canCount = false;
@@ -167,11 +189,11 @@ public class CombatController : MonoBehaviour
 
         if (_cards[1].CanAttack())
         {
-            if (inPlayerTurn)
+            if (inTurn)
             {
                 return;
             }
-            inPlayerTurn = true;
+            inTurn = true;
             PlayerTurn.Invoke(1);
 
             canCount = false;
