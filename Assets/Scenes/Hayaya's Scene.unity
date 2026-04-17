@@ -810,8 +810,8 @@ GameObject:
   - component: {fileID: 1868068901}
   - component: {fileID: 1868068903}
   m_Layer: 0
-  m_Name: GameManager
-  m_TagString: GameController
+  m_Name: TradeController
+  m_TagString: LocalController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -829,7 +829,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinCount: 0
-  currentState: 0
 --- !u!4 &1868068902
 Transform:
   m_ObjectHideFlags: 0

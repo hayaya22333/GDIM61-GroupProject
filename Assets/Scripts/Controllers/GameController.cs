@@ -1,51 +1,48 @@
+// GameController.cs
+// Handles global scene management.
+// Should only be accessed by the specific controller for each scene.
+// For example, in the Combat scene, only CombatController.cs should access this instance.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    #region Variables
-    // Events
-    public delegate void IntDelegate(int x);
-    public delegate void EmptyDelegate();
-
-    public event IntDelegate UpdateCoin;
-
-    // Variables
-    public int coinCount = 0;
-    public GameState currentState;
-    #endregion
+    public static GameController Instance { get; private set; }
+    public GameState currentState { get; private set; }
 
     private void Awake()
     {
-        currentState = GameState.Farm;
+        currentState = GameState.Title;
     }
 
-    #region Game State Management
-    // The default game state is Farm, initialized in Awake().
-    // Switch state with state enum index.
+    // TODO: Create game scenes.
+    // Title and PrepareTeam scenes don't exist.
+    // For now, create an empty scene and just implement UI for scene switching.
     public enum GameState
     {
-        Farm, // Index = 0
-        Combat, // Index = 1
-        Trade // Index = 2
+        Title,
+        Farm,
+        PrepareTeam,
+        Combat,
+        Trade
     }
 
+    // TODO: Switch scenes in here.
     public void SwitchGameState(int stateIndex)
     {
         currentState = (GameState)stateIndex;
-    }
-    #endregion
-
-    #region Initialization For Different Game States
-    private void OnEnable()
-    {
         switch(currentState)
         {
+            case GameState.Title:
+                Debug.Log("Entering Title Screen");
+                break;
             case GameState.Farm:
                 Debug.Log("Entering Farm");
-                Card.CardSold += HandleCardSold;
-                Tradable.TradableBought += HandleTradableBought;
+                break;
+            case GameState.PrepareTeam:
+                Debug.Log("Entering Combat Prep");
                 break;
             case GameState.Combat:
                 Debug.Log("Entering Combat");
@@ -54,39 +51,5 @@ public class GameController : MonoBehaviour
                 Debug.Log("Entering Trade");
                 break;
         }
-
-    }
-
-    private void OnDisable()
-    {
-        switch(currentState)
-        {
-            case GameState.Farm:
-                Debug.Log("Leaving Farm");
-                Card.CardSold -= HandleCardSold;
-                Tradable.TradableBought -= HandleTradableBought;
-                break;
-            case GameState.Combat:
-                Debug.Log("Leaving Combat");
-                break;
-            case GameState.Trade:
-                Debug.Log("Leaving Trade");
-                break;
-        }
-    }
-    #endregion
-
-    private void HandleCardSold(int cardValue)
-    {
-        coinCount += cardValue;
-        Debug.Log("Gained " + cardValue + " coins :D");
-        UpdateCoin.Invoke(coinCount);
-    }
-
-    private void HandleTradableBought(int price)
-    {
-        coinCount -= price;
-        Debug.Log("Spent " + price + " coins :O");
-        UpdateCoin.Invoke(coinCount);
     }
 }

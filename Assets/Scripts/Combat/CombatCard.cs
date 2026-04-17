@@ -38,7 +38,7 @@ public class CombatCard : DragObject
 
     void Start()
     {
-        combatController = Locator_Combat.Instance.CmbtController;
+        combatController = Locator_Combat.Instance.Controller;
         combatController.PlayerAttackEnemy += HandlePlayerAttack;
         combatController.EnemyAttackPlayer += HandlePlayerHurt;
         combatController.PlayerDie += HandlePlayerDie;

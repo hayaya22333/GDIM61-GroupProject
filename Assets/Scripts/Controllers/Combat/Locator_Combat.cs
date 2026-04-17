@@ -6,7 +6,7 @@ using UnityEngine;
 public class Locator_Combat : MonoBehaviour
 {
     public static Locator_Combat Instance { get; private set; }
-    public CombatController CmbtController { get; private set; }
+    public CombatController Controller { get; private set; }
 
 
     private void Awake()
@@ -18,7 +18,7 @@ public class Locator_Combat : MonoBehaviour
         }
         Instance = this;
 
-        GameObject combatController = GameObject.FindWithTag("CombatController");
-        CmbtController = combatController.GetComponent<CombatController>();
+        GameObject combatController = GameObject.FindWithTag("LocalController");
+        Controller = combatController.GetComponent<CombatController>();
     }
 }
