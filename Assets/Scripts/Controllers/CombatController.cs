@@ -12,74 +12,82 @@ public class CombatController : MonoBehaviour
         Instance = this;
     }
 
-    // TODO: change list item types
-    [SerializeField] private List<GeneralCombatCard> _allCards;
-    [SerializeField] private EnemyCard[] _enemies;
-    [SerializeField] private CombatCard[] _cards;
+    [Header("Components")]
+    [SerializeField] private List<GeneralCombatCard> allCards;
+    [SerializeField] private GameObject GameEndUI;
+
+    [Header("Game Status")]
     [SerializeField] private int gameLevel;
-
-    public event Action<int, int> EnemyAttackPlayer;
-    public event Action<int, int> PlayerAttackEnemy;
-    public event Action<int> EnemyDie;
-    public event Action<int> PlayerDie;
-    public event Action FightEnd;
-    public event Action NextTurn;
-
-    public event Action<int> PlayerTurn;
-
-    public bool canCount;
-    public bool fightEnd = false;
+    public bool combatEnd = false;
     public bool inTurn = false;
+    [SerializeField] private int activePlayerCnt;
+    [SerializeField] private int activeEnemyCnt;
 
     private Dictionary<string, int> collectDrop = new Dictionary<string, int>();
 
+    public event Action NextTurn;
+    public event Action<int, int> TurnScoot;
+    public event Action<int, int, int> Attack;
+
     void Start()
     {
-        int startCountDown = 1;
+        GameEndUI.SetActive(false);
+        int i = 0;
 
-        foreach (GeneralCombatCard card in _allCards)
+        foreach (GeneralCombatCard card in allCards)
         {
-            card.SetCountDown(startCountDown);
-            startCountDown += 1;
+            AddCard(card, i);
+            i += 1;
         }
-        /*foreach (CombatCard card in _cards)
-        {
-            _allCards.Add(card);
-            card.InitOrder(startCountDown);
-            startCountDown += 1;
-        }*/
     }
 
     void Update()
     {
-        if(fightEnd == true)
-        {
-            return;
-        }
-        TryNextTurn();
+        if (combatEnd) return;
 
-        //WatchEnemy();
-        //WatchPlayer();
-        //CheckEnd();
+        TryNextTurn();
+        CheckEnd();
     }
 
     public void TryNextTurn()
     {
-        if (inTurn)
-        {
-            return;
-        }
+        if (inTurn) return;
         NextTurn.Invoke();
     }
 
-    public void ScootCards(int skipID, int insertedCountDown)
+    public void ScootCards(int insertedID, int insertedCountDown)
     {
-        foreach (GeneralCombatCard card in _allCards)
+        TurnScoot.Invoke(insertedID, insertedCountDown);
+    }
+
+    public void KillCard(int cardID)
+    {
+        GeneralCombatCard card = allCards[cardID];
+
+        switch(card.side)
         {
-            if (card.id != skipID)
-            {
-                card.Scoot(insertedCountDown);
-            }
+            case "Enemy":
+                activeEnemyCnt -= 1;
+                break;
+            case "Player":
+                activePlayerCnt -= 1;
+                break;
+        }
+        card.enabled = false;
+        card.gameObject.SetActive(false);
+    }
+
+    public void AddCard(GeneralCombatCard card, int i)
+    {
+        card.SetCountDown(i);
+        switch(card.side)
+        {
+            case "Enemy":
+                activeEnemyCnt += 1;
+                break;
+            case "Player":
+                activePlayerCnt += 1;
+                break;
         }
     }
 
@@ -92,129 +100,24 @@ public class CombatController : MonoBehaviour
         }
     }
 
-    public void Die(int ID)
+    public void InflictAttack(int attackerID, int targetID, int damage)
     {
-        EnemyDie?.Invoke(ID);
+        Attack.Invoke(attackerID, targetID, damage);
     }
 
-    public void WatchEnemy()
+#region End Combat
+    private void CheckEnd()
     {
-        if (inTurn)
+        if (activeEnemyCnt == 0 || activePlayerCnt == 0)
         {
-            return;
-        }
-
-        if (_enemies[0].CanAttack())
-        {
-            EnemyAttackPlayer?.Invoke(0, _enemies[0].attack);
-            canCount = false;
-            if(1f - Time.deltaTime <= 0f)
-            {
-                canCount = true;
-            }
-            Debug.Log("0 attack");
-        }
-
-        if (_enemies[0].CheckDeath())
-        {
-            EnemyDie?.Invoke(0);
-            Debug.Log("0 die");
-        }
-
-        if (_enemies[1].CanAttack())
-        {
-            EnemyAttackPlayer?.Invoke(1, _enemies[1].attack);
-            canCount = false;
-            if(1f - Time.deltaTime <= 0f)
-            {
-                canCount = true;
-            }
-            Debug.Log("1 attack");
-        }
-
-        if (_enemies[1].CheckDeath())
-        {
-            EnemyDie?.Invoke(1);
-            Debug.Log("1 die");
+            EndCombat();
         }
     }
 
-    public void Attack(int attackerID, int targetID, int damage)
+    private void EndCombat()
     {
-        foreach (GeneralCombatCard _card in _allCards)
-        {
-            if (_card.id == targetID)
-            {
-                _card.TakeDamage(damage);
-            }
-        }
-        EndTurn();
+        combatEnd = true;
+        GameEndUI.SetActive(true);
     }
-
-    private void EndTurn()
-    {
-        Debug.Log("End of turn.");
-        inTurn = false;
-    }
-
-    public void PlayerAttack(int targetID, int damage)
-    {
-        PlayerAttackEnemy?.Invoke(targetID, damage);
-        inTurn = false;
-        Debug.Log("Player dealt " + damage + " damage to enemy " + targetID);
-    }
-
-    public void WatchPlayer()
-    {
-        if (_cards[0].CanAttack())
-        {
-            if (inTurn)
-            {
-                return;
-            }
-            inTurn = true;
-            PlayerTurn.Invoke(0);
-
-            canCount = false;
-            if(1f - Time.deltaTime <= 0f)
-            {
-                canCount = true;
-            }
-        }
-
-        if (_cards[0].die == true)
-        {
-            PlayerDie?.Invoke(0);
-        }
-
-        if (_cards[1].CanAttack())
-        {
-            if (inTurn)
-            {
-                return;
-            }
-            inTurn = true;
-            PlayerTurn.Invoke(1);
-
-            canCount = false;
-            if(1f - Time.deltaTime <= 0f)
-            {
-                canCount = true;
-            }
-        }
-        if (_cards[1].die == true)
-        {
-            PlayerDie?.Invoke(1);
-        }
-    }
-
-    public void CheckEnd()
-    {
-        if((_enemies[0].die && _enemies[1].die) || (_cards[0].die && _cards[1].die))
-        {
-            FightEnd?.Invoke();
-            fightEnd = true;
-        }
-    }
-
+#endregion
 }

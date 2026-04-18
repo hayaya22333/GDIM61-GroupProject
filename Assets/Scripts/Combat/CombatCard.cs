@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GeneralCombatCard : DragObject
 {
@@ -10,8 +11,10 @@ public class GeneralCombatCard : DragObject
 
     [Header("Components")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private TextMeshPro turnText; 
 
     [Header("Cards Stats")]
+    public string side = "Neutral";
     public int spd;
     public int hp;
     public int id;
@@ -20,33 +23,37 @@ public class GeneralCombatCard : DragObject
     private CombatController combatController;
     private Vector3 startPos;
 
-    void Awake()
-    {
-        startPos = transform.position;
-        locked = true;
-    }
-
     void Start()
     {
         combatController = CombatLocator.Instance.Controller;
-
         combatController.NextTurn += HandleNextTurn;
+        combatController.Attack += HandleAttack;
+        combatController.TurnScoot += HandleTurnScoot;
+
+        locked = true;
     }
 
     void Update()
     {
-        if (hp <= 0) KillSelf();
+        if (hp <= 0) combatController.KillCard(id);
+        turnText.text = turnCountDown.ToString();
     }
 
     public void SetCountDown(int x)
     {
-        turnCountDown = x;
+        turnCountDown = x + 1;
+        id = x;
     }
 
-    private void KillSelf()
+    public void HandleTurnScoot(int skipID, int insertedCountDown)
     {
-        Debug.Log(gameObject.name + " hp fell under 0.");
-        gameObject.SetActive(false);
+        if (skipID == id) return;
+
+        if (turnCountDown >= insertedCountDown)
+        {
+            Debug.Log("card " + id + " Scooted down.");
+            turnCountDown += 1;
+        }
     }
 
     public void TakeDamage(int dmg)
@@ -55,21 +62,22 @@ public class GeneralCombatCard : DragObject
         Debug.Log("Card " + id + " took " + dmg + "damage!!!");
     }
 
-    public void Scoot(int insertedCountDown)
+    void HandleAttack(int attackerID, int targetID, int damage)
     {
-        if (turnCountDown >= insertedCountDown)
+        if (targetID == id)
         {
-            turnCountDown += 1;
+            TakeDamage(damage);
         }
     }
 
-    public void HandleNextTurn()
+    void HandleNextTurn()
     {
-        turnCountDown -= 1;
+        if (hp <= 0) return;
 
+        turnCountDown -= 1;
         if (turnCountDown == 0)
         {
-            MyTurn();
+            StartTurn();
         }
         else if (turnCountDown < 0)
         {
@@ -77,14 +85,27 @@ public class GeneralCombatCard : DragObject
         }
     }
 
-    private void MyTurn()
+    private void StartTurn()
     {
         Debug.Log("It's card " + id + "'s turn.");
-        combatController.inTurn = true;
-
         _spriteRenderer.color = Color.green;
+        startPos = transform.position;
+
+        combatController.inTurn = true;
         onTurn = true;
         locked = false;
+    }
+
+    private void EndTurn()
+    {
+        Debug.Log("End of card " + id + "'s turn.");
+        _spriteRenderer.color = Color.white;
+
+        turnCountDown += spd + 1;
+        combatController.ScootCards(id, turnCountDown);
+        combatController.inTurn = false;
+        onTurn = false;
+        locked = true;
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -93,14 +114,11 @@ public class GeneralCombatCard : DragObject
 
         if (other.TryGetComponent<GeneralCombatCard>(out GeneralCombatCard target))
         {
-            combatController.Attack(id, target.id, atk);
-            turnCountDown += spd;
-            combatController.ScootCards(id, turnCountDown);
-
+            if (target.side == side) return;
+            combatController.InflictAttack(id, target.id, atk);
             transform.position = startPos;
             onTurn = false;
-            locked = true;
-            _spriteRenderer.color = Color.white;
+            EndTurn();
         }
     }
 }
