@@ -14,6 +14,8 @@ public class CombatController : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private List<GeneralCombatCard> allCards;
+    [SerializeField] protected List<int> enemyIDs;
+    [SerializeField] protected List<int> playerIDs;
     [SerializeField] private GameObject GameEndUI;
 
     [Header("Game Status")]
@@ -34,6 +36,7 @@ public class CombatController : MonoBehaviour
         GameEndUI.SetActive(false);
         int i = 0;
 
+        // Register cards for game system
         foreach (GeneralCombatCard card in allCards)
         {
             AddCard(card, i);
@@ -68,9 +71,11 @@ public class CombatController : MonoBehaviour
         {
             case "Enemy":
                 activeEnemyCnt -= 1;
+                enemyIDs.Remove(cardID);
                 break;
             case "Player":
                 activePlayerCnt -= 1;
+                playerIDs.Remove(cardID);
                 break;
         }
         card.enabled = false;
@@ -79,13 +84,15 @@ public class CombatController : MonoBehaviour
 
     public void AddCard(GeneralCombatCard card, int i)
     {
-        card.SetCountDown(i);
+        card.Initiate(i);
         switch(card.side)
         {
             case "Enemy":
+                enemyIDs.Add(i);
                 activeEnemyCnt += 1;
                 break;
             case "Player":
+                playerIDs.Add(i);
                 activePlayerCnt += 1;
                 break;
         }
@@ -102,6 +109,21 @@ public class CombatController : MonoBehaviour
 
     public void InflictAttack(int attackerID, int targetID, int damage)
     {
+        Attack.Invoke(attackerID, targetID, damage);
+    }
+
+    public void InflictAttackRandom(int attackerID, int damage)
+    {
+        var targetID = -1;
+        GeneralCombatCard attacker = allCards[attackerID];
+        if (attacker.side == "Player")
+        {
+            targetID = enemyIDs[UnityEngine.Random.Range(0, playerIDs.Count)];
+        }
+        else if (attacker.side == "Enemy")
+        {
+            targetID = playerIDs[UnityEngine.Random.Range(0, playerIDs.Count)];
+        }
         Attack.Invoke(attackerID, targetID, damage);
     }
 

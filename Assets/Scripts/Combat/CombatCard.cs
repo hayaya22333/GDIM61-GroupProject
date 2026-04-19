@@ -10,8 +10,9 @@ public class GeneralCombatCard : DragObject
     public bool onTurn = false;
 
     [Header("Components")]
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private TextMeshPro turnText; 
+    [SerializeField] protected SpriteRenderer _spriteRenderer;
+    [SerializeField] protected TextMeshPro turnText;
+    [SerializeField] protected TextMeshPro hpText;
 
     [Header("Cards Stats")]
     public string side = "Neutral";
@@ -20,8 +21,8 @@ public class GeneralCombatCard : DragObject
     public int id;
     public int atk;
 
-    private CombatController combatController;
-    private Vector3 startPos;
+    protected CombatController combatController;
+    protected Vector3 startPos;
 
     void Start()
     {
@@ -37,9 +38,10 @@ public class GeneralCombatCard : DragObject
     {
         if (hp <= 0) combatController.KillCard(id);
         turnText.text = turnCountDown.ToString();
+        hpText.text = hp.ToString();
     }
 
-    public void SetCountDown(int x)
+    public void Initiate(int x)
     {
         turnCountDown = x + 1;
         id = x;
@@ -85,7 +87,7 @@ public class GeneralCombatCard : DragObject
         }
     }
 
-    private void StartTurn()
+    public virtual void StartTurn()
     {
         Debug.Log("It's card " + id + "'s turn.");
         _spriteRenderer.color = Color.green;
@@ -96,7 +98,7 @@ public class GeneralCombatCard : DragObject
         locked = false;
     }
 
-    private void EndTurn()
+    protected void EndTurn()
     {
         Debug.Log("End of card " + id + "'s turn.");
         _spriteRenderer.color = Color.white;
@@ -106,19 +108,5 @@ public class GeneralCombatCard : DragObject
         combatController.inTurn = false;
         onTurn = false;
         locked = true;
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (isDragging || !onTurn) return;
-
-        if (other.TryGetComponent<GeneralCombatCard>(out GeneralCombatCard target))
-        {
-            if (target.side == side) return;
-            combatController.InflictAttack(id, target.id, atk);
-            transform.position = startPos;
-            onTurn = false;
-            EndTurn();
-        }
     }
 }
