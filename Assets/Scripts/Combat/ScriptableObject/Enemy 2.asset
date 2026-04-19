@@ -15,6 +15,6 @@ MonoBehaviour:
   enemyName: 1
   enemyHP: 20
   enemyATK: 2
-  enemySPD: 1
+  enemySPD: 2
   enemySkill: 0
   drops: []

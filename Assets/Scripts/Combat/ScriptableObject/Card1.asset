@@ -15,3 +15,13 @@ MonoBehaviour:
   cardHP: 20
   cardATK: 5
   cardSPD: 3
+  skills:
+  - cardSprite: {fileID: -9095717837082945937, guid: 432dfc4c2a9494b3a978326f73147dd1, type: 3}
+    effectType: 2
+    targetType: 2
+    targetCount: 0
+    dealAmount: 16
+    effectType2: 0
+    targetType2: 0
+    targetCount2: 0
+    dealAmount2: 0
