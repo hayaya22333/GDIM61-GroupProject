@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class FightNode : ScriptableObject
 {
     public int enemyName;
-    public float enemyHP;
+    public int enemyHP;
     public int enemyATK;
     public int enemySPD;
 

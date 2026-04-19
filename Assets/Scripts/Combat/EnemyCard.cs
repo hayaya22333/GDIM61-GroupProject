@@ -5,21 +5,35 @@ using UnityEngine;
 public class EnemyCard : GeneralCombatCard
 {
     private float turnDuration = 2;
+    [SerializeField] protected FightNode scriptableObj;
 
     void Awake()
     {
-        side = "Enemy";
+        side = GameSide.Enemy;
+
+        hp = scriptableObj.enemyHP;
+        spd = scriptableObj.enemySPD;
+        atk = scriptableObj.enemyATK;
     }
 
     public override void StartTurn()
     {
         Debug.Log("It's enemy card " + id + "'s turn.");
         _spriteRenderer.color = Color.green;
-        startPos = transform.position;
 
         combatController.inTurn = true;
         onTurn = true;
         StartCoroutine(EnemyAutoAttack(turnDuration));
+    }
+
+    public override void EndTurn()
+    {
+        _spriteRenderer.color = Color.white;
+
+        turnCountDown += spd + 1;
+        combatController.ScootCards(id, turnCountDown);
+        combatController.inTurn = false;
+        onTurn = false;
     }
 
     IEnumerator EnemyAutoAttack(float seconds)

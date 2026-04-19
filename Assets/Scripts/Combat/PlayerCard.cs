@@ -4,33 +4,72 @@ using UnityEngine;
 
 public class PlayerCard : GeneralCombatCard
 {
+    [Header("Player Card Components")]
+    [SerializeField] protected CardNode scriptableObj;
+    public GameObject actionCardPrefab;
+    [SerializeField] List<ActionCard> actionCards;
+
     void Awake()
     {
-        side = "Player";
+        side = GameSide.Player;
+
+        hp = scriptableObj.cardHP;
+        spd = scriptableObj.cardSPD;
+        atk = scriptableObj.cardATK;
     }
 
     public override void StartTurn()
     {
         Debug.Log("It's player card " + id + "'s turn.");
+        SpawnActionCards();
         _spriteRenderer.color = Color.green;
-        startPos = transform.position;
 
         combatController.inTurn = true;
         onTurn = true;
-        locked = false;
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    public override void EndTurn()
     {
-        if (isDragging || !onTurn) return;
+        _spriteRenderer.color = Color.white;
 
-        if (other.TryGetComponent<GeneralCombatCard>(out GeneralCombatCard target))
+        ClearActionCards();
+
+        turnCountDown += spd + 1;
+        combatController.ScootCards(id, turnCountDown);
+        combatController.inTurn = false;
+        onTurn = false;
+        Debug.Log("Ending turn");
+    }
+
+    public void SpawnActionCards()
+    {
+        Debug.Log("Spawning action cards");
+        for (int i = 0; i < scriptableObj.skills.Count; i++)
         {
-            if (target.side == side) return;
-            combatController.InflictAttack(id, target.id, atk);
-            transform.position = startPos;
-            onTurn = false;
+            ActionCard actionCard = Instantiate(
+                actionCardPrefab,
+                combatController.actionCardSpawn.position,
+                combatController.actionCardSpawn.rotation
+            ).GetComponent<ActionCard>();
+            actionCard.SetAttributes(scriptableObj.skills[i], this, id);
+            actionCards.Add(actionCard);
+        }
+        if (actionCards.Count == 0)
+        {
+            Debug.Log("No action cards in this scriptable object");
             EndTurn();
         }
+    }
+
+    public void ClearActionCards()
+    {
+        foreach (ActionCard actionCard in actionCards)
+        {
+            if (actionCard != null)
+            {
+                Destroy(actionCard.gameObject);
+            }
+        }
+        actionCards?.Clear();
     }
 }

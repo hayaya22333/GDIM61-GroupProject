@@ -8,7 +8,6 @@ public class Card : DragObject
 
     public List<GameObject> actions;
 
-    private int id;
     private int hp;
     private int atk;
     private int spd;
@@ -21,10 +20,9 @@ public class Card : DragObject
 
     void Start()
     {
-        id = _cardNode._cardName;
-        hp = _cardNode._cardHP;
-        atk = _cardNode._cardATK;
-        spd = _cardNode._cardSPD;
+        hp = _cardNode.cardHP;
+        atk = _cardNode.cardATK;
+        spd = _cardNode.cardSPD;
     }
 
     private void OnTriggerStay2D(Collider2D other)

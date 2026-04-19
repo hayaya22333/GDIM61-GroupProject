@@ -13,10 +13,23 @@ public class DamageText : MonoBehaviour
 
     public void PopDamage(int dmg)
     {
-        textComponent.text = "-" + dmg;
-
-        // initial upward impulse
         fallSpeed = upwardSpeed;
+        if (dmg > 0)
+        {
+            textComponent.color = Color.red;
+            textComponent.text = "-" + dmg;
+        }
+        else if (dmg < 0)
+        {
+            dmg *= -1;
+            textComponent.color = Color.green;
+            textComponent.text = "+" + dmg;
+        }
+        else
+        {
+            textComponent.color = Color.yellow;
+            textComponent.text = "Blocked";
+        }
     }
 
     void Update()

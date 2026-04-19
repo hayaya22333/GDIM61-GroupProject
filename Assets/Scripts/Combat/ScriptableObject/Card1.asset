@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef4f7113bafc4104ad4db5b6197cd7a, type: 3}
   m_Name: Card1
   m_EditorClassIdentifier: 
-  _cardName: 0
-  _cardHP: 10
-  _cardATK: 6
-  _cardSPD: 3
+  cardHP: 20
+  cardATK: 5
+  cardSPD: 3

@@ -14,9 +14,10 @@ public class CombatController : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private List<GeneralCombatCard> allCards;
-    [SerializeField] protected List<int> enemyIDs;
-    [SerializeField] protected List<int> playerIDs;
-    [SerializeField] private GameObject GameEndUI;
+    [SerializeField] private List<int> enemyIDs;
+    [SerializeField] private List<int> playerIDs;
+    [SerializeField] private GameObject gameEndUI;
+    [SerializeField] public Transform actionCardSpawn;
 
     [Header("Game Status")]
     [SerializeField] private int gameLevel;
@@ -28,12 +29,12 @@ public class CombatController : MonoBehaviour
     private Dictionary<string, int> collectDrop = new Dictionary<string, int>();
 
     public event Action NextTurn;
-    public event Action<int, int> TurnScoot;
+    public event Action<int, int> TurnRotateScoot;
     public event Action<int, int, int> Attack;
 
     void Start()
     {
-        GameEndUI.SetActive(false);
+        gameEndUI.SetActive(false);
         int i = 0;
 
         // Register cards for game system
@@ -58,9 +59,9 @@ public class CombatController : MonoBehaviour
         NextTurn.Invoke();
     }
 
-    public void ScootCards(int insertedID, int insertedCountDown)
+    public void ScootCards(int rotatedID, int rotatedCountDown)
     {
-        TurnScoot.Invoke(insertedID, insertedCountDown);
+        TurnRotateScoot.Invoke(rotatedID, rotatedCountDown);
     }
 
     public void KillCard(int cardID)
@@ -69,11 +70,11 @@ public class CombatController : MonoBehaviour
 
         switch(card.side)
         {
-            case "Enemy":
+            case GameSide.Enemy:
                 activeEnemyCnt -= 1;
                 enemyIDs.Remove(cardID);
                 break;
-            case "Player":
+            case GameSide.Player:
                 activePlayerCnt -= 1;
                 playerIDs.Remove(cardID);
                 break;
@@ -87,11 +88,11 @@ public class CombatController : MonoBehaviour
         card.Initiate(i);
         switch(card.side)
         {
-            case "Enemy":
+            case GameSide.Enemy:
                 enemyIDs.Add(i);
                 activeEnemyCnt += 1;
                 break;
-            case "Player":
+            case GameSide.Player:
                 playerIDs.Add(i);
                 activePlayerCnt += 1;
                 break;
@@ -116,11 +117,11 @@ public class CombatController : MonoBehaviour
     {
         var targetID = -1;
         GeneralCombatCard attacker = allCards[attackerID];
-        if (attacker.side == "Player")
+        if (attacker.side == GameSide.Player)
         {
             targetID = enemyIDs[UnityEngine.Random.Range(0, playerIDs.Count)];
         }
-        else if (attacker.side == "Enemy")
+        else if (attacker.side == GameSide.Enemy)
         {
             targetID = playerIDs[UnityEngine.Random.Range(0, playerIDs.Count)];
         }
@@ -139,7 +140,7 @@ public class CombatController : MonoBehaviour
     private void EndCombat()
     {
         combatEnd = true;
-        GameEndUI.SetActive(true);
+        gameEndUI.SetActive(true);
     }
 #endregion
 }

@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GeneralCombatCard : DragObject
+public enum GameSide
+{
+    Neutral,
+    Player,
+    Enemy
+}
+
+public class GeneralCombatCard : MonoBehaviour
 {
     [Header("Game Status")]
     public int turnCountDown;
@@ -16,24 +23,21 @@ public class GeneralCombatCard : DragObject
     [SerializeField] protected GameObject damageTextPrefab;
     [SerializeField] protected GameObject damagePopAnchor;
 
-    [Header("Cards Stats")]
-    public string side = "Neutral";
+    [Header("Card Attributes")]
+    public GameSide side = GameSide.Neutral;
     public int spd;
     public int hp;
     public int id;
     public int atk;
 
     protected CombatController combatController;
-    protected Vector3 startPos;
 
     void Start()
     {
         combatController = CombatLocator.Instance.Controller;
         combatController.NextTurn += HandleNextTurn;
         combatController.Attack += HandleAttack;
-        combatController.TurnScoot += HandleTurnScoot;
-
-        locked = true;
+        combatController.TurnRotateScoot += HandleTurnScoot;
     }
 
     void Update()
@@ -97,22 +101,18 @@ public class GeneralCombatCard : DragObject
     {
         Debug.Log("It's card " + id + "'s turn.");
         _spriteRenderer.color = Color.green;
-        startPos = transform.position;
 
         combatController.inTurn = true;
         onTurn = true;
-        locked = false;
     }
 
-    protected void EndTurn()
+    public virtual void EndTurn()
     {
-        // Debug.Log("End of card " + id + "'s turn.");
         _spriteRenderer.color = Color.white;
 
         turnCountDown += spd + 1;
         combatController.ScootCards(id, turnCountDown);
         combatController.inTurn = false;
         onTurn = false;
-        locked = true;
     }
 }
