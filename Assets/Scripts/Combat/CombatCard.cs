@@ -13,6 +13,8 @@ public class GeneralCombatCard : DragObject
     [SerializeField] protected SpriteRenderer _spriteRenderer;
     [SerializeField] protected TextMeshPro turnText;
     [SerializeField] protected TextMeshPro hpText;
+    [SerializeField] protected GameObject damageTextPrefab;
+    [SerializeField] protected GameObject damagePopAnchor;
 
     [Header("Cards Stats")]
     public string side = "Neutral";
@@ -62,6 +64,10 @@ public class GeneralCombatCard : DragObject
     {
         hp -= dmg;
         Debug.Log("Card " + id + " took " + dmg + "damage!!!");
+
+        GameObject dmgTxtObj = Instantiate(damageTextPrefab, damagePopAnchor.transform.position, damagePopAnchor.transform.rotation);
+        DamageText dmgTxt = dmgTxtObj.GetComponent<DamageText>();
+        dmgTxt.PopDamage(dmg);
     }
 
     void HandleAttack(int attackerID, int targetID, int damage)
@@ -100,7 +106,7 @@ public class GeneralCombatCard : DragObject
 
     protected void EndTurn()
     {
-        Debug.Log("End of card " + id + "'s turn.");
+        // Debug.Log("End of card " + id + "'s turn.");
         _spriteRenderer.color = Color.white;
 
         turnCountDown += spd + 1;

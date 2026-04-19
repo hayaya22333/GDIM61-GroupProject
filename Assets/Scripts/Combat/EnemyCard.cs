@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyCard : GeneralCombatCard
 {
-    private int turnDuration = 2;
+    private float turnDuration = 2;
 
     void Awake()
     {
@@ -22,16 +22,14 @@ public class EnemyCard : GeneralCombatCard
         StartCoroutine(EnemyAutoAttack(turnDuration));
     }
 
-    IEnumerator EnemyAutoAttack(int seconds)
+    IEnumerator EnemyAutoAttack(float seconds)
     {
         while (seconds > 0)
         {
-            Debug.Log(seconds);
-            yield return new WaitForSeconds(1f);
-            seconds--;
+            yield return new WaitForSeconds(0.1f);
+            seconds -= 0.1f;
         }
         combatController.InflictAttackRandom(id, atk);
-        Debug.Log("Attack ended.");
         EndTurn();
     }
 }
