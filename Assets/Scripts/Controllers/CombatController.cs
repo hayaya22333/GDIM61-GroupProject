@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class CombatController : MonoBehaviour
 {
@@ -142,5 +143,11 @@ public class CombatController : MonoBehaviour
         combatEnd = true;
         gameEndUI.SetActive(true);
     }
+
+    public void Click(int i)
+    {
+        SceneManager.LoadScene(i);
+    }
+
 #endregion
 }

@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         currentState = GameState.Title;
+        DontDestroyOnLoad(gameObject);
     }
 
     // TODO: Create game scenes.
@@ -37,19 +39,25 @@ public class GameController : MonoBehaviour
         {
             case GameState.Title:
                 Debug.Log("Entering Title Screen");
+                SceneManager.LoadScene(0);
                 break;
             case GameState.Farm:
                 Debug.Log("Entering Farm");
+                SceneManager.LoadScene(1);
                 break;
             case GameState.PrepareTeam:
                 Debug.Log("Entering Combat Prep");
+                SceneManager.LoadScene(2);
                 break;
             case GameState.Combat:
                 Debug.Log("Entering Combat");
+                SceneManager.LoadScene(3);
                 break;
             case GameState.Trade:
                 Debug.Log("Entering Trade");
+                SceneManager.LoadScene(4);
                 break;
         }
     }
+
 }

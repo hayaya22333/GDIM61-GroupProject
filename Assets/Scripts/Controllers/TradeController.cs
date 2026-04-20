@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TradeController : MonoBehaviour
 {
@@ -44,5 +45,10 @@ public class TradeController : MonoBehaviour
         coinCount -= price;
         Debug.Log("Spent " + price + " coins :O");
         UpdateCoin.Invoke(coinCount);
+    }
+
+    public void Click()
+    {
+        SceneManager.LoadScene(0);
     }
 }
