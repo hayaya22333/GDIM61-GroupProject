@@ -42,7 +42,10 @@ public class GeneralCombatCard : MonoBehaviour
 
     void Update()
     {
-        if (hp <= 0) combatController.KillCard(id);
+        if (hp <= 0)
+        {
+            combatController.KillCard(id);
+        }
         turnText.text = turnCountDown.ToString();
         hpText.text = hp.ToString();
     }
@@ -59,15 +62,15 @@ public class GeneralCombatCard : MonoBehaviour
 
         if (turnCountDown >= insertedCountDown)
         {
-            Debug.Log("card " + id + " Scooted down.");
             turnCountDown += 1;
         }
     }
 
     public void TakeDamage(int dmg)
     {
+        if (hp <= 0) return;
         hp -= dmg;
-        Debug.Log("Card " + id + " took " + dmg + "damage!!!");
+        //Debug.Log("Card " + id + " took " + dmg + "damage!!!");
 
         GameObject dmgTxtObj = Instantiate(damageTextPrefab, damagePopAnchor.transform.position, damagePopAnchor.transform.rotation);
         DamageText dmgTxt = dmgTxtObj.GetComponent<DamageText>();

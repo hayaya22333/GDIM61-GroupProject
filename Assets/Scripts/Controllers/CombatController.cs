@@ -15,8 +15,8 @@ public class CombatController : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private List<GeneralCombatCard> allCards;
-    [SerializeField] private List<int> enemyIDs;
-    [SerializeField] private List<int> playerIDs;
+    [SerializeField] public List<int> enemyIDs;
+    [SerializeField] public List<int> playerIDs;
     [SerializeField] private GameObject gameEndUI;
     [SerializeField] public Transform actionCardSpawn;
 
@@ -109,24 +109,17 @@ public class CombatController : MonoBehaviour
         }
     }
 
-    public void InflictAttack(int attackerID, int targetID, int damage)
+    public void InflictAttack(int _attackerID, int _targetID, int _damage)
     {
-        Attack.Invoke(attackerID, targetID, damage);
+        Attack.Invoke(_attackerID, _targetID, _damage);
     }
 
-    public void InflictAttackRandom(int attackerID, int damage)
+    public void InflictAttackRandom(int _attackerID, List<int> _targetIDPool, int _damage)
     {
-        var targetID = -1;
-        GeneralCombatCard attacker = allCards[attackerID];
-        if (attacker.side == GameSide.Player)
-        {
-            targetID = enemyIDs[UnityEngine.Random.Range(0, playerIDs.Count)];
-        }
-        else if (attacker.side == GameSide.Enemy)
-        {
-            targetID = playerIDs[UnityEngine.Random.Range(0, playerIDs.Count)];
-        }
-        Attack.Invoke(attackerID, targetID, damage);
+        var _targetID = -1;
+        GeneralCombatCard attacker = allCards[_attackerID];
+        _targetID = _targetIDPool[UnityEngine.Random.Range(0, _targetIDPool.Count)];
+        Attack.Invoke(_attackerID, _targetID, _damage);
     }
 
 #region End Combat

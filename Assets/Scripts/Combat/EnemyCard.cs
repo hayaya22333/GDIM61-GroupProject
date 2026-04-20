@@ -43,7 +43,7 @@ public class EnemyCard : GeneralCombatCard
             yield return new WaitForSeconds(0.1f);
             seconds -= 0.1f;
         }
-        combatController.InflictAttackRandom(id, atk);
+        combatController.InflictAttackRandom(id, combatController.playerIDs, atk);
         EndTurn();
     }
 }
