@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FarmController : MonoBehaviour
+public class PrepareController : MonoBehaviour
 {
     public void Click(int i)
     {

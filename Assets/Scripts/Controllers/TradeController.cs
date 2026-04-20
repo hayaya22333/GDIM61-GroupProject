@@ -47,8 +47,8 @@ public class TradeController : MonoBehaviour
         UpdateCoin.Invoke(coinCount);
     }
 
-    public void Click()
+    public void Click(int i)
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(i);
     }
 }
