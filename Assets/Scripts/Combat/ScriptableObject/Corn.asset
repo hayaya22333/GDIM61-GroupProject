@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef4f7113bafc4104ad4db5b6197cd7a, type: 3}
+  m_Name: Corn
+  m_EditorClassIdentifier: 
+  cardHP: 20
+  cardATK: 0
+  cardSPD: 2
+  skills:
+  - cardSprite: {fileID: 7482667652216324306, guid: 8566cef89acf94a3c8117e5a7d791d2e, type: 3}
+    skillEffects:
+    - effectType: 1
+      targetType: 3
+      targetCount: 2
+      dealAmount: 5
+      dealCount: 2
+    - effectType: 2
+      targetType: 2
+      targetCount: 1
+      dealAmount: 20
+      dealCount: 1
+  - cardSprite: {fileID: 7482667652216324306, guid: 8566cef89acf94a3c8117e5a7d791d2e, type: 3}
+    skillEffects:
+    - effectType: 1
+      targetType: 3
+      targetCount: 1
+      dealAmount: 1
+      dealCount: 1

@@ -41,7 +41,7 @@ public class CombatController : MonoBehaviour
         // Register cards for game system
         foreach (GeneralCombatCard card in allCards)
         {
-            AddCard(card, i);
+            RegisterCard(card, i);
             i += 1;
         }
     }
@@ -84,7 +84,7 @@ public class CombatController : MonoBehaviour
         card.gameObject.SetActive(false);
     }
 
-    public void AddCard(GeneralCombatCard card, int i)
+    public void RegisterCard(GeneralCombatCard card, int i)
     {
         card.Initiate(i);
         switch(card.side)

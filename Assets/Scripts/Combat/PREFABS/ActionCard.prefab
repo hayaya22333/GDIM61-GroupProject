@@ -310,19 +310,10 @@ MonoBehaviour:
   locked: 0
   combatController: {fileID: 0}
   spriteRenderer: {fileID: 4603238274061795008}
-  targetSide: 0
   parentCard: {fileID: 0}
   displayText: {fileID: 5042708325433804808}
   side: 0
   id: 0
-  effectType: 0
-  targetType: 0
-  targetCount: 0
-  dealAmount: 0
-  effectType2: 0
-  targetType2: 0
-  targetCount2: 0
-  dealAmount2: 0
 --- !u!61 &1546554065645625249
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -355,7 +346,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.065903544, y: 0.03765905}
+  m_Offset: {x: -0.02512157, y: 0.09144652}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -366,5 +357,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4788818, y: 3.1170485}
+  m_Size: {x: 1.9422824, y: 2.728123}
   m_EdgeRadius: 0

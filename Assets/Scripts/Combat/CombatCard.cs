@@ -56,6 +56,21 @@ public class GeneralCombatCard : MonoBehaviour
         id = x;
     }
 
+    void HandleNextTurn()
+    {
+        if (hp <= 0) return;
+
+        turnCountDown -= 1;
+        if (turnCountDown == 0)
+        {
+            StartTurn();
+        }
+        else if (turnCountDown < 0)
+        {
+            Debug.Log("ERROR: Negative count down [" + turnCountDown + "] on card " + id);
+        }
+    }
+
     public void HandleTurnScoot(int skipID, int insertedCountDown)
     {
         if (skipID == id) return;
@@ -82,21 +97,6 @@ public class GeneralCombatCard : MonoBehaviour
         if (targetID == id)
         {
             TakeDamage(damage);
-        }
-    }
-
-    void HandleNextTurn()
-    {
-        if (hp <= 0) return;
-
-        turnCountDown -= 1;
-        if (turnCountDown == 0)
-        {
-            StartTurn();
-        }
-        else if (turnCountDown < 0)
-        {
-            Debug.Log("ERROR: Negative count down [" + turnCountDown + "] on card " + id);
         }
     }
 

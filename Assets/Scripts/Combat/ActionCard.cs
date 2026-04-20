@@ -31,7 +31,6 @@ public class ActionCard : DragObject
 
     void Update()
     {
-        Debug.Log(castLeft);
         if (castLeft == 0)
         {
             Debug.Log("End turn from card " + id);
