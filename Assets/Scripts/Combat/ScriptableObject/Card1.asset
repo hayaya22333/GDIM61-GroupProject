@@ -25,3 +25,12 @@ MonoBehaviour:
     targetType2: 0
     targetCount2: 0
     dealAmount2: 0
+  - cardSprite: {fileID: -9095717837082945937, guid: 432dfc4c2a9494b3a978326f73147dd1, type: 3}
+    effectType: 1
+    targetType: 3
+    targetCount: 0
+    dealAmount: 16
+    effectType2: 0
+    targetType2: 0
+    targetCount2: 0
+    dealAmount2: 0

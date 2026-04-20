@@ -9,27 +9,26 @@ public class ActionCard : DragObject
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private GameSide targetSide;
     [SerializeField] private PlayerCard parentCard;
+    public TextMeshPro displayText;
 
     [Header("Skill Attributes")]
     public GameSide side;
     public int id;
+    bool hasCasted = false;
 
     [Header("Effect 1")]
     public EffectType effectType;
     public TargetType targetType;
     public int targetCount;
     public int dealAmount;
+    public int dealCount;
 
     [Header("Effect 2 (optional)")]
     public EffectType effectType2;
     public TargetType targetType2;
     public int targetCount2;
     public int dealAmount2;
-
-    void Awake()
-    {
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-    }
+    public int dealCount2;
 
     void Start()
     {
@@ -54,32 +53,50 @@ public class ActionCard : DragObject
         targetType = _skill.targetType;
         targetCount = _skill.targetCount;
         dealAmount = _skill.dealAmount;
+        dealCount = _skill.dealCount;
 
         effectType2 = _skill.effectType;
         targetType2 = _skill.targetType2;
         targetCount2 = _skill.targetCount2;
         dealAmount2 = _skill.dealAmount2;
+        dealCount2 = _skill.dealCount2;
+
+        if (effectType == EffectType.Heal)
+        {
+            dealAmount *= -1;
+            displayText.text = "Heal ";
+        }
+        else
+        {
+            displayText.text = "Damage ";
+        }
 
         switch(targetType)
         {
             case TargetType.Enemy:
                 targetSide = GameSide.Enemy;
+                displayText.text += "enemy ";
                 break;
             case TargetType.Ally:
                 targetSide = GameSide.Player;
+                displayText.text += "ally ";
                 break;
             case TargetType.Self:
                 targetSide = GameSide.Player;
+                displayText.text += "self ";
                 break;
             default:
                 Debug.Log("Invalid side on skill card " + id + ". Check scriptable object's targetType field");
                 break;
         }
 
-        if (effectType == EffectType.Heal)
+        displayText.text += "for " + Mathf.Abs(dealAmount).ToString() + " points.";
+
+        if (dealCount > 1)
         {
-            dealAmount *= -1;
+            displayText.text += " for " + dealCount + " times";
         }
+        
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -96,10 +113,24 @@ public class ActionCard : DragObject
                 if (target.id != parentCard.id) return;
             }
 
-            combatController.InflictAttack(id, target.id, dealAmount);
-            
-            parentCard.EndTurn();
-            Destroy(gameObject);
+            if (!hasCasted)
+            {
+                StartCoroutine(Cast(target.id));
+                spriteRenderer.enabled = false;
+                displayText.enabled = false;
+                hasCasted = true;
+            }
         }
+    }
+
+    IEnumerator Cast(int targetID)
+    {
+        for (int i = 1; i <= dealCount; i++)
+        {
+            combatController.InflictAttack(id, targetID, dealAmount);
+            if (i != dealCount) yield return new WaitForSeconds(0.5f);
+        }
+        parentCard.EndTurn();
+        Destroy(gameObject);
     }
 }

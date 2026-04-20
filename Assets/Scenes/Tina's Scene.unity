@@ -458,10 +458,6 @@ PrefabInstance:
       propertyPath: scriptableObj
       value: 
       objectReference: {fileID: 11400000, guid: 238803797f4e84c3cbcdb4d37032ee55, type: 2}
-    - target: {fileID: 1973403218792871484, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
-      propertyPath: actionCardPrefab
-      value: 
-      objectReference: {fileID: 5250467207491868801, guid: 759c581a8924bca4eb6490a54b933300, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

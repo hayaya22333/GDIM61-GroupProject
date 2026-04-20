@@ -38,11 +38,13 @@ public class Skill
     public TargetType targetType;
     public int targetCount; //1, 2, all
     public int dealAmount; //ei. [Heal 10], [Damage 14]
+    public int dealCount; //ei. Hit 5 damage [4] times
 
     [Header("Effect 2 (optional)")]
     public EffectType effectType2;
     public TargetType targetType2;
     public int targetCount2;
     public int dealAmount2;
+    public int dealCount2;
 }
 

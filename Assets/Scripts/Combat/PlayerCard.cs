@@ -8,6 +8,7 @@ public class PlayerCard : GeneralCombatCard
     [SerializeField] protected CardNode scriptableObj;
     public GameObject actionCardPrefab;
     [SerializeField] List<ActionCard> actionCards;
+    private float cardSpacing = 2.5f;
 
     void Awake()
     {
@@ -44,20 +45,31 @@ public class PlayerCard : GeneralCombatCard
     public void SpawnActionCards()
     {
         Debug.Log("Spawning action cards");
-        for (int i = 0; i < scriptableObj.skills.Count; i++)
-        {
-            ActionCard actionCard = Instantiate(
-                actionCardPrefab,
-                combatController.actionCardSpawn.position,
-                combatController.actionCardSpawn.rotation
-            ).GetComponent<ActionCard>();
-            actionCard.SetAttributes(scriptableObj.skills[i], this, id);
-            actionCards.Add(actionCard);
-        }
-        if (actionCards.Count == 0)
+        
+        int skillCount = scriptableObj.skills.Count;
+        if (skillCount == 0)
         {
             Debug.Log("No action cards in this scriptable object");
             EndTurn();
+        }
+        // calculate 
+        float totalWidth = (skillCount - 1) * cardSpacing;
+
+        for (int i = 0; i < skillCount; i++)
+        {
+            // Centering formula
+            float offsetX = i * cardSpacing - (totalWidth / 2f);
+
+            Vector3 spawnPos = combatController.actionCardSpawn.position + new Vector3(offsetX, 0, 0);
+
+            ActionCard actionCard = Instantiate(
+                actionCardPrefab,
+                spawnPos,
+                combatController.actionCardSpawn.rotation
+            ).GetComponent<ActionCard>();
+
+            actionCard.SetAttributes(scriptableObj.skills[i], this, id);
+            actionCards.Add(actionCard);
         }
     }
 
