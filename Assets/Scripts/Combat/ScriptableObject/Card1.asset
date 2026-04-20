@@ -16,21 +16,27 @@ MonoBehaviour:
   cardATK: 5
   cardSPD: 3
   skills:
-  - cardSprite: {fileID: -9095717837082945937, guid: 432dfc4c2a9494b3a978326f73147dd1, type: 3}
-    effectType: 2
-    targetType: 2
-    targetCount: 0
-    dealAmount: 16
-    effectType2: 0
-    targetType2: 0
-    targetCount2: 0
-    dealAmount2: 0
-  - cardSprite: {fileID: -9095717837082945937, guid: 432dfc4c2a9494b3a978326f73147dd1, type: 3}
-    effectType: 1
-    targetType: 3
-    targetCount: 0
-    dealAmount: 16
-    effectType2: 0
-    targetType2: 0
-    targetCount2: 0
-    dealAmount2: 0
+  - cardSprite: {fileID: 7482667652216324306, guid: 8566cef89acf94a3c8117e5a7d791d2e, type: 3}
+    skillEffects:
+    - effectType: 1
+      targetType: 3
+      targetCount: 1
+      dealAmount: 20
+      dealCount: 1
+    - effectType: 2
+      targetType: 2
+      targetCount: 1
+      dealAmount: 2
+      dealCount: 2
+  - cardSprite: {fileID: 7482667652216324306, guid: 8566cef89acf94a3c8117e5a7d791d2e, type: 3}
+    skillEffects:
+    - effectType: 2
+      targetType: 2
+      targetCount: 1
+      dealAmount: 5
+      dealCount: 1
+    - effectType: 1
+      targetType: 3
+      targetCount: 1
+      dealAmount: 20
+      dealCount: 1
