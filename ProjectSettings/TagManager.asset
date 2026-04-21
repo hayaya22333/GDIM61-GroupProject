@@ -9,6 +9,7 @@ TagManager:
   - CastField
   - Enemy
   - LocalController
+  - CardDock
   layers:
   - Default
   - TransparentFX

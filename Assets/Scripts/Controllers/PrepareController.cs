@@ -9,4 +9,6 @@ public class PrepareController : MonoBehaviour
     {
         SceneManager.LoadScene(i);
     }
+
+    
 }
