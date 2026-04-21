@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardHP: 20
   cardATK: 0
-  cardSPD: 2
+  cardSPD: 70
   skills:
   - cardSprite: {fileID: 7482667652216324306, guid: 8566cef89acf94a3c8117e5a7d791d2e, type: 3}
     skillEffects:

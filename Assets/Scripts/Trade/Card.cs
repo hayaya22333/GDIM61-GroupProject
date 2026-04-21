@@ -21,7 +21,6 @@ public class Card : DragObject
     void Start()
     {
         hp = _cardNode.cardHP;
-        atk = _cardNode.cardATK;
         spd = _cardNode.cardSPD;
     }
 

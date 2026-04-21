@@ -6,7 +6,6 @@ using UnityEngine;
 public class CardNode : ScriptableObject
 {
     public int cardHP;
-    public int cardATK;
     public int cardSPD;
 
     public List<Skill> skills = new List<Skill>();

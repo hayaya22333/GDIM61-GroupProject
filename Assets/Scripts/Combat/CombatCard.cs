@@ -13,7 +13,7 @@ public enum GameSide
 public class GeneralCombatCard : MonoBehaviour
 {
     [Header("Game Status")]
-    public int turnCountDown;
+    public int turnCountDown = 10000;
     public bool onTurn = false;
 
     [Header("Components")]
@@ -40,7 +40,7 @@ public class GeneralCombatCard : MonoBehaviour
         combatController.TurnRotateScoot += HandleTurnScoot;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (hp <= 0)
         {
@@ -52,7 +52,6 @@ public class GeneralCombatCard : MonoBehaviour
 
     public void Initiate(int x)
     {
-        turnCountDown = x + 1;
         id = x;
     }
 
@@ -60,14 +59,11 @@ public class GeneralCombatCard : MonoBehaviour
     {
         if (hp <= 0) return;
 
-        turnCountDown -= 1;
-        if (turnCountDown == 0)
+        turnCountDown -= spd;
+        if (turnCountDown <= 0)
         {
+            // Compare countdown with other cards on turn
             StartTurn();
-        }
-        else if (turnCountDown < 0)
-        {
-            Debug.Log("ERROR: Negative count down [" + turnCountDown + "] on card " + id);
         }
     }
 
@@ -79,6 +75,24 @@ public class GeneralCombatCard : MonoBehaviour
         {
             turnCountDown += 1;
         }
+    }
+
+    public virtual void StartTurn()
+    {
+        Debug.Log("It's card " + id + "'s turn.");
+        _spriteRenderer.color = Color.green;
+
+        combatController.inTurn = true;
+        onTurn = true;
+    }
+
+    public virtual void EndTurn()
+    {
+        _spriteRenderer.color = Color.white;
+        turnCountDown += 10000;
+        combatController.ScootCards(id, turnCountDown);
+        combatController.inTurn = false;
+        onTurn = false;
     }
 
     public void TakeDamage(int dmg)
@@ -98,24 +112,5 @@ public class GeneralCombatCard : MonoBehaviour
         {
             TakeDamage(damage);
         }
-    }
-
-    public virtual void StartTurn()
-    {
-        Debug.Log("It's card " + id + "'s turn.");
-        _spriteRenderer.color = Color.green;
-
-        combatController.inTurn = true;
-        onTurn = true;
-    }
-
-    public virtual void EndTurn()
-    {
-        _spriteRenderer.color = Color.white;
-
-        turnCountDown += spd + 1;
-        combatController.ScootCards(id, turnCountDown);
-        combatController.inTurn = false;
-        onTurn = false;
     }
 }

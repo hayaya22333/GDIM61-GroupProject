@@ -16,7 +16,6 @@ public class PlayerCard : GeneralCombatCard
 
         hp = scriptableObj.cardHP;
         spd = scriptableObj.cardSPD;
-        atk = scriptableObj.cardATK;
     }
 
     public override void StartTurn()
@@ -35,11 +34,10 @@ public class PlayerCard : GeneralCombatCard
 
         ClearActionCards();
 
-        turnCountDown += spd + 1;
+        turnCountDown += 10000;
         combatController.ScootCards(id, turnCountDown);
         combatController.inTurn = false;
         onTurn = false;
-        Debug.Log("Ending turn");
     }
 
     public void SpawnActionCards()

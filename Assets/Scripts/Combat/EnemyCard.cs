@@ -30,7 +30,7 @@ public class EnemyCard : GeneralCombatCard
     {
         _spriteRenderer.color = Color.white;
 
-        turnCountDown += spd + 1;
+        turnCountDown += 10000;
         combatController.ScootCards(id, turnCountDown);
         combatController.inTurn = false;
         onTurn = false;

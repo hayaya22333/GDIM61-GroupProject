@@ -46,7 +46,7 @@ public class CombatController : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (combatEnd) return;
 
