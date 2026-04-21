@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef4f7113bafc4104ad4db5b6197cd7a, type: 3}
   m_Name: Card2
   m_EditorClassIdentifier: 
-  cardHP: 40
-  cardATK: 30
-  cardSPD: 99
+  cardHP: 120
+  cardSPD: 90
   skills:
   - cardSprite: {fileID: 7482667652216324306, guid: 8566cef89acf94a3c8117e5a7d791d2e, type: 3}
     skillEffects:
-    - effectType: 1
+    - effectType: 3
       targetType: 3
       targetCount: 2
-      dealAmount: 2
-      dealCount: 3
+      dealAmount: 3
+      dealCount: 1

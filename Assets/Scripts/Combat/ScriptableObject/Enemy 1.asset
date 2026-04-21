@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Enemy 1
   m_EditorClassIdentifier: 
   enemyName: 0
-  enemyHP: 20
-  enemyATK: 2
-  enemySPD: 400
+  enemyHP: 120
+  enemyATK: 30
+  enemySPD: 140
   enemySkill: 0
   drops: []

@@ -12,26 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef4f7113bafc4104ad4db5b6197cd7a, type: 3}
   m_Name: Corn
   m_EditorClassIdentifier: 
-  cardHP: 20
-  cardATK: 0
-  cardSPD: 70
+  cardHP: 70
+  cardSPD: 150
   skills:
   - cardSprite: {fileID: 7482667652216324306, guid: 8566cef89acf94a3c8117e5a7d791d2e, type: 3}
     skillEffects:
     - effectType: 1
       targetType: 3
       targetCount: 2
-      dealAmount: 5
-      dealCount: 2
-    - effectType: 2
-      targetType: 2
-      targetCount: 1
-      dealAmount: 20
-      dealCount: 1
+      dealAmount: 6
+      dealCount: 3
   - cardSprite: {fileID: 7482667652216324306, guid: 8566cef89acf94a3c8117e5a7d791d2e, type: 3}
     skillEffects:
     - effectType: 1
       targetType: 3
       targetCount: 1
-      dealAmount: 1
-      dealCount: 1
+      dealAmount: 7
+      dealCount: 3
+    - effectType: 1
+      targetType: 3
+      targetCount: 1
+      dealAmount: 7
+      dealCount: 3
