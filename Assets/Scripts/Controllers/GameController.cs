@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
                 break;
             case GameState.Combat:
                 Debug.Log("Entering Combat");
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene(1);
                 break;
             case GameState.Trade:
                 Debug.Log("Entering Trade");
