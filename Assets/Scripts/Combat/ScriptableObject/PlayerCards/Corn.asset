@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Corn
   m_EditorClassIdentifier: 
   cardHP: 70
-  cardSPD: 150
+  cardSPD: 153
   skills:
   - cardSprite: {fileID: 7482667652216324306, guid: 8566cef89acf94a3c8117e5a7d791d2e, type: 3}
     skillEffects:
@@ -27,10 +27,5 @@ MonoBehaviour:
     - effectType: 1
       targetType: 3
       targetCount: 1
-      dealAmount: 7
-      dealCount: 3
-    - effectType: 1
-      targetType: 3
-      targetCount: 1
-      dealAmount: 7
+      dealAmount: 9
       dealCount: 3

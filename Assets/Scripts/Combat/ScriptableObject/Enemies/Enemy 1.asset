@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49718ec9db3524248b46b545ab7b3ada, type: 3}
-  m_Name: Enemy 2
+  m_Name: Enemy 1
   m_EditorClassIdentifier: 
-  enemyName: 1
-  enemyHP: 150
-  enemyATK: 30
-  enemySPD: 200
-  enemySkill: 1
+  enemyName: 0
+  enemyHP: 120
+  enemyATK: 55
+  enemySPD: 140
+  enemySkill: 0
   drops: []

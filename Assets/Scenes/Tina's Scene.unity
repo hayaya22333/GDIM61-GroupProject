@@ -199,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5009271450246672651, guid: 96a4d8af99294284facd19380c072daa, type: 3}
       propertyPath: m_Name
-      value: EnemySample (1)
+      value: Enemy 2
       objectReference: {fileID: 0}
     - target: {fileID: 5945070828411101064, guid: 96a4d8af99294284facd19380c072daa, type: 3}
       propertyPath: scriptableObj
@@ -309,7 +309,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 538434313656696704, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_Name
-      value: PlayerSample (1)
+      value: Card2??
       objectReference: {fileID: 0}
     - target: {fileID: 675681832396131129, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_LocalScale.x
@@ -396,7 +396,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 538434313656696704, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_Name
-      value: PlayerSample (2)
+      value: Corn
       objectReference: {fileID: 0}
     - target: {fileID: 675681832396131129, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -591,7 +591,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 538434313656696704, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_Name
-      value: PlayerSample
+      value: GloomShroom
       objectReference: {fileID: 0}
     - target: {fileID: 675681832396131129, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_LocalScale.x
@@ -738,7 +738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5009271450246672651, guid: 96a4d8af99294284facd19380c072daa, type: 3}
       propertyPath: m_Name
-      value: EnemySample
+      value: Enemy 1
       objectReference: {fileID: 0}
     - target: {fileID: 5945070828411101064, guid: 96a4d8af99294284facd19380c072daa, type: 3}
       propertyPath: scriptableObj
@@ -1044,5 +1044,5 @@ SceneRoots:
   - {fileID: 662746618}
   - {fileID: 210391795059458997}
   - {fileID: 1267110398}
-  - {fileID: 5455518776546621676}
   - {fileID: 1539494418}
+  - {fileID: 5455518776546621676}

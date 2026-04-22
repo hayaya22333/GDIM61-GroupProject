@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ef4f7113bafc4104ad4db5b6197cd7a, type: 3}
-  m_Name: SampleCard
+  m_Script: {fileID: 11500000, guid: 49718ec9db3524248b46b545ab7b3ada, type: 3}
+  m_Name: Enemy 2
   m_EditorClassIdentifier: 
-  _cardName: 0
-  _cardHP: 10
-  _cardATK: 6
-  _cardSPD: 1
+  enemyName: 1
+  enemyHP: 150
+  enemyATK: 33
+  enemySPD: 200
+  enemySkill: 0
+  drops: []

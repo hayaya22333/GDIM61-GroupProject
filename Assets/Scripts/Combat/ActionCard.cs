@@ -94,6 +94,7 @@ public class ActionCard : DragObject
         }
         
         GameSide _targetSide = GameSide.Neutral;
+        displayText.text += _targetCount + " ";
         switch(_targetType)
         {
             case TargetType.Enemy:

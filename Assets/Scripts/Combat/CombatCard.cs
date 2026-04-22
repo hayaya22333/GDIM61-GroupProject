@@ -46,7 +46,15 @@ public class GeneralCombatCard : MonoBehaviour
         {
             combatController.KillCard(id);
         }
-        turnText.text = turnCountDown.ToString();
+
+        if (turnCountDown <= 0)
+        {
+            turnText.text = "0";
+        }
+        else
+        {
+            turnText.text = (turnCountDown/100).ToString();
+        }
         hpText.text = hp.ToString();
     }
 
