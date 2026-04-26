@@ -19,9 +19,9 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // TODO: Create game scenes.
+    // TODO: Create game scenes. //fin
     // Title and PrepareTeam scenes don't exist.
-    // For now, create an empty scene and just implement UI for scene switching.
+    // For now, create an empty scene and just implement UI for scene switching. // fin
     public enum GameState
     {
         Title,
@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
         Trade
     }
 
-    // TODO: Switch scenes in here.
+    // TODO: Switch scenes in here. // fin
     public void SwitchGameState(int stateIndex)
     {
         currentState = (GameState)stateIndex;
@@ -58,6 +58,48 @@ public class GameController : MonoBehaviour
                 SceneManager.LoadScene(4);
                 break;
         }
+    }
+
+    /* TODO: card transfer:
+    1. refer each card to a unique card ID
+    2. record ID between scenes using GC
+    3. once polled, tell GC to record ID
+    4. in prepared, GC tell PC to show cards number (list count) and each card will show corresponding details when clicked
+    5. cards will be presented in order from smallest ID to largest
+    6. 2 selected ID will be recorded in GC in a new list
+    7. in combat, GC tell CC to show specific selected cards data
+    */
+
+    //all card
+    public List<CardNode> allCard = new List<CardNode>();
+    //own card
+    public List<int> ownCard = new List<int>();
+    //combat card
+    public List<int> combatCard = new List<int>();
+
+    private Dictionary<int, CardNode> cardMenu = new Dictionary<int, CardNode>();
+
+    public void CardDictionary()
+    {
+        cardMenu.Clear();
+        for(int i = 0; i < allCard.Count; i++)
+        {
+            cardMenu.Add(allCard[i].cardID, allCard[i]);
+        }
+    }
+
+    public void OwnCard(int id)
+    {
+        if(ownCard.Contains(id) == false)
+        {
+            ownCard.Add(id);
+            ownCard.Sort();
+        }
+    }
+
+    public void RemoveOwnCard(int id)
+    {
+        ownCard.Remove(id);
     }
 
 }
