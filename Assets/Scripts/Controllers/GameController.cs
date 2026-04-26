@@ -97,9 +97,74 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void RemoveOwnCard(int id)
+
+    public CardNode CheckID(int id)
     {
-        ownCard.Remove(id);
+        if (cardMenu.ContainsKey(id))
+        {
+            return cardMenu[id];
+        }
+        return null;
+    }
+
+    public List<CardNode> GetOwnCard()
+    {
+        List<CardNode> result = new List<CardNode>();
+        ownCard.Sort();
+        
+        for (int i = 0; i < ownCard.Count; i++)
+        {
+            CardNode card = CheckID(ownCard[i]);
+            if(card == null)
+            {
+                result.Add(card);
+            }
+        }
+        return result;
+    }
+
+    public void SelectCard(int index, int id)
+    {
+        while (combatCard.Count <= index)
+        {
+            combatCard.Add(-1);
+        }
+
+        combatCard[index] = id;
+    }
+
+    public void ClearSelectCard(int index)
+    {
+        combatCard[index] = -1;
+    }
+
+    public int GetCombatCardID(int index)
+    {
+        if(index >= 0 && index < combatCard.Count)
+        {
+            return combatCard[index];
+        }
+        return -1;
+    }
+
+    public List<CardNode> GetCombatCard()
+    {
+        List<CardNode> result = new List<CardNode>();
+
+        for(int i = 0; i < combatCard.Count; i++)
+        {
+            if(combatCard[i] != -1)
+            {
+                CardNode card = CheckID(combatCard[i]);
+                if (card != null)
+                {
+                    result.Add(card);
+                }
+            }
+        }
+
+        result.Sort((a, b) => a.cardID.CompareTo(b.cardID));
+        return result;
     }
 
 }
