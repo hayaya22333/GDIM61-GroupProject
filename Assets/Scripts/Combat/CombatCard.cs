@@ -22,6 +22,8 @@ public class GeneralCombatCard : MonoBehaviour
     [SerializeField] protected TextMeshPro hpText;
     [SerializeField] protected GameObject damageTextPrefab;
     [SerializeField] protected GameObject damagePopAnchor;
+    [SerializeField] private GameObject healVFX;
+    [SerializeField] private GameObject damageVFX;
 
     [Header("Card Attributes")]
     public GameSide side = GameSide.Neutral;
@@ -107,10 +109,19 @@ public class GeneralCombatCard : MonoBehaviour
     {
         if (hp <= 0) return;
         hp -= dmg;
-        //Debug.Log("Card " + id + " took " + dmg + "damage!!!");
 
         GameObject dmgTxtObj = Instantiate(damageTextPrefab, damagePopAnchor.transform.position, damagePopAnchor.transform.rotation);
         DamageText dmgTxt = dmgTxtObj.GetComponent<DamageText>();
+
+        if (dmg > 0)
+        {
+            Instantiate(damageVFX, transform.position, transform.rotation);
+        }
+        else if (dmg < 0)
+        {
+            Instantiate(healVFX, transform.position, transform.rotation);
+        }
+
         dmgTxt.PopDamage(dmg);
     }
 

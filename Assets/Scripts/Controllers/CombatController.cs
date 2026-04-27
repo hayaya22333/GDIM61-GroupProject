@@ -6,13 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class CombatController : MonoBehaviour
 {
-    public static CombatController Instance {get; private set;}
-
-    void Awake()
-    {
-        Instance = this;
-    }
-
     [Header("Components")]
     [SerializeField] private List<GeneralCombatCard> allCards;
     [SerializeField] public List<int> enemyIDs;

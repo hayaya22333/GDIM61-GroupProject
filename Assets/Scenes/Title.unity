@@ -668,7 +668,7 @@ GameObject:
   - component: {fileID: 528347838}
   - component: {fileID: 528347837}
   m_Layer: 0
-  m_Name: 250025bc58a2cd81e29398558134befc 2
+  m_Name: Background image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1771,6 +1771,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d865aed48e00e4429697769baadd5e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allCard: []
+  ownCard: 
+  combatCard: 
 --- !u!4 &1512931574
 Transform:
   m_ObjectHideFlags: 0

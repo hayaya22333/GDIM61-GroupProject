@@ -62,7 +62,7 @@ public class ActionCard : DragObject
             if (effectTypes.Count > 1)
             {
                 castLeft += effect.targetCount;
-                displayText.text += " <AND> ";
+                displayText.text += "\n <AND> \n";
             }
             else
             {
