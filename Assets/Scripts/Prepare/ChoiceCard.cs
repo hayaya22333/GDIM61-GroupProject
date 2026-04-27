@@ -1,21 +1,119 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
+using TMPro;
 using UnityEngine;
 
 public class ChoiceCard : DragObject
 {
     public CardNode card;
-    public string cardDesciption;
-    //写一段对应的card description
-    public PrepareController prepareController;
+    [SerializeField] private TMP_Text cardDesciption;//写一段对应的card description
+    [SerializeField] private TMP_Text cardName;
+    [SerializeField] private Image image;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    
+
+    private Vector3 DockPosition;
+    private Slot current;
+    private Slot hover;
+    private PrepareController prepareController;
+
+    public void SetUp(CardNode data, Vector3 position)
+    {
+        card = data;
+        DockPosition = position;
+        spriteRenderer.sprite = data.skills[0].cardSprite;
+        //image.sprite = data.skills[0].cardSprite;
+    }
     public void ShowTextDetail()
     {
-        prepareController.detail.text = cardDesciption;
+        prepareController.detail = cardDesciption;
         Debug.Log("click");
     }
 
     public int GetID()
     {
         return card.cardID;
+    }
+
+    public CardNode GetData()
+    {
+        return card;
+    }
+
+    private void Update()
+    {
+        if(isDragging && Input.GetMouseButtonUp(0))
+        {
+            DropCard();
+        }
+    }
+
+    private void DropCard()
+    {
+        if (hover.Empty() && hover != null)
+        {
+            transform.position = hover.transform.position;
+            hover.AssignCard(this);
+            current = hover;
+        }
+        else
+        {
+            transform.position = DockPosition;
+        }
+    }
+
+    private void OuseDown()
+    {
+        if (!locked && current != null)
+        {
+            current.ClearCard(this);
+            current = null;
+        }
+        ShowTextDetail();
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (!isDragging)
+        {
+            if(other.CompareTag("SelectedSlot") && current == null)
+            {
+                Slot slot = other.GetComponent<Slot>();
+                if(slot != null && slot.Empty())
+                {
+                    transform.position = other.transform.position;
+                    slot.AssignCard(this);
+                    current = slot;
+                }
+            }
+        }
+
+        if (other.CompareTag("SelectedSlot"))
+        {
+            Slot slot = other.GetComponent<Slot>();
+            if(slot!= null)
+            {
+                hover = slot;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("SelectedSlot"))
+        {
+            Slot slot = other.GetComponent<Slot>();
+            if(hover == slot)
+            {
+                hover = null;
+            }
+            if(current == slot && isDragging)
+            {
+                current.ClearCard(this);
+                current = null;
+            }
+
+        }
     }
 }
