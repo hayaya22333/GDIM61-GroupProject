@@ -73,6 +73,14 @@ PrefabInstance:
       value: Enemy 1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5945070828411101064, guid: 96a4d8af99294284facd19380c072daa, type: 3}
+      propertyPath: healVFX
+      value: 
+      objectReference: {fileID: 5563903795124588248, guid: e29639dd2383c451db4f044f313421cb, type: 3}
+    - target: {fileID: 5945070828411101064, guid: 96a4d8af99294284facd19380c072daa, type: 3}
+      propertyPath: damageVFX
+      value: 
+      objectReference: {fileID: 2236155430509538399, guid: 26a7a6196a9f74580936b21c30eecca6, type: 3}
+    - target: {fileID: 5945070828411101064, guid: 96a4d8af99294284facd19380c072daa, type: 3}
       propertyPath: scriptableObj
       value: 
       objectReference: {fileID: 11400000, guid: 8b0dd8a85eeb34be3bcedb4a3e787a93, type: 2}

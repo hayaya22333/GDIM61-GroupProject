@@ -309,7 +309,7 @@ MonoBehaviour:
   isDragging: 0
   locked: 0
   combatController: {fileID: 0}
-  spriteRenderer: {fileID: 4603238274061795008}
+  spriteRenderer: {fileID: 0}
   parentCard: {fileID: 0}
   displayText: {fileID: 5042708325433804808}
   side: 0
@@ -350,8 +350,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 29.14, y: 37.136726}
+    newSize: {x: 29.14, y: 37.136726}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
