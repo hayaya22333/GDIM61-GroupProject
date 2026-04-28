@@ -9,6 +9,8 @@ public class CardNode : ScriptableObject
     public int cardID;
     public int cardHP;
     public int cardSPD;
+    [TextArea(2,4)]
+    public string cardDesciption;
 
     public List<Skill> skills = new List<Skill>();
 }
