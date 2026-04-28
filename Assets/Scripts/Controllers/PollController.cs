@@ -6,7 +6,9 @@ public class PollController : MonoBehaviour
 {
     public static PollController pollController {get; private set;}
 
-    public List<GameObject> cardPoll = new List<GameObject>();
+    public List<CardNode> cardPoll = new List<CardNode>();
+
+
 
     
 

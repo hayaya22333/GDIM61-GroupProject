@@ -1771,7 +1771,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d865aed48e00e4429697769baadd5e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allCard: []
+  allCard:
+  - {fileID: 11400000, guid: 238803797f4e84c3cbcdb4d37032ee55, type: 2}
+  - {fileID: 11400000, guid: a38cb3179fbcc6442a34ae22ecdd9f1d, type: 2}
+  - {fileID: 11400000, guid: 7aa2e5b209f104bbd8c3e3eb966502e1, type: 2}
   ownCard: 
   combatCard: 
 --- !u!4 &1512931574

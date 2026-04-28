@@ -15,9 +15,9 @@ public class Pile : MonoBehaviour
         Vector3 spawnPosition = pile.transform.position + spawnPlace;
 
         int randomCardID = Random.Range(0, _pollController.cardPoll.Count);
-        GameObject selectedPile = _pollController.cardPoll[randomCardID];
+        //GameObject selectedPile = _pollController.cardPoll[randomCardID];
 
-        Instantiate(selectedPile, spawnPosition, Quaternion.identity);
+        //Instantiate(selectedPile, spawnPosition, Quaternion.identity);
         _pollController.cardPoll.RemoveAt(randomCardID);
 
         gameObject.SetActive(false);

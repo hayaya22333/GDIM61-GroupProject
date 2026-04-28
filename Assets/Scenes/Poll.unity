@@ -275,7 +275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &215038670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,7 +555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &427188379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,9 +847,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardPoll:
-  - {fileID: 1752567241}
-  - {fileID: 427188378}
-  - {fileID: 215038669}
+  - {fileID: 6878954193301296285, guid: 6e92da7328a954049a603b6ab9e2ff10, type: 3}
+  - {fileID: 7560533219244522711, guid: 15d9fcd7ad78a354c97e93877d2c2ba7, type: 3}
+  - {fileID: 774704196062038262, guid: af48acbf0d8855149a0d503d9f701121, type: 3}
 --- !u!4 &866522147
 Transform:
   m_ObjectHideFlags: 0
@@ -975,7 +975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1752567242
 SpriteRenderer:
   m_ObjectHideFlags: 0
