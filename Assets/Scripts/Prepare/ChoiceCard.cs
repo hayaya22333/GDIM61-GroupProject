@@ -7,9 +7,7 @@ using UnityEngine;
 public class ChoiceCard : DragObject
 {
     public CardNode card;
-    [SerializeField] private TMP_Text cardDesciption;//写一段对应的card description
-    [SerializeField] private TMP_Text cardName;
-    [SerializeField] private Image image;
+    //[SerializeField] private Image image;
     [SerializeField] private SpriteRenderer spriteRenderer;
     
 
@@ -27,7 +25,7 @@ public class ChoiceCard : DragObject
     }
     public void ShowTextDetail()
     {
-        prepareController.detail = cardDesciption;
+        prepareController.detail.text = card.cardDesciption;
         Debug.Log("click");
     }
 

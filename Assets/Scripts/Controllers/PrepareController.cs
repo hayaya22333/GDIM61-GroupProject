@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
@@ -7,9 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class PrepareController : MonoBehaviour
 {
-    [SerializeField] private Transform[] dockPosition;
-    [SerializeField] private GameObject cardPrefab;
-    [SerializeField] private TMP_Text cardCount;
+    //[SerializeField] private Transform[] dockPosition;
+    [SerializeField] private Transform dockPositionleft;
+    [SerializeField] private Transform dockPositionright;
+    [SerializeField] private GameObject cardChoice;
+    //[SerializeField] private TMP_Text cardCount;
     [SerializeField] private Slot[] slot;
     public TMP_Text detail;
     private List<ChoiceCard> choiceCards = new List<ChoiceCard>();
@@ -34,24 +37,39 @@ public class PrepareController : MonoBehaviour
         ClearDock();
         choiceCards.Clear();
         List<CardNode> ownedCards = GameController.Instance.GetOwnCard();
-        cardCount.text = "Cards: " + ownedCards.Count;
+        //cardCount.text = "Cards: " + ownedCards.Count;
+
+        float leftX = dockPositionleft.position.x;
+        float rightX = dockPositionright.position.x;
+        float y = dockPositionleft.position.y;
+        float z = dockPositionleft.position.z;
+
+        if (ownedCards.Count == 1)
+        {
+            Vector3 centerPos = new Vector3((leftX+rightX)/2f, y, z);
+            SpawnOneCard(ownedCards[0], centerPos);
+            return;
+        }
+
+        float step = (rightX - leftX) / (ownedCards.Count - 1);
 
         for (int i = 0; i < ownedCards.Count; i++)
         {
-            if(i>= dockPosition.Length)
-            {
-                break;
-            }
-            Vector3 spawnPos = dockPosition[i].position;
-            GameObject newCard = Instantiate(cardPrefab, spawnPos, Quaternion.identity);
+            
+            Vector3 spawnPos = new Vector3(leftX + step * i, y, z);
+            SpawnOneCard(ownedCards[i], spawnPos);
+        }
+    }
 
-            ChoiceCard card = newCard.GetComponent<ChoiceCard>();
-            if (card != null)
+    public void SpawnOneCard(CardNode cardNode, Vector3 vector3)
+    {
+        GameObject newCard = Instantiate(cardChoice, vector3, Quaternion.identity);
+        ChoiceCard card = newCard.GetComponent<ChoiceCard>();
+        if (card != null)
             {
-                card.SetUp(ownedCards[i], spawnPos);
+                card.SetUp(cardNode, vector3);
                 choiceCards.Add(card);
             }
-        }
     }
 
     public void ClearDock()
