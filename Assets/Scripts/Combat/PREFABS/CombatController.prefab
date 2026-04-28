@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 400149116928775281}
   - component: {fileID: 5011611796160119280}
-  - component: {fileID: 6323328911139120881}
   m_Layer: 0
   m_Name: CombatController
   m_TagString: LocalController
@@ -45,29 +44,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0497cca37d988464baa5e319a4d784b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allCards:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  enemyPool:
+  - {fileID: 2146218618169230201, guid: 66d6b7eb20bec4843a9dd5a6ab95f23b, type: 3}
+  - {fileID: 3745770851044030061, guid: 218900116c9445c4fa940d74bc79264a, type: 3}
+  playerPool:
+  - {fileID: 6878954193301296285, guid: 6e92da7328a954049a603b6ab9e2ff10, type: 3}
+  - {fileID: 7560533219244522711, guid: 15d9fcd7ad78a354c97e93877d2c2ba7, type: 3}
+  - {fileID: 774704196062038262, guid: af48acbf0d8855149a0d503d9f701121, type: 3}
+  playerFixedIDs: 
+  enemyFixedIDs: 0000000001000000
+  allCards: []
   enemyIDs: 
   playerIDs: 
-  gameEndUI: {fileID: 0}
+  playerAnchors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemyAnchors:
+  - {fileID: 0}
+  - {fileID: 0}
   actionCardSpawn: {fileID: 0}
   gameLevel: 0
   combatEnd: 0
   inTurn: 0
   activePlayerCnt: 0
   activeEnemyCnt: 0
---- !u!114 &6323328911139120881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8437603224128408645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6e6b5dd397b16c49a591bd7caad91f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  gameWinUI: {fileID: 0}
+  gameLoseUI: {fileID: 0}

@@ -36,7 +36,7 @@ public class GeneralCombatCard : MonoBehaviour
 
     void Start()
     {
-        combatController = CombatLocator.Instance.Controller;
+        combatController = CombatController.Controller;
         combatController.NextTurn += HandleNextTurn;
         combatController.Attack += HandleAttack;
         combatController.TurnRotateScoot += HandleTurnScoot;

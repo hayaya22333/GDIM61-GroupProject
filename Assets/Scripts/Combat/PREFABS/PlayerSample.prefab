@@ -57,6 +57,8 @@ MonoBehaviour:
   hpText: {fileID: 6089770652761891967}
   damageTextPrefab: {fileID: 9064366248143455265, guid: d2e318d7ce9955b4ba0ad3748fe7c510, type: 3}
   damagePopAnchor: {fileID: 6584908783774308869}
+  healVFX: {fileID: 0}
+  damageVFX: {fileID: 0}
   side: 0
   spd: 3
   hp: 30

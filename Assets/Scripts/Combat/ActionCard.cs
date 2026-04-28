@@ -26,7 +26,7 @@ public class ActionCard : DragObject
     
     void Start()
     {
-        combatController = CombatLocator.Instance.Controller;
+        combatController = CombatController.Controller;
     }
 
     void Update()

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef4f7113bafc4104ad4db5b6197cd7a, type: 3}
   m_Name: gloomshroom
   m_EditorClassIdentifier: 
+  cardID: 2
   cardHP: 80
   cardSPD: 180
   skills:
