@@ -36,8 +36,9 @@ public class Slot : MonoBehaviour
         }
     }
 */
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("collided");
         if (other.CompareTag("Card"))
         {
             ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
