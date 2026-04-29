@@ -20,7 +20,7 @@ public class Slot : MonoBehaviour
             return false;
         }
     }
-
+/*
     public void AssignCard(ChoiceCard card)
     {
         currentCard = card;
@@ -33,6 +33,18 @@ public class Slot : MonoBehaviour
         {
             currentCard = null;
             GameController.Instance.ClearSelectCard(index);
+        }
+    }
+*/
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("collided");
+        if (other.CompareTag("Card"))
+        {
+            ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
+            int id = choiceCard.ID;
+            GameController.Instance.combatCard.Add(id);
+            Debug.Log(id);
         }
     }
 }

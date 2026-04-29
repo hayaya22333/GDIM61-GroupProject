@@ -7,6 +7,7 @@ using UnityEngine;
 public class ChoiceCard : DragObject
 {
     public CardNode card;
+    public int ID;
     //[SerializeField] private Image image;
     [SerializeField] private SpriteRenderer spriteRenderer;
     
@@ -43,10 +44,10 @@ public class ChoiceCard : DragObject
     {
         if(isDragging && Input.GetMouseButtonUp(0))
         {
-            DropCard();
+            //DropCard();
         }
     }
-
+/*
     private void DropCard()
     {
         if (hover.Empty())
@@ -77,7 +78,7 @@ public class ChoiceCard : DragObject
             current = null;
         }
         ShowTextDetail();
-    }*/
+    }
 
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -122,5 +123,5 @@ public class ChoiceCard : DragObject
             }
 
         }
-    }
+    }*/
 }

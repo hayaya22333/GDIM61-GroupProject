@@ -48,6 +48,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Cards
+  - name: CombatCards
+    uniqueID: 393967709
+    locked: 0
+  - name: ActionCards
     uniqueID: 2630799771
     locked: 0
