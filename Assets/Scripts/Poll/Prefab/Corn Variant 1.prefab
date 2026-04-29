@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: turnCountDown
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 6089770652761891967, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: m_text
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 8327768804820412641, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_Sprite
       value: 

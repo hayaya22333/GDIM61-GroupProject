@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: actionCardPrefab
       value: 
       objectReference: {fileID: 5250467207491868801, guid: 759c581a8924bca4eb6490a54b933300, type: 3}
+    - target: {fileID: 6089770652761891967, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: m_text
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 8327768804820412641, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_Sprite
       value: 

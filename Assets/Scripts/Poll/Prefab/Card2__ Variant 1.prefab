@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: turnCountDown
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 6089770652761891967, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: m_text
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 8327768804820412641, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_Size.x
       value: 29.14
@@ -128,5 +132,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26679d9918154b4e92748fc188a4396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pollController: {fileID: 0}
   cardID: 0

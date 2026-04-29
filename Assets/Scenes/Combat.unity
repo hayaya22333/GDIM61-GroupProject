@@ -771,6 +771,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MasterController
       objectReference: {fileID: 0}
+    - target: {fileID: 3118960501029522663, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5804022468945574474, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 444
@@ -1089,50 +1093,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1778337782}
     - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
-      propertyPath: allCards.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
-      propertyPath: enemyPool.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
-      propertyPath: playerPool.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
-      propertyPath: enemyAnchors.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
-      propertyPath: enemyPool.Array.data[0]
-      value: 
-      objectReference: {fileID: 2146218618169230201, guid: 66d6b7eb20bec4843a9dd5a6ab95f23b, type: 3}
-    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
-      propertyPath: enemyPool.Array.data[1]
-      value: 
-      objectReference: {fileID: 3745770851044030061, guid: 218900116c9445c4fa940d74bc79264a, type: 3}
-    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
-      propertyPath: enemyFixedIDs.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
-      propertyPath: playerAnchors.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
-      propertyPath: playerPool.Array.data[0]
-      value: 
-      objectReference: {fileID: 6878954193301296285, guid: 6e92da7328a954049a603b6ab9e2ff10, type: 3}
-    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
-      propertyPath: playerPool.Array.data[1]
-      value: 
-      objectReference: {fileID: 7560533219244522711, guid: 15d9fcd7ad78a354c97e93877d2c2ba7, type: 3}
-    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
-      propertyPath: playerPool.Array.data[2]
-      value: 
-      objectReference: {fileID: 774704196062038262, guid: af48acbf0d8855149a0d503d9f701121, type: 3}
-    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
       propertyPath: enemyAnchors.Array.data[0]
       value: 
       objectReference: {fileID: 676296001}
@@ -1140,10 +1100,6 @@ PrefabInstance:
       propertyPath: enemyAnchors.Array.data[1]
       value: 
       objectReference: {fileID: 1861750050}
-    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
-      propertyPath: enemyFixedIDs.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
       propertyPath: playerAnchors.Array.data[0]
       value: 
