@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PollCard : MonoBehaviour
 {
-    public PollController _pollController;
+    //public PollController _pollController;
     public int cardID;
 
     public void OnMouseDown()

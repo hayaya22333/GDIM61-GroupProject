@@ -32,10 +32,10 @@ public class GameController : MonoBehaviour
     public enum GameState
     {
         Title,
-        Farm,
+        Poll,
         PrepareTeam,
         Combat,
-        Trade
+
     }
 
     // TODO: Switch scenes in here. // fin
@@ -48,8 +48,8 @@ public class GameController : MonoBehaviour
                 Debug.Log("Entering Title Screen");
                 SceneManager.LoadScene(0);
                 break;
-            case GameState.Farm:
-                Debug.Log("Entering Farm");
+            case GameState.Poll:
+                Debug.Log("Entering Poll");
                 SceneManager.LoadScene(1);
                 break;
             case GameState.PrepareTeam:
@@ -58,11 +58,7 @@ public class GameController : MonoBehaviour
                 break;
             case GameState.Combat:
                 Debug.Log("Entering Combat");
-                SceneManager.LoadScene(1);
-                break;
-            case GameState.Trade:
-                Debug.Log("Entering Trade");
-                SceneManager.LoadScene(4);
+                SceneManager.LoadScene(13);
                 break;
         }
     }
@@ -97,6 +93,7 @@ public class GameController : MonoBehaviour
 
     public void OwnCard(int id)
     {
+        Debug.Log("own card");
         if(ownCard.Contains(id) == false)
         {
             ownCard.Add(id);
