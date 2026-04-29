@@ -19,7 +19,7 @@ public class PrepareController : MonoBehaviour
     public void Start()
     {
         detail.enabled = false;
-        BuildDock();
+        //BuildDock();
     }
     public void Click(int i)
     {
@@ -31,6 +31,7 @@ public class PrepareController : MonoBehaviour
         detail.enabled = true;
     }
 
+/*
 
     public void BuildDock()
     {
@@ -51,7 +52,7 @@ public class PrepareController : MonoBehaviour
             Vector3 centerPos = new Vector3((leftX+rightX)/2f, y, z);
             SpawnOneCard(ownedCards[0], centerPos);
             //return;
-        }*/
+        }
 
         float step = (rightX - leftX) / (ownedCards.Count - 1);
 
@@ -59,7 +60,7 @@ public class PrepareController : MonoBehaviour
         {
             Debug.Log($"spawn {i}");
             Vector3 spawnPos = new Vector3(leftX + step * i, y, z);
-            Instantiate(cardChoice[i], spawnPos, Quaternion.identity);
+            //Instantiate(cardChoice[i], spawnPos, Quaternion.identity);
             //SpawnOneCard(ownedCards[i], spawnPos);
         }
     }
@@ -101,4 +102,5 @@ public class PrepareController : MonoBehaviour
             }
         }
     }
+    */
 }

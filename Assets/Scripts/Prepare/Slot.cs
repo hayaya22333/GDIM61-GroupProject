@@ -7,6 +7,7 @@ public class Slot : MonoBehaviour
 {
     public int index;
     public ChoiceCard currentCard;
+    public Sprite sprite;
 
     public bool Empty()
     {

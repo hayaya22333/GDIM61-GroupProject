@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - LocalController
   - CardDock
+  - Card
   layers:
   - Default
   - TransparentFX

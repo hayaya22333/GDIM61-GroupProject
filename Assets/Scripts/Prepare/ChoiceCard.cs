@@ -60,34 +60,43 @@ public class ChoiceCard : DragObject
             transform.position = DockPosition;
         }
     }
-
+/*
     private void OnMouseDown()
-    {
+    {   
+        if (locked) return;
+
+        isDragging = true;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0f;
+
+        offset = transform.position - mousePos;
+
         if (!locked && current != null)
         {
             current.ClearCard(this);
             current = null;
         }
         ShowTextDetail();
-    }
+    }*/
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (!isDragging)
         {
-            if(other.CompareTag("SelectedSlot") && current == null)
+            if(other.CompareTag("CardDock") && current == null)
             {
                 Slot slot = other.GetComponent<Slot>();
                 if(slot != null && slot.Empty())
                 {
                     transform.position = other.transform.position;
                     slot.AssignCard(this);
+                    slot.sprite = spriteRenderer.sprite;
                     current = slot;
                 }
             }
         }
 
-        if (other.CompareTag("SelectedSlot"))
+        if (other.CompareTag("CardDock"))
         {
             Slot slot = other.GetComponent<Slot>();
             if(slot!= null)
@@ -99,7 +108,7 @@ public class ChoiceCard : DragObject
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("SelectedSlot"))
+        if (other.CompareTag("CardDock"))
         {
             Slot slot = other.GetComponent<Slot>();
             if(hover == slot)

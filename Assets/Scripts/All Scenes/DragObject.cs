@@ -7,7 +7,7 @@ public class DragObject : MonoBehaviour
     public bool isDragging = false;
     public bool locked = false;
 
-    private Vector3 offset;
+    public Vector3 offset;
 
     private void OnMouseDown()
     {
