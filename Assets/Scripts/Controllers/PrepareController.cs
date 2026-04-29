@@ -20,6 +20,7 @@ public class PrepareController : MonoBehaviour
     {
         detail.enabled = false;
         //BuildDock();
+        ShowCard();
     }
     public void Click(int i)
     {
@@ -29,6 +30,22 @@ public class PrepareController : MonoBehaviour
     public void Click()
     {
         detail.enabled = true;
+    }
+
+    public void ShowCard()
+    {
+        Debug.Log("show");
+        float leftX = dockPositionleft.position.x;
+        float rightX = dockPositionright.position.x;
+        float y = dockPositionleft.position.y;
+        float z = dockPositionleft.position.z;
+        float step = (rightX - leftX) / (GameController.Instance.ownCard.Count - 1);
+        int count = GameController.Instance.ownCard.Count;
+        for(int i = 0; i < count; i++)
+        {
+            cardChoice[GameController.Instance.ownCard[i]].SetActive(true);
+            cardChoice[GameController.Instance.ownCard[i]].transform.position = new Vector3(leftX + step * i, y,z);
+        }
     }
 
 /*
