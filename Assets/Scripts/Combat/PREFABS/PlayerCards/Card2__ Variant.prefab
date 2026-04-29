@@ -69,6 +69,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1973403218792871484, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: healVFX
+      value: 
+      objectReference: {fileID: 5563903795124588248, guid: e29639dd2383c451db4f044f313421cb, type: 3}
+    - target: {fileID: 1973403218792871484, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: damageVFX
+      value: 
+      objectReference: {fileID: 2236155430509538399, guid: 26a7a6196a9f74580936b21c30eecca6, type: 3}
+    - target: {fileID: 1973403218792871484, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: scriptableObj
       value: 
       objectReference: {fileID: 11400000, guid: 238803797f4e84c3cbcdb4d37032ee55, type: 2}
