@@ -25,7 +25,7 @@ public class ChoiceCard : DragObject
     }
     public void ShowTextDetail()
     {
-        prepareController.detail.text = card.cardDesciption;
+        //prepareController.detail.text = card.cardDesciption;
         Debug.Log("click");
     }
 
@@ -49,7 +49,7 @@ public class ChoiceCard : DragObject
 
     private void DropCard()
     {
-        if (hover.Empty() && hover != null)
+        if (hover.Empty())
         {
             transform.position = hover.transform.position;
             hover.AssignCard(this);
@@ -61,7 +61,7 @@ public class ChoiceCard : DragObject
         }
     }
 
-    private void OuseDown()
+    private void OnMouseDown()
     {
         if (!locked && current != null)
         {

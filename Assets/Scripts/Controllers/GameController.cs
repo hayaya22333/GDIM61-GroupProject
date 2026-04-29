@@ -93,7 +93,6 @@ public class GameController : MonoBehaviour
 
     public void OwnCard(int id)
     {
-        Debug.Log("own card");
         if(ownCard.Contains(id) == false)
         {
             ownCard.Add(id);
@@ -115,11 +114,12 @@ public class GameController : MonoBehaviour
     {
         List<CardNode> result = new List<CardNode>();
         ownCard.Sort();
-        
+        Debug.Log("owncard:" + ownCard.Count);
         for (int i = 0; i < ownCard.Count; i++)
         {
             CardNode card = CheckID(ownCard[i]);
-            if(card == null)
+            Debug.Log("check id" + ownCard[i]);
+            //if(card != null)
             {
                 result.Add(card);
             }

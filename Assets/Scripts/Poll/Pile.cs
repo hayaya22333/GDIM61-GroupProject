@@ -18,7 +18,7 @@ public class Pile : MonoBehaviour
         
         PollCard pollCard = _pollController.cardPoll[randomCardID].GetComponent<PollCard>();
  
-        //GameController.Instance.ownCard.Add(pollCard.cardID);
+        GameController.Instance.OwnCard(pollCard.cardID);
         Instantiate(selectedPile, spawnPosition, Quaternion.identity);
         _pollController.cardPoll.RemoveAt(randomCardID);
 
