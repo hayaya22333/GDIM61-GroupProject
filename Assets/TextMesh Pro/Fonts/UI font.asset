@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: new font SDF
+  m_Name: UI font
   m_EditorClassIdentifier: 
   hashCode: -1314722274
   material: {fileID: -4284866649501122838}
