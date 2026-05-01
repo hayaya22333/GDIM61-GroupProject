@@ -10,10 +10,18 @@ public class EnemyCard : GeneralCombatCard
     void Awake()
     {
         side = GameSide.Enemy;
+        turnCountDown = 10000;
+    }
+
+    public void AssignValues(FightNode _scriptableObj)
+    {
+        scriptableObj = _scriptableObj;
 
         hp = scriptableObj.enemyHP;
         spd = scriptableObj.enemySPD;
         atk = scriptableObj.enemyATK;
+        _spriteRenderer.sprite = scriptableObj.mainSprite;
+        prepared = true;
     }
 
     public override void StartTurn()

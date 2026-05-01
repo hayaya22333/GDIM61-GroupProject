@@ -52,13 +52,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnCountDown: 0
   onTurn: 0
+  prepared: 0
   _spriteRenderer: {fileID: 8327768804820412641}
   turnText: {fileID: 2414188481557646303}
   hpText: {fileID: 6089770652761891967}
   damageTextPrefab: {fileID: 9064366248143455265, guid: d2e318d7ce9955b4ba0ad3748fe7c510, type: 3}
   damagePopAnchor: {fileID: 6584908783774308869}
-  healVFX: {fileID: 0}
-  damageVFX: {fileID: 0}
+  healVFX: {fileID: 5563903795124588248, guid: e29639dd2383c451db4f044f313421cb, type: 3}
+  damageVFX: {fileID: 2236155430509538399, guid: 26a7a6196a9f74580936b21c30eecca6, type: 3}
   side: 0
   spd: 3
   hp: 30
@@ -212,7 +213,7 @@ SpriteRenderer:
   m_SortingLayerID: 393967709
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5c1b12eac8ab4f25b715abe4e473b2f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu (fileName = "CardNode", menuName = "ScriptableObjects/CardNode", order = 2)]
 public class CardNode : ScriptableObject
 {
-    // public Sprite mainSprite;
+    public Sprite mainSprite;
     public int cardID;
     public int cardHP;
     public int cardSPD;

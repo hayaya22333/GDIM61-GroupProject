@@ -15,6 +15,7 @@ public class GeneralCombatCard : MonoBehaviour
     [Header("Game Status")]
     public int turnCountDown = 10000;
     public bool onTurn = false;
+    public bool prepared = false;
 
     [Header("Components")]
     [SerializeField] protected SpriteRenderer _spriteRenderer;
@@ -44,6 +45,8 @@ public class GeneralCombatCard : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!prepared) return;
+        
         if (hp <= 0)
         {
             combatController.KillCard(id);

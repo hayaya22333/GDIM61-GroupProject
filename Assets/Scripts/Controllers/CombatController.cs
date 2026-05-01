@@ -9,8 +9,11 @@ public class CombatController : MonoBehaviour
     public static CombatController Controller { get; private set; }
 
     [Header("Card Preparation")]
-    public List<GameObject> enemyPool;
-    public List<GameObject> playerPool;
+    public GameObject enemyPrefab;
+    public List<FightNode> enemyPool;
+    public GameObject playerPrefab;
+    public List<CardNode> playerPool;
+
     public List<int> playerFixedIDs;
     public List<int> enemyFixedIDs;
 
@@ -39,6 +42,7 @@ public class CombatController : MonoBehaviour
     public event Action NextTurn;
     public event Action<int, int> TurnRotateScoot;
     public event Action<int, int, int> Attack;
+    //public event Action<int, Transform> SpawnCombatCard;
     
 
     void Awake()
@@ -55,8 +59,8 @@ public class CombatController : MonoBehaviour
     {
         playerFixedIDs = GameController.Instance.combatCard;
 
-        GenerateCombatCards(playerPool, playerAnchors, playerFixedIDs, 0);
-        GenerateCombatCards(enemyPool, enemyAnchors, enemyFixedIDs, activePlayerCnt);
+        GeneratePlayerCards(playerFixedIDs, 0);
+        GenerateEnemyCards(enemyFixedIDs, activePlayerCnt);
     }
 
     void FixedUpdate()
@@ -67,15 +71,37 @@ public class CombatController : MonoBehaviour
         CheckEnd();
     }
 
-    void GenerateCombatCards(List<GameObject> _cardPool, List<Transform> _spawnPoints, List<int> _fixedIDs, int _tempID)
+    void GeneratePlayerCards(List<int> _fixedIDs, int _tempID)
     {
         int spawnedCnt = 0;
+
         foreach(int _fixedID in _fixedIDs)
         {
-            if (spawnedCnt >= _spawnPoints.Count) return;
+            if (spawnedCnt >= playerAnchors.Count) return;
+            Transform _spawnPoint = playerAnchors[spawnedCnt];
 
-            Transform _spawnPoint = _spawnPoints[spawnedCnt];
-            GeneralCombatCard _newCard = Instantiate(_cardPool[_fixedID], _spawnPoint.position, _spawnPoint.rotation).GetComponent<GeneralCombatCard>();
+            PlayerCard _newCard = Instantiate(playerPrefab, _spawnPoint.position, _spawnPoint.rotation).GetComponent<PlayerCard>();
+            _newCard.AssignValues(playerPool[_fixedID]);
+
+            RegisterCard(_newCard, _tempID);
+            allCards.Add(_newCard);
+            _tempID += 1;
+            spawnedCnt += 1;
+        }
+    }
+
+    void GenerateEnemyCards(List<int> _fixedIDs, int _tempID)
+    {
+        int spawnedCnt = 0;
+
+        foreach(int _fixedID in _fixedIDs)
+        {
+            if (spawnedCnt >= enemyAnchors.Count) return;
+            Transform _spawnPoint = enemyAnchors[spawnedCnt];
+
+            EnemyCard _newCard = Instantiate(enemyPrefab, _spawnPoint.position, _spawnPoint.rotation).GetComponent<EnemyCard>();
+            _newCard.AssignValues(enemyPool[_fixedID]);
+
             RegisterCard(_newCard, _tempID);
             allCards.Add(_newCard);
             _tempID += 1;

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 [CreateAssetMenu (fileName = "FightNode", menuName = "ScriptableObjects/FightNode", order = 1)]
 public class FightNode : ScriptableObject
 {
+    public Sprite mainSprite;
     public int enemyName;
     public int enemyHP;
     public int enemyATK;

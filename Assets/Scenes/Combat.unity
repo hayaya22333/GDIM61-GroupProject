@@ -773,7 +773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3118960501029522663, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5804022468945574474, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -816,8 +816,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6086372851865943105, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
+      propertyPath: ownCard.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6086372851865943105, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
       propertyPath: combatCard.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6086372851865943105, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
       propertyPath: combatCard.Array.data[1]
@@ -935,6 +939,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1990527774}
+    - target: {fileID: 2167398804985456762, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 2167398804985456762, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 2167398804985456762, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3973993227228936223, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1089,9 +1105,45 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 466265019789300262}
     - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 5009271450246672651, guid: 96a4d8af99294284facd19380c072daa, type: 3}
+    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 538434313656696704, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
       propertyPath: actionCardSpawn
       value: 
       objectReference: {fileID: 1778337782}
+    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
+      propertyPath: enemyPool.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
+      propertyPath: playerPool.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
+      propertyPath: enemyPool.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b0dd8a85eeb34be3bcedb4a3e787a93, type: 2}
+    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
+      propertyPath: enemyPool.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 36473d71fab6444e3bae85e4a7ad514a, type: 2}
+    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
+      propertyPath: playerPool.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 238803797f4e84c3cbcdb4d37032ee55, type: 2}
+    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
+      propertyPath: playerPool.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: a38cb3179fbcc6442a34ae22ecdd9f1d, type: 2}
+    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
+      propertyPath: playerPool.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7aa2e5b209f104bbd8c3e3eb966502e1, type: 2}
     - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
       propertyPath: enemyAnchors.Array.data[0]
       value: 

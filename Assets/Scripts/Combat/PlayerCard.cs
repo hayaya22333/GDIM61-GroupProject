@@ -15,10 +15,18 @@ public class PlayerCard : GeneralCombatCard
     void Awake()
     {
         side = GameSide.Player;
+        turnCountDown = 10000;
+    }
+
+    public void AssignValues(CardNode _scriptableObj)
+    {
+        scriptableObj = _scriptableObj;
 
         hp = scriptableObj.cardHP;
         spd = scriptableObj.cardSPD;
         fixedID = scriptableObj.cardID;
+        _spriteRenderer.sprite = scriptableObj.mainSprite;
+        prepared = true;
     }
 
     public override void StartTurn()
