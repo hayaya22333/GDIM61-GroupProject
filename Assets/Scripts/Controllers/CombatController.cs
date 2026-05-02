@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class CombatController : MonoBehaviour
 {
+    // Variables
+    #region Variables
     public static CombatController Controller { get; private set; }
+    List<int> deadPlayerCards = new List<int>();  
 
     [Header("Card Preparation")]
     public GameObject enemyPrefab;
@@ -39,11 +42,12 @@ public class CombatController : MonoBehaviour
 
     private Dictionary<string, int> collectDrop = new Dictionary<string, int>();
 
+    #endregion
+    
+    // Events
     public event Action NextTurn;
     public event Action<int, int> TurnRotateScoot;
     public event Action<int, int, int> Attack;
-    //public event Action<int, Transform> SpawnCombatCard;
-    
 
     void Awake()
     {
@@ -82,6 +86,7 @@ public class CombatController : MonoBehaviour
 
             PlayerCard _newCard = Instantiate(playerPrefab, _spawnPoint.position, _spawnPoint.rotation).GetComponent<PlayerCard>();
             _newCard.AssignValues(playerPool[_fixedID]);
+            _newCard.Initiate(_tempID);
 
             RegisterCard(_newCard, _tempID);
             allCards.Add(_newCard);
@@ -101,6 +106,7 @@ public class CombatController : MonoBehaviour
 
             EnemyCard _newCard = Instantiate(enemyPrefab, _spawnPoint.position, _spawnPoint.rotation).GetComponent<EnemyCard>();
             _newCard.AssignValues(enemyPool[_fixedID]);
+            _newCard.Initiate(_tempID);
 
             RegisterCard(_newCard, _tempID);
             allCards.Add(_newCard);
@@ -149,6 +155,7 @@ public class CombatController : MonoBehaviour
             case GameSide.Player:
                 activePlayerCnt -= 1;
                 playerIDs.Remove(cardID);
+                deadPlayerCards.Add(card.fixedID);
                 break;
         }
         card.enabled = false;
@@ -188,6 +195,12 @@ public class CombatController : MonoBehaviour
         {
             EndCombatLose();
         }
+        else
+        {
+            return;
+        }
+
+        GameController.Instance.LoseCards(deadPlayerCards);
     }
 
     private void EndCombatWin()

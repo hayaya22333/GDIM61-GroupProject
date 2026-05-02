@@ -171,4 +171,11 @@ public class GameController : MonoBehaviour
         return result;
     }
 
+    public void LoseCards(List<int> _ids)
+    {
+        foreach (int _id in _ids)
+        {
+            ownCard?.Remove(_id);
+        }
+    }
 }

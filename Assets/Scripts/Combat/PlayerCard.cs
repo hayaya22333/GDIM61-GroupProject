@@ -10,8 +10,6 @@ public class PlayerCard : GeneralCombatCard
     [SerializeField] List<ActionCard> actionCards;
     private float cardSpacing = 2.5f;
 
-    private int fixedID;
-
     void Awake()
     {
         side = GameSide.Player;

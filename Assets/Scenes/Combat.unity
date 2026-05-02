@@ -817,11 +817,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6086372851865943105, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
       propertyPath: ownCard.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6086372851865943105, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
       propertyPath: combatCard.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6086372851865943105, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
+      propertyPath: ownCard.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6086372851865943105, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
+      propertyPath: ownCard.Array.data[2]
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6086372851865943105, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
       propertyPath: combatCard.Array.data[1]

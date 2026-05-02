@@ -32,7 +32,7 @@ public class GeneralCombatCard : MonoBehaviour
     public int hp;
     public int id;
     public int atk;
-
+    public int fixedID = -1;
     protected CombatController combatController;
 
     void Start()
