@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 using UnityEngine.SceneManagement;
 
 public class CombatController : MonoBehaviour
@@ -41,12 +42,12 @@ public class CombatController : MonoBehaviour
     [SerializeField] private GameObject gameLoseUI;
 
     private Dictionary<string, int> collectDrop = new Dictionary<string, int>();
-
     #endregion
     
     // Events
     public event Action NextTurn;
     public event Action<int, int> TurnRotateScoot;
+    public event Action<int, int> Slow;
     public event Action<int, int, int> Attack;
 
     void Awake()
@@ -65,14 +66,25 @@ public class CombatController : MonoBehaviour
 
         GeneratePlayerCards(playerFixedIDs, 0);
         GenerateEnemyCards(enemyFixedIDs, activePlayerCnt);
+        AssignTurnOrder();
     }
 
     void FixedUpdate()
     {
         if (combatEnd) return;
-
+        AssignTurnOrder();
         TryNextTurn();
         CheckEnd();
+    }
+
+    void AssignTurnOrder()
+    {
+        var sorted = allCards.OrderBy(u => u.turnCountDown).ToList();
+
+        for (int i = 0; i < sorted.Count; i++)
+        {
+            sorted[i].turnOrder = i;
+        }
     }
 
     void GeneratePlayerCards(List<int> _fixedIDs, int _tempID)
@@ -169,6 +181,11 @@ public class CombatController : MonoBehaviour
             collectDrop[item] += amount;
             collectDrop.Clear();
         }
+    }
+
+    public void SlowTarget(int _targetID, int _slowedCount)
+    {
+        Slow.Invoke(_targetID, _slowedCount);
     }
 
     public void InflictAttack(int _attackerID, int _targetID, int _damage)

@@ -14,6 +14,7 @@ public class GeneralCombatCard : MonoBehaviour
 {
     [Header("Game Status")]
     public int turnCountDown = 10000;
+    public int turnOrder = -1;
     public bool onTurn = false;
     public bool prepared = false;
 
@@ -23,8 +24,10 @@ public class GeneralCombatCard : MonoBehaviour
     [SerializeField] protected TextMeshPro hpText;
     [SerializeField] protected GameObject damageTextPrefab;
     [SerializeField] protected GameObject damagePopAnchor;
+    // Visual effects
     [SerializeField] private GameObject healVFX;
     [SerializeField] private GameObject damageVFX;
+    [SerializeField] private GameObject slowVFX;
 
     [Header("Card Attributes")]
     public GameSide side = GameSide.Neutral;
@@ -40,6 +43,7 @@ public class GeneralCombatCard : MonoBehaviour
         combatController = CombatController.Controller;
         combatController.NextTurn += HandleNextTurn;
         combatController.Attack += HandleAttack;
+        combatController.Slow += HandleSlow;
         combatController.TurnRotateScoot += HandleTurnScoot;
     }
 
@@ -54,11 +58,11 @@ public class GeneralCombatCard : MonoBehaviour
 
         if (turnCountDown <= 0)
         {
-            turnText.text = "0";
+            turnText.text = "GO";
         }
         else
         {
-            turnText.text = (turnCountDown/100).ToString();
+            turnText.text = turnOrder.ToString();
         }
         hpText.text = hp.ToString();
     }
@@ -133,6 +137,16 @@ public class GeneralCombatCard : MonoBehaviour
         if (targetID == id)
         {
             TakeDamage(damage);
+        }
+    }
+
+    void HandleSlow(int _targetID, int _slowedCount)
+    {
+        if (_targetID == id)
+        {
+            turnCountDown += _slowedCount;
+
+            Instantiate(slowVFX, transform.position, transform.rotation);
         }
     }
 }

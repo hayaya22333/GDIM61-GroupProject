@@ -88,9 +88,20 @@ public class ActionCard : DragObject
         {
             displayText.text += "Heal ";
         }
-        else
+        else if (_effectType == EffectType.Heal)
         {
             displayText.text += "Damage ";
+        }
+        else if (_effectType == EffectType.TurnRotation)
+        {
+            if (_dealAmount > 0)
+            {
+                displayText.text += "Slow ";
+            }
+            else
+            {
+                displayText.text += "Accelerate ";
+            }
         }
         
         GameSide _targetSide = GameSide.Neutral;
@@ -99,28 +110,34 @@ public class ActionCard : DragObject
         {
             case TargetType.Enemy:
                 _targetSide = GameSide.Enemy;
-                displayText.text += "enemy ";
+                displayText.text += "enemy";
                 break;
             case TargetType.Ally:
                 _targetSide = GameSide.Player;
-                displayText.text += "ally ";
+                displayText.text += "ally";
                 break;
             case TargetType.Self:
                 _targetSide = GameSide.Player;
-                displayText.text += "self ";
+                displayText.text += "self";
                 break;
             default:
                 Debug.Log("Invalid side on skill card " + id + " part 2. Check scriptable object's targetType field");
                 break;
         }
 
-        displayText.text += "for " + Mathf.Abs(_dealAmount).ToString() + " points";
-
-        if (_dealCount > 1)
+        if (_effectType == EffectType.TurnRotation)
         {
-            displayText.text += " " + _dealCount + " times";
+            displayText.text += "'s turn";
         }
+        else
+        {
+            displayText.text += " for " + Mathf.Abs(_dealAmount).ToString() + " points";
 
+            if (_dealCount > 1)
+            {
+                displayText.text += " " + _dealCount + " times";
+            }
+        }
         return _targetSide;
     }
 
@@ -163,15 +180,15 @@ public class ActionCard : DragObject
 
             if (i == 0) // Scenario for first effect
             {
-                StartCoroutine(CastOnTarget(_targetID, _dealCount, _dealAmount));
+                StartCoroutine(CastOnTarget(_effectType, _targetID, _dealCount, _dealAmount));
                 if (_targetCount > 1)
                 {
-                    CastMultiple(_targetCount - 1, _targetType, _targetID, _dealCount, _dealAmount);
+                    CastMultiple(_effectType, _targetCount - 1, _targetType, _targetID, _dealCount, _dealAmount);
                 }
             }
             else
             {
-                CastMultiple(_targetCount, _targetType, -1, _dealCount, _dealAmount);
+                CastMultiple(_effectType, _targetCount, _targetType, -1, _dealCount, _dealAmount);
             }
             spriteRenderer.enabled = false;
             displayText.enabled = false;
@@ -179,11 +196,12 @@ public class ActionCard : DragObject
         }
     }
 
-    private void CastMultiple(int _targetCount, TargetType _targetType, int _excludeID, int _dealCount, int _dealAmount)
+    private void CastMultiple(EffectType _effectType, int _targetCount, TargetType _targetType, int _excludeID, int _dealCount, int _dealAmount)
     {
         List<int> availableTargets = new List<int>();
         int randTargetID = -1;
 
+        // Configure list of possible targets
         if (_targetType == TargetType.Ally)
         {
             availableTargets = new List<int>(combatController.playerIDs);
@@ -200,6 +218,7 @@ public class ActionCard : DragObject
         }
         availableTargets?.Remove(_excludeID);
 
+        // Starts CastOnTarget Coroutine multiple times (= number of targets)
         for (int i = 1; i <= _targetCount; i++)
         {
             if (availableTargets.Count == 0)
@@ -209,16 +228,27 @@ public class ActionCard : DragObject
             }
             randTargetID = availableTargets[UnityEngine.Random.Range(0, availableTargets.Count)];
             availableTargets?.Remove(randTargetID);
-            StartCoroutine(CastOnTarget(randTargetID, _dealCount, _dealAmount));
+            StartCoroutine(CastOnTarget(_effectType, randTargetID, _dealCount, _dealAmount));
         }
     }
 
-    IEnumerator CastOnTarget(int _IEtargetID, int _IEdealCount, int _IEdealAmount)
+    IEnumerator CastOnTarget(EffectType _IEeffectType, int _IEtargetID, int _IEdealCount, int _IEdealAmount)
     {
-        for (int i = 1; i <= _IEdealCount; i++)
+        if (_IEeffectType == EffectType.TurnRotation)
         {
-            combatController.InflictAttack(parentCard.id, _IEtargetID, _IEdealAmount);
-            if (i != _IEdealCount) yield return new WaitForSeconds(0.4f);
+            for (int i = 1; i <= _IEdealCount; i++)
+            {
+                combatController.SlowTarget(_IEtargetID, _IEdealAmount);
+                if (i != _IEdealCount) yield return new WaitForSeconds(0.4f);
+            }            
+        }
+        else
+        {
+            for (int i = 1; i <= _IEdealCount; i++)
+            {
+                combatController.InflictAttack(parentCard.id, _IEtargetID, _IEdealAmount);
+                if (i != _IEdealCount) yield return new WaitForSeconds(0.4f);
+            }
         }
         castLeft -= 1;
     }
