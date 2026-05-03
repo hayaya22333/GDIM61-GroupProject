@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef4f7113bafc4104ad4db5b6197cd7a, type: 3}
+  m_Name: Petaloud
+  m_EditorClassIdentifier: 
+  mainSprite: {fileID: 21300000, guid: 4548b222cc7de440784781df8d7f3b34, type: 3}
+  cardID: 6
+  cardHP: 90
+  cardSPD: 146
+  cardDesciption: 
+  skills:
+  - cardSprite: {fileID: 0}
+    skillEffects: []

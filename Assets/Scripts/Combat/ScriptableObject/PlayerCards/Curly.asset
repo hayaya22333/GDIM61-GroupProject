@@ -10,25 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ef4f7113bafc4104ad4db5b6197cd7a, type: 3}
-  m_Name: Card2
+  m_Name: Curly
   m_EditorClassIdentifier: 
-  mainSprite: {fileID: 21300000, guid: 75deced8e700547b4a7ec4b337a8cb3b, type: 3}
-  cardID: 0
-  cardHP: 120
-  cardSPD: 91
+  mainSprite: {fileID: 21300000, guid: 4ce5094c9e245499c94f0825162f58ac, type: 3}
+  cardID: 3
+  cardHP: 90
+  cardSPD: 132
   cardDesciption: 
   skills:
   - cardSprite: {fileID: 0}
-    skillEffects:
-    - effectType: 2
-      targetType: 2
-      targetCount: 1
-      dealAmount: 33
-      dealCount: 1
-  - cardSprite: {fileID: 0}
-    skillEffects:
-    - effectType: 2
-      targetType: 2
-      targetCount: 3
-      dealAmount: 15
-      dealCount: 1
+    skillEffects: []
