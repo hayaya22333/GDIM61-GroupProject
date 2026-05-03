@@ -88,7 +88,7 @@ public class ActionCard : DragObject
         {
             displayText.text += "Heal ";
         }
-        else if (_effectType == EffectType.Heal)
+        else if (_effectType == EffectType.Damage)
         {
             displayText.text += "Damage ";
         }
