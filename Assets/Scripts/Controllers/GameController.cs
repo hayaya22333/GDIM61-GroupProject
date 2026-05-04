@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     {
         currentState = GameState.Title;
         DontDestroyOnLoad(gameObject);
+        
 
         if (Instance != null && Instance != this)
         {
