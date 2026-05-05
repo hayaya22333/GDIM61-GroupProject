@@ -43,8 +43,21 @@ public class Slot : MonoBehaviour
         {
             ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
             int id = choiceCard.ID;
-            GameController.Instance.combatCard.Add(id);
-            Debug.Log(id);
+            if (GameController.Instance.AlreadyHaveCard(id) == false)
+            {
+                GameController.Instance.combatCard.Add(id);
+                Debug.Log(id);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Card"))
+        {
+            ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
+            int id = choiceCard.ID;
+            GameController.Instance.combatCard.Remove(id);
         }
     }
 }

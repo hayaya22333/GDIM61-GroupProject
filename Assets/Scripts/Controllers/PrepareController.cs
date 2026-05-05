@@ -18,7 +18,7 @@ public class PrepareController : MonoBehaviour
 
     public void Start()
     {
-        detail.enabled = false;
+        //detail.enabled = false;
         //BuildDock();
         ShowCard();
     }

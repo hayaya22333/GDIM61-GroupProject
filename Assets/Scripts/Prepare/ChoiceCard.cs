@@ -97,14 +97,6 @@ public class ChoiceCard : DragObject
             }
         }
 
-        if (other.CompareTag("CardDock"))
-        {
-            Slot slot = other.GetComponent<Slot>();
-            if(slot!= null)
-            {
-                hover = slot;
-            }
-        }
     }
 
     private void OnTriggerExit2D(Collider2D other)

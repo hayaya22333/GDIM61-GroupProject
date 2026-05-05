@@ -152,6 +152,18 @@ public class GameController : MonoBehaviour
         return -1;
     }
 
+    public bool AlreadyHaveCard(int id)
+    {
+        if (combatCard.Contains(id))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public List<CardNode> GetCombatCard()
     {
         List<CardNode> result = new List<CardNode>();
