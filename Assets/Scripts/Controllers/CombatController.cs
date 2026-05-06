@@ -62,7 +62,7 @@ public class CombatController : MonoBehaviour
 
     void Start()
     {
-        playerFixedIDs = GameController.Instance.combatCard;
+        playerFixedIDs = GameController.Instance.combatCardStore;
 
         GeneratePlayerCards(playerFixedIDs, 0);
         GenerateEnemyCards(enemyFixedIDs, activePlayerCnt);
