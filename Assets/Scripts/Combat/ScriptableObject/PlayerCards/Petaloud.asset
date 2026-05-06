@@ -14,9 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainSprite: {fileID: 21300000, guid: 4548b222cc7de440784781df8d7f3b34, type: 3}
   cardID: 6
-  cardHP: 90
-  cardSPD: 146
+  cardHP: 100
+  cardSPD: 205
   cardDesciption: 
   skills:
   - cardSprite: {fileID: 0}
-    skillEffects: []
+    skillEffects:
+    - effectType: 2
+      targetType: 2
+      targetCount: 3
+      dealAmount: 5
+      dealCount: 6
+  - cardSprite: {fileID: 0}
+    skillEffects:
+    - effectType: 3
+      targetType: 3
+      targetCount: 1
+      dealAmount: 60
+      dealCount: 1
