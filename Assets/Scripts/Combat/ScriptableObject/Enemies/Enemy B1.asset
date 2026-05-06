@@ -15,7 +15,7 @@ MonoBehaviour:
   mainSprite: {fileID: 0}
   enemyName: 3
   enemyHP: 160
-  enemyATK: 55
-  enemySPD: 195
+  enemyATK: 50
+  enemySPD: 126
   enemySkill: 0
   drops: []
