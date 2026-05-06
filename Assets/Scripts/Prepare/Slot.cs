@@ -48,6 +48,7 @@ public class Slot : MonoBehaviour
             if (GameController.Instance.AlreadyHaveCard(id) == false)
             {
                 GameController.Instance.combatCard.Add(id);
+                GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
                 Debug.Log(id);
             }
         }
@@ -66,6 +67,7 @@ public class Slot : MonoBehaviour
             ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
             int id = choiceCard.ID;
             GameController.Instance.combatCard.Remove(id);
+            GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
         }
     }
 }
