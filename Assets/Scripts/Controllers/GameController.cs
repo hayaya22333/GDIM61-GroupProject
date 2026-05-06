@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
                 break;
             case GameState.Combat:
                 Debug.Log("Entering Combat");
-                SceneManager.LoadScene(13);
+                SceneManager.LoadScene(3);
                 break;
         }
     }
@@ -80,6 +80,7 @@ public class GameController : MonoBehaviour
     public List<int> ownCard = new List<int>();
     //combat card
     public List<int> combatCard = new List<int>();
+    public List<int> combatCardStore = new List<int>();
 
     private Dictionary<int, CardNode> cardMenu = new Dictionary<int, CardNode>();
 
