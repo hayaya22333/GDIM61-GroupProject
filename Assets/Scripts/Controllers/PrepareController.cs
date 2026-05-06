@@ -16,6 +16,20 @@ public class PrepareController : MonoBehaviour
     public TMP_Text detail;
     private List<ChoiceCard> choiceCards = new List<ChoiceCard>();
 
+    // Hayaya: debugging....
+    public bool cardsLocked = false;
+    public static PrepareController Instance { get; private set; }
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
     public void Start()
     {
         //detail.enabled = false;
@@ -24,6 +38,9 @@ public class PrepareController : MonoBehaviour
     }
     public void Click(int i)
     {
+        // Hayaya: added the following line to lock card slot on click scene change button.
+        cardsLocked = true;
+
         SceneManager.LoadScene(i);
     }
 

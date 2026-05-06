@@ -9,6 +9,8 @@ public class Slot : MonoBehaviour
     public ChoiceCard currentCard;
     public Sprite sprite;
 
+    private PrepareController controller;
+
     public bool Empty()
     {
         if (currentCard == null)
@@ -53,6 +55,12 @@ public class Slot : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        // Hayaya: debugging.
+        if (PrepareController.Instance.cardsLocked)
+        {
+            return;
+        }
+
         if (other.CompareTag("Card"))
         {
             ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();

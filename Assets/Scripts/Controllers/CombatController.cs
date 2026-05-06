@@ -67,6 +67,11 @@ public class CombatController : MonoBehaviour
         GeneratePlayerCards(playerFixedIDs, 0);
         GenerateEnemyCards(enemyFixedIDs, activePlayerCnt);
         AssignTurnOrder();
+
+        foreach (int id in playerFixedIDs)
+        {
+            Debug.Log("player card - " + id);
+        }
     }
 
     void FixedUpdate()
