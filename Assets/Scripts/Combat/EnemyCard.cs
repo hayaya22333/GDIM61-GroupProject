@@ -27,7 +27,8 @@ public class EnemyCard : GeneralCombatCard
     public override void StartTurn()
     {
         Debug.Log("It's enemy card " + id + "'s turn.");
-        _spriteRenderer.color = Color.green;
+        //_spriteRenderer.color = Color.green;
+        onTurnCue.SetActive(true);
 
         combatController.inTurn = true;
         onTurn = true;
@@ -36,7 +37,8 @@ public class EnemyCard : GeneralCombatCard
 
     public override void EndTurn()
     {
-        _spriteRenderer.color = Color.white;
+        //_spriteRenderer.color = Color.white;
+        onTurnCue.SetActive(false);
 
         turnCountDown += 10000;
         combatController.ScootCards(id, turnCountDown);

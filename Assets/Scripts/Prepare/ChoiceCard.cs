@@ -47,6 +47,20 @@ public class ChoiceCard : DragObject
             //DropCard();
         }
     }
+
+    // Hayaya: temporary card position lock
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (!isDragging)
+        {
+            if(other.CompareTag("CardDock"))
+            {
+                transform.position = other.transform.position;
+                transform.rotation = other.transform.rotation;
+            }
+        }
+
+    }
 /*
     private void DropCard()
     {

@@ -24,6 +24,7 @@ public class GeneralCombatCard : MonoBehaviour
     [SerializeField] protected TextMeshPro hpText;
     [SerializeField] protected GameObject damageTextPrefab;
     [SerializeField] protected GameObject damagePopAnchor;
+    [SerializeField] protected GameObject onTurnCue;
     // Visual effects
     [SerializeField] private GameObject healVFX;
     [SerializeField] private GameObject damageVFX;
@@ -45,6 +46,8 @@ public class GeneralCombatCard : MonoBehaviour
         combatController.Attack += HandleAttack;
         combatController.Slow += HandleSlow;
         combatController.TurnRotateScoot += HandleTurnScoot;
+
+        onTurnCue.SetActive(false);
     }
 
     void FixedUpdate()
@@ -97,7 +100,8 @@ public class GeneralCombatCard : MonoBehaviour
     public virtual void StartTurn()
     {
         Debug.Log("It's card " + id + "'s turn.");
-        _spriteRenderer.color = Color.green;
+        //_spriteRenderer.color = Color.green;
+        onTurnCue.SetActive(true);
 
         combatController.inTurn = true;
         onTurn = true;
@@ -105,7 +109,9 @@ public class GeneralCombatCard : MonoBehaviour
 
     public virtual void EndTurn()
     {
-        _spriteRenderer.color = Color.white;
+        //_spriteRenderer.color = Color.white;
+        onTurnCue.SetActive(true);
+
         turnCountDown += 10000;
         combatController.ScootCards(id, turnCountDown);
         combatController.inTurn = false;

@@ -31,7 +31,8 @@ public class PlayerCard : GeneralCombatCard
     {
         Debug.Log("It's player card " + id + "'s turn.");
         SpawnActionCards();
-        _spriteRenderer.color = Color.green;
+        //_spriteRenderer.color = Color.green;
+        onTurnCue.SetActive(true);
 
         combatController.inTurn = true;
         onTurn = true;
@@ -39,8 +40,8 @@ public class PlayerCard : GeneralCombatCard
 
     public override void EndTurn()
     {
-        _spriteRenderer.color = Color.white;
-
+        //_spriteRenderer.color = Color.white;
+        onTurnCue.SetActive(false);
         ClearActionCards();
 
         turnCountDown += 10000;

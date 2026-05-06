@@ -50,6 +50,9 @@ public class CombatController : MonoBehaviour
     public event Action<int, int> Slow;
     public event Action<int, int, int> Attack;
 
+    // Temporary var
+    public bool playerMoved = false;
+
     void Awake()
     {
         if (Controller != null && Controller != this)

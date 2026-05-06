@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1409416436376412744, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1973403218792871484, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: healVFX
       value: 
@@ -67,6 +71,10 @@ PrefabInstance:
     - target: {fileID: 1973403218792871484, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: turnCountDown
       value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181665223917938060, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6089770652761891967, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_text

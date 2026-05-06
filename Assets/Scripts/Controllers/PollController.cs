@@ -13,11 +13,16 @@ public class PollController : MonoBehaviour
     {
         SceneManager.LoadScene(i);
     }
+
+
     [SerializeField] private GameObject button;
+    
     void Start()
     {
         button.SetActive(true);
     }
+
+
     void Update()
     {
         if (cardPoll.Count == 0)

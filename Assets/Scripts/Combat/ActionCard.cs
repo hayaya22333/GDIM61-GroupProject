@@ -135,7 +135,7 @@ public class ActionCard : DragObject
 
             if (_dealCount > 1)
             {
-                displayText.text += " " + _dealCount + " times";
+                displayText.text += " x" + _dealCount;
             }
         }
         return _targetSide;
@@ -164,6 +164,7 @@ public class ActionCard : DragObject
 
     private void StartCast(int _targetID)
     {
+        CombatController.Controller.playerMoved = true;
         for (int i = 0; i < effectTypes.Count; i++)
         {
             EffectType _effectType = effectTypes[i];
