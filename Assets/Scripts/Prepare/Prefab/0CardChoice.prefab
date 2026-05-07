@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 6093208901106383420}
   - component: {fileID: 8365761226436862947}
   m_Layer: 5
-  m_Name: CardChoice
+  m_Name: 0CardChoice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,5 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDragging: 0
   locked: 0
+  offset: {x: 0, y: 0, z: 0}
   card: {fileID: 11400000, guid: 238803797f4e84c3cbcdb4d37032ee55, type: 2}
+  ID: 0
   spriteRenderer: {fileID: 249227122782214100}

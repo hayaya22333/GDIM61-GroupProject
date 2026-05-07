@@ -1935,8 +1935,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 238803797f4e84c3cbcdb4d37032ee55, type: 2}
   - {fileID: 11400000, guid: a38cb3179fbcc6442a34ae22ecdd9f1d, type: 2}
   - {fileID: 11400000, guid: 7aa2e5b209f104bbd8c3e3eb966502e1, type: 2}
+  - {fileID: 11400000, guid: f68bb3fec7dde4a6c8840456ec9ffde6, type: 2}
+  - {fileID: 11400000, guid: 048d60ca3c0084793980ac2afbbf9c39, type: 2}
+  - {fileID: 11400000, guid: 27d194049d6964a1a9d4f9106a7e92c6, type: 2}
+  - {fileID: 11400000, guid: f2ceff4533f744736b4630b28e560d80, type: 2}
   ownCard: 
   combatCard: 
+  combatCardStore: 
 --- !u!4 &1512931574
 Transform:
   m_ObjectHideFlags: 0
