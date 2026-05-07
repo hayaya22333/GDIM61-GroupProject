@@ -128,6 +128,18 @@ public class ActionCard : DragObject
         if (_effectType == EffectType.TurnRotation)
         {
             displayText.text += "'s turn";
+            if (Mathf.Abs(_dealAmount) <= 30)
+            {
+                displayText.text += " slightly";
+            }
+            else if (Mathf.Abs(_dealAmount) <= 60)
+            {
+                displayText.text += " markedly";
+            }
+            else
+            {
+                displayText.text += " significantly";
+            }
         }
         else
         {

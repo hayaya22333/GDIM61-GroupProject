@@ -150,7 +150,7 @@ public class GeneralCombatCard : MonoBehaviour
     {
         if (_targetID == id)
         {
-            turnCountDown += _slowedCount;
+            turnCountDown += _slowedCount * 100;
 
             Instantiate(slowVFX, transform.position, transform.rotation);
         }
