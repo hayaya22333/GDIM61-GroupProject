@@ -148,7 +148,7 @@ MonoBehaviour:
   locked: 0
   offset: {x: 0, y: 0, z: 0}
   card: {fileID: 11400000, guid: 7aa2e5b209f104bbd8c3e3eb966502e1, type: 2}
-  ID: 0
+  ID: 2
   spriteRenderer: {fileID: 2300561032812339427}
 --- !u!1 &5221943359771875872
 GameObject:
