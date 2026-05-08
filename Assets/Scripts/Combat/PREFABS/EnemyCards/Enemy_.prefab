@@ -107,7 +107,11 @@ PrefabInstance:
     - target: {fileID: 5945070828411101064, guid: 96a4d8af99294284facd19380c072daa, type: 3}
       propertyPath: healVFX
       value: 
-      objectReference: {fileID: 5563903795124588248, guid: e29639dd2383c451db4f044f313421cb, type: 3}
+      objectReference: {fileID: 6659512427133708450, guid: 58d195d06d26e418796545aee5946290, type: 3}
+    - target: {fileID: 5945070828411101064, guid: 96a4d8af99294284facd19380c072daa, type: 3}
+      propertyPath: slowVFX
+      value: 
+      objectReference: {fileID: 4254145312271618989, guid: c3d387e3326134a33825c26bac8db4ea, type: 3}
     - target: {fileID: 5945070828411101064, guid: 96a4d8af99294284facd19380c072daa, type: 3}
       propertyPath: prepared
       value: 0
@@ -115,7 +119,7 @@ PrefabInstance:
     - target: {fileID: 5945070828411101064, guid: 96a4d8af99294284facd19380c072daa, type: 3}
       propertyPath: damageVFX
       value: 
-      objectReference: {fileID: 2236155430509538399, guid: 26a7a6196a9f74580936b21c30eecca6, type: 3}
+      objectReference: {fileID: 3111555739151617788, guid: ebc6014a82f784f0899c8b0f3bea16e6, type: 3}
     - target: {fileID: 5945070828411101064, guid: 96a4d8af99294284facd19380c072daa, type: 3}
       propertyPath: scriptableObj
       value: 

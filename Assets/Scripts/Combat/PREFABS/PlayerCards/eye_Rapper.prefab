@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 538434313656696704, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_Name
-      value: Corn Variant 1
+      value: eye_Rapper
       objectReference: {fileID: 0}
     - target: {fileID: 675681832396131129, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55,11 +55,15 @@ PrefabInstance:
     - target: {fileID: 1973403218792871484, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: healVFX
       value: 
-      objectReference: {fileID: 5563903795124588248, guid: e29639dd2383c451db4f044f313421cb, type: 3}
+      objectReference: {fileID: 6659512427133708450, guid: 58d195d06d26e418796545aee5946290, type: 3}
+    - target: {fileID: 1973403218792871484, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: slowVFX
+      value: 
+      objectReference: {fileID: 4254145312271618989, guid: c3d387e3326134a33825c26bac8db4ea, type: 3}
     - target: {fileID: 1973403218792871484, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: damageVFX
       value: 
-      objectReference: {fileID: 2236155430509538399, guid: 26a7a6196a9f74580936b21c30eecca6, type: 3}
+      objectReference: {fileID: 3111555739151617788, guid: ebc6014a82f784f0899c8b0f3bea16e6, type: 3}
     - target: {fileID: 1973403218792871484, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: scriptableObj
       value: 
