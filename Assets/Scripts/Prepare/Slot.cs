@@ -33,7 +33,9 @@ public class Slot : MonoBehaviour
                 GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
 
                 currentCard.transform.position = currentCard.DockPosition;
+                Debug.Log(currentCard.transform.position);
                 currentCard = null;
+                Debug.Log($"Clear {oldid}");
             }
 
             currentCard = choiceCard;
