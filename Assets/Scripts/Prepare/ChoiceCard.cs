@@ -12,7 +12,7 @@ public class ChoiceCard : DragObject
     [SerializeField] private SpriteRenderer spriteRenderer;
     
 
-    private Vector3 DockPosition;
+    public Vector3 DockPosition;
     private Slot current;
     private Slot hover;
     private PrepareController prepareController;

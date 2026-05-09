@@ -6,7 +6,7 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
     public int index;
-    private ChoiceCard currentCard;
+    public ChoiceCard currentCard;
 
     public bool Empty()
     {
@@ -26,6 +26,18 @@ public class Slot : MonoBehaviour
         {
             ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
             int id = choiceCard.ID;
+            if (currentCard != null && currentCard != choiceCard)
+            {
+                int oldid = currentCard.ID;
+                GameController.Instance.combatCard.Remove(oldid);
+                GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
+
+                currentCard.transform.position = currentCard.DockPosition;
+                currentCard = null;
+            }
+
+            currentCard = choiceCard;
+
             if (GameController.Instance.AlreadyHaveCard(id) == false)
             {
                 GameController.Instance.combatCard.Add(id);
