@@ -6,10 +6,7 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
     public int index;
-    public ChoiceCard currentCard;
-    public Sprite sprite;
-
-    private PrepareController controller;
+    private ChoiceCard currentCard;
 
     public bool Empty()
     {
@@ -22,22 +19,6 @@ public class Slot : MonoBehaviour
             return false;
         }
     }
-/*
-    public void AssignCard(ChoiceCard card)
-    {
-        currentCard = card;
-        GameController.Instance.SelectCard(index, card.GetID());
-    }
-
-    public void ClearCard(ChoiceCard card)
-    {
-        if(currentCard == card)
-        {
-            currentCard = null;
-            GameController.Instance.ClearSelectCard(index);
-        }
-    }
-*/
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("collided");
@@ -53,7 +34,7 @@ public class Slot : MonoBehaviour
             }
         }
     }
-
+  
     private void OnTriggerExit2D(Collider2D other)
     {
         // Hayaya: debugging.
