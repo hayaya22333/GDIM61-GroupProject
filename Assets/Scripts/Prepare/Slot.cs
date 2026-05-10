@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
     public int index;
     public ChoiceCard currentCard;
+
+    [SerializeField] private TMP_Text text;
 
     public bool Empty()
     {
@@ -19,39 +21,63 @@ public class Slot : MonoBehaviour
             return false;
         }
     }
+
+    void Start()
+    {
+        text.text = "";
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("collided");
-        if (other.CompareTag("Card"))
+        PutCard(other);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        PutCard(other);
+    }
+
+    private void PutCard(Collider2D other)
+    {
+        if (other.CompareTag("Card") == false)
         {
-            ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
-            int id = choiceCard.ID;
-            if (currentCard != null && currentCard != choiceCard)
-            {
-                int oldid = currentCard.ID;
-                GameController.Instance.combatCard.Remove(oldid);
-                GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
+            return;
+        }
 
-                currentCard.transform.position = currentCard.DockPosition;
-                Debug.Log(currentCard.transform.position);
-                currentCard = null;
-                Debug.Log($"Clear {oldid}");
-            }
+        ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
 
-            currentCard = choiceCard;
+        if (choiceCard == null)
+        {
+            return;
+        }
 
-            if (GameController.Instance.AlreadyHaveCard(id) == false)
-            {
-                GameController.Instance.combatCard.Add(id);
-                GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
-                Debug.Log(id);
-            }
+        int id = choiceCard.ID;
+
+        if (currentCard != null && currentCard != choiceCard)
+        {
+            text.text = "You can't put it here!";
+            return;
+        }
+
+        if (currentCard == choiceCard)
+        {
+            return;
+        }
+
+        text.text = "";
+
+        currentCard = choiceCard;
+
+        if (GameController.Instance.AlreadyHaveCard(id) == false)
+        {
+            GameController.Instance.combatCard.Add(id);
+            GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
+            Debug.Log(id);
         }
     }
-  
+
     private void OnTriggerExit2D(Collider2D other)
     {
-        // Hayaya: debugging.
         if (PrepareController.Instance.cardsLocked)
         {
             return;
@@ -60,7 +86,11 @@ public class Slot : MonoBehaviour
         if (other.CompareTag("Card"))
         {
             ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
+
+            currentCard = null;
+
             int id = choiceCard.ID;
+
             GameController.Instance.combatCard.Remove(id);
             GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
         }
