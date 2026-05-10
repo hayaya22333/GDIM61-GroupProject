@@ -39,41 +39,32 @@ public class Slot : MonoBehaviour
 
     private void PutCard(Collider2D other)
     {
-        if (other.CompareTag("Card") == false)
+        if (other.CompareTag("Card"))
         {
-            return;
+            ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
+            if (choiceCard == null)
+            {
+                return;
+            }
+
+            int id = choiceCard.ID;
+            if (currentCard != null && currentCard != choiceCard)
+            {
+                text.text = "You can't put it here!";
+                return;
+            }
+
+            text.text = "";
+            currentCard = choiceCard;
+            if (GameController.Instance.AlreadyHaveCard(id) == false)
+            {
+                GameController.Instance.combatCard.Add(id);
+                GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
+                Debug.Log(id);
+            }
         }
 
-        ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
-
-        if (choiceCard == null)
-        {
-            return;
-        }
-
-        int id = choiceCard.ID;
-
-        if (currentCard != null && currentCard != choiceCard)
-        {
-            text.text = "You can't put it here!";
-            return;
-        }
-
-        if (currentCard == choiceCard)
-        {
-            return;
-        }
-
-        text.text = "";
-
-        currentCard = choiceCard;
-
-        if (GameController.Instance.AlreadyHaveCard(id) == false)
-        {
-            GameController.Instance.combatCard.Add(id);
-            GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
-            Debug.Log(id);
-        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -86,9 +77,7 @@ public class Slot : MonoBehaviour
         if (other.CompareTag("Card"))
         {
             ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
-
             currentCard = null;
-
             int id = choiceCard.ID;
 
             GameController.Instance.combatCard.Remove(id);
