@@ -252,6 +252,7 @@ public class CombatController : MonoBehaviour
     {
         combatEnd = true;
         gameLoseUI.SetActive(true);
+        SceneManager.LoadScene(4);
     }
 
     public void Click(int i)

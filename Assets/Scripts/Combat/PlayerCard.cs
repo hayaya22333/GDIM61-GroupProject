@@ -27,15 +27,9 @@ public class PlayerCard : GeneralCombatCard
         prepared = true;
     }
 
-    public override void StartTurn()
+    public override void UniqueStart()
     {
-        Debug.Log("It's player card " + id + "'s turn.");
         SpawnActionCards();
-        //_spriteRenderer.color = Color.green;
-        onTurnCue.SetActive(true);
-
-        combatController.inTurn = true;
-        onTurn = true;
     }
 
     public override void EndTurn()
