@@ -47,3 +47,5 @@ MonoBehaviour:
   allCard: []
   ownCard: 
   combatCard: 
+  combatCardStore: 
+  combatIndex: 2
