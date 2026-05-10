@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainSprite: {fileID: 0}
   enemyName: 3
-  enemyHP: 160
+  enemyHP: 200
   enemyATK: 50
-  enemySPD: 126
+  enemySPD: 100
   enemySkill: 0
   drops: []

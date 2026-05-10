@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainSprite: {fileID: 21300000, guid: da6e3c30ed48b4e2e9079e1d45810635, type: 3}
   enemyName: 6
-  enemyHP: 250
-  enemyATK: 40
-  enemySPD: 211
+  enemyHP: 400
+  enemyATK: 80
+  enemySPD: 160
   enemySkill: 0
   drops: []
