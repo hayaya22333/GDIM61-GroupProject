@@ -27,9 +27,6 @@ public class GameController : MonoBehaviour
         Instance = this;
     }
 
-    // TODO: Create game scenes. //fin
-    // Title and PrepareTeam scenes don't exist.
-    // For now, create an empty scene and just implement UI for scene switching. // fin
     public enum GameState
     {
         Title,
@@ -39,7 +36,6 @@ public class GameController : MonoBehaviour
 
     }
 
-    // TODO: Switch scenes in here. // fin
     public void SwitchGameState(int stateIndex)
     {
         currentState = (GameState)stateIndex;
@@ -83,6 +79,9 @@ public class GameController : MonoBehaviour
     public List<int> combatCardStore = new List<int>();
 
     private Dictionary<int, CardNode> cardMenu = new Dictionary<int, CardNode>();
+
+    //storing combat stage index
+    public int combatIndex = 0;
 
     public void CardDictionary()
     {

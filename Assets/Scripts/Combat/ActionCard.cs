@@ -105,7 +105,14 @@ public class ActionCard : DragObject
         }
         
         GameSide _targetSide = GameSide.Neutral;
-        displayText.text += _targetCount + " ";
+        if (_targetCount <= 5)
+        {
+            displayText.text += _targetCount + " ";
+        }
+        else{
+            displayText.text += "all ";
+        }
+
         switch(_targetType)
         {
             case TargetType.Enemy:

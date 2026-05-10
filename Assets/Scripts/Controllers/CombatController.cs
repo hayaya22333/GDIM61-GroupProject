@@ -5,31 +5,41 @@ using System;
 using System.Linq;
 using UnityEngine.SceneManagement;
 
+
+[System.Serializable]
+public class IntList
+{
+    public List<int> values = new List<int>();
+}
+
 public class CombatController : MonoBehaviour
 {
-    // Variables
-    #region Variables
+#region Variables
     public static CombatController Controller { get; private set; }
-    List<int> deadPlayerCards = new List<int>();  
+    [SerializeField] List<Sprite> stageBackgrounds = new List<Sprite>();
+    [SerializeField] SpriteRenderer background;
 
-    [Header("Card Preparation")]
+    [Header("Stage Info")]
+    public List<IntList> enemySetups = new List<IntList>();
+    public List<int> playerFixedIDs;
+    public List<int> enemyFixedIDs;
+    [SerializeField] List<int> deadPlayerCards = new List<int>();  
+
+    [Header("Card Storage")]
     public GameObject enemyPrefab;
     public List<FightNode> enemyPool;
     public GameObject playerPrefab;
     public List<CardNode> playerPool;
 
-    public List<int> playerFixedIDs;
-    public List<int> enemyFixedIDs;
-
     [Header("Active Components")]
     [SerializeField] private List<GeneralCombatCard> allCards;
-    [SerializeField] public List<int> enemyIDs;
-    [SerializeField] public List<int> playerIDs;
+    public List<int> enemyIDs;
+    public List<int> playerIDs;
 
     [Header("Anchors")]
-    [SerializeField] public List<Transform> playerAnchors;
-    [SerializeField] public List<Transform> enemyAnchors;
-    [SerializeField] public Transform actionCardSpawn;
+    public List<Transform> playerAnchors;
+    public List<Transform> enemyAnchors;
+    public Transform actionCardSpawn;
 
     [Header("Game Status")]
     [SerializeField] private int gameLevel;
@@ -41,18 +51,21 @@ public class CombatController : MonoBehaviour
     [SerializeField] private GameObject gameWinUI;
     [SerializeField] private GameObject gameLoseUI;
 
-    private Dictionary<string, int> collectDrop = new Dictionary<string, int>();
-    #endregion
-    
+    // private Dictionary<string, int> collectDrop = new Dictionary<string, int>();
+#endregion
+
+#region Events
     // Events
     public event Action NextTurn;
     public event Action<int, int> TurnRotateScoot;
     public event Action<int, int> Slow;
     public event Action<int, int, int> Attack;
+#endregion
 
     // Temporary var
     public bool playerMoved = false;
 
+#region Start and Awake
     void Awake()
     {
         if (Controller != null && Controller != this)
@@ -65,8 +78,10 @@ public class CombatController : MonoBehaviour
 
     void Start()
     {
+        background.sprite = stageBackgrounds[GameController.Instance.combatIndex];
+        enemyFixedIDs = enemySetups[GameController.Instance.combatIndex].values;
         playerFixedIDs = GameController.Instance.combatCardStore;
-
+        
         GeneratePlayerCards(playerFixedIDs, 0);
         GenerateEnemyCards(enemyFixedIDs, activePlayerCnt);
         AssignTurnOrder();
@@ -76,7 +91,8 @@ public class CombatController : MonoBehaviour
             Debug.Log("player card - " + id);
         }
     }
-
+#endregion
+    
     void FixedUpdate()
     {
         if (combatEnd) return;
@@ -85,6 +101,7 @@ public class CombatController : MonoBehaviour
         CheckEnd();
     }
 
+#region Generate Cards
     void AssignTurnOrder()
     {
         var sorted = allCards.OrderBy(u => u.turnCountDown).ToList();
@@ -150,7 +167,9 @@ public class CombatController : MonoBehaviour
                 break;
         }
     }
+#endregion
 
+#region Turns
     public void TryNextTurn()
     {
         if (inTurn) return;
@@ -160,6 +179,26 @@ public class CombatController : MonoBehaviour
     public void ScootCards(int rotatedID, int rotatedCountDown)
     {
         TurnRotateScoot.Invoke(rotatedID, rotatedCountDown);
+    }
+#endregion
+
+#region Affecting Cards
+    public void SlowTarget(int _targetID, int _slowedCount)
+    {
+        Slow.Invoke(_targetID, _slowedCount);
+    }
+
+    public void InflictAttack(int _attackerID, int _targetID, int _damage)
+    {
+        Attack.Invoke(_attackerID, _targetID, _damage);
+    }
+
+    public void InflictAttackRandom(int _attackerID, List<int> _targetIDPool, int _damage)
+    {
+        var _targetID = -1;
+        GeneralCombatCard attacker = allCards[_attackerID];
+        _targetID = _targetIDPool[UnityEngine.Random.Range(0, _targetIDPool.Count)];
+        Attack.Invoke(_attackerID, _targetID, _damage);
     }
 
     public void KillCard(int cardID)
@@ -181,33 +220,7 @@ public class CombatController : MonoBehaviour
         card.enabled = false;
         card.gameObject.SetActive(false);
     }
-
-    public void CollectDrop(string item, int amount)
-    {
-        if (collectDrop.ContainsKey(item))
-        {
-            collectDrop[item] += amount;
-            collectDrop.Clear();
-        }
-    }
-
-    public void SlowTarget(int _targetID, int _slowedCount)
-    {
-        Slow.Invoke(_targetID, _slowedCount);
-    }
-
-    public void InflictAttack(int _attackerID, int _targetID, int _damage)
-    {
-        Attack.Invoke(_attackerID, _targetID, _damage);
-    }
-
-    public void InflictAttackRandom(int _attackerID, List<int> _targetIDPool, int _damage)
-    {
-        var _targetID = -1;
-        GeneralCombatCard attacker = allCards[_attackerID];
-        _targetID = _targetIDPool[UnityEngine.Random.Range(0, _targetIDPool.Count)];
-        Attack.Invoke(_attackerID, _targetID, _damage);
-    }
+#endregion
 
 #region End Combat
     private void CheckEnd()
@@ -232,6 +245,7 @@ public class CombatController : MonoBehaviour
     {
         combatEnd = true;
         gameWinUI.SetActive(true);
+        GameController.Instance.combatIndex += 1;
     }
 
     private void EndCombatLose()

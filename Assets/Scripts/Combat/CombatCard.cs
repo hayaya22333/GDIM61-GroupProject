@@ -100,11 +100,21 @@ public class GeneralCombatCard : MonoBehaviour
     public virtual void StartTurn()
     {
         Debug.Log("It's card " + id + "'s turn.");
-        //_spriteRenderer.color = Color.green;
-        onTurnCue.SetActive(true);
-
+        if (combatController.inTurn)
+        {
+            turnCountDown = 1;
+            return;
+        }
         combatController.inTurn = true;
+
         onTurn = true;
+        onTurnCue.SetActive(true);
+        UniqueStart();
+    }
+
+    public virtual void UniqueStart()
+    {
+        return;
     }
 
     public virtual void EndTurn()

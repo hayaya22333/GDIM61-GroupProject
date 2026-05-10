@@ -24,14 +24,8 @@ public class EnemyCard : GeneralCombatCard
         prepared = true;
     }
 
-    public override void StartTurn()
+    public override void UniqueStart()
     {
-        Debug.Log("It's enemy card " + id + "'s turn.");
-        //_spriteRenderer.color = Color.green;
-        onTurnCue.SetActive(true);
-
-        combatController.inTurn = true;
-        onTurn = true;
         StartCoroutine(EnemyAutoAttack(turnDuration));
     }
 

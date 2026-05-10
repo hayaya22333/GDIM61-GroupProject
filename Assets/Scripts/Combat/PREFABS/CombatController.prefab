@@ -44,13 +44,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0497cca37d988464baa5e319a4d784b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 5009271450246672651, guid: 96a4d8af99294284facd19380c072daa, type: 3}
   enemyPool:
-  - {fileID: 2146218618169230201, guid: 66d6b7eb20bec4843a9dd5a6ab95f23b, type: 3}
-  - {fileID: 3745770851044030061, guid: 218900116c9445c4fa940d74bc79264a, type: 3}
+  - {fileID: 11400000, guid: 8b0dd8a85eeb34be3bcedb4a3e787a93, type: 2}
+  - {fileID: 11400000, guid: 36473d71fab6444e3bae85e4a7ad514a, type: 2}
+  - {fileID: 11400000, guid: e3281daae1eef44d5ad2da5ad594bacd, type: 2}
+  - {fileID: 11400000, guid: 68a2f3a374736456bb2ede91adcfc04b, type: 2}
+  - {fileID: 11400000, guid: 70017d7ff7f0341e79a3710ff9d270d8, type: 2}
+  - {fileID: 11400000, guid: 26cfe55ff178c4f01a034d8df02f2f24, type: 2}
+  - {fileID: 11400000, guid: 7e15803d4449a4f58ae403abc138d8b8, type: 2}
+  - {fileID: 11400000, guid: 38e4cbe797dee43599dca74c5077debe, type: 2}
+  playerPrefab: {fileID: 538434313656696704, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
   playerPool:
-  - {fileID: 6878954193301296285, guid: 6e92da7328a954049a603b6ab9e2ff10, type: 3}
-  - {fileID: 7560533219244522711, guid: 15d9fcd7ad78a354c97e93877d2c2ba7, type: 3}
-  - {fileID: 774704196062038262, guid: af48acbf0d8855149a0d503d9f701121, type: 3}
+  - {fileID: 11400000, guid: 238803797f4e84c3cbcdb4d37032ee55, type: 2}
+  - {fileID: 11400000, guid: a38cb3179fbcc6442a34ae22ecdd9f1d, type: 2}
+  - {fileID: 11400000, guid: 7aa2e5b209f104bbd8c3e3eb966502e1, type: 2}
+  - {fileID: 11400000, guid: f68bb3fec7dde4a6c8840456ec9ffde6, type: 2}
+  - {fileID: 11400000, guid: 048d60ca3c0084793980ac2afbbf9c39, type: 2}
+  - {fileID: 11400000, guid: 27d194049d6964a1a9d4f9106a7e92c6, type: 2}
+  - {fileID: 11400000, guid: f2ceff4533f744736b4630b28e560d80, type: 2}
   playerFixedIDs: 
   enemyFixedIDs: 0000000001000000
   allCards: []
@@ -71,3 +83,4 @@ MonoBehaviour:
   activeEnemyCnt: 0
   gameWinUI: {fileID: 0}
   gameLoseUI: {fileID: 0}
+  playerMoved: 0
