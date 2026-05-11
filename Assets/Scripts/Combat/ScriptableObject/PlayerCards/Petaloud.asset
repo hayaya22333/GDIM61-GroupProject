@@ -22,13 +22,13 @@ MonoBehaviour:
     skillEffects:
     - effectType: 3
       targetType: 3
-      targetCount: 10
+      targetCount: 3
       dealAmount: 50
       dealCount: 1
   - cardSprite: {fileID: 0}
     skillEffects:
     - effectType: 3
       targetType: 2
-      targetCount: 10
+      targetCount: 3
       dealAmount: -50
       dealCount: 1

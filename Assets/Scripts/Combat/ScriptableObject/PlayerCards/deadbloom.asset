@@ -24,11 +24,11 @@ MonoBehaviour:
       targetType: 2
       targetCount: 1
       dealAmount: 50
-      dealCount: 2
+      dealCount: 1
   - cardSprite: {fileID: 0}
     skillEffects:
     - effectType: 2
       targetType: 2
       targetCount: 3
-      dealAmount: 40
+      dealAmount: 30
       dealCount: 1
