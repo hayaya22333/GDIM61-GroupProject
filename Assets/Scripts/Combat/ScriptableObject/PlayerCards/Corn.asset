@@ -30,5 +30,5 @@ MonoBehaviour:
     - effectType: 1
       targetType: 3
       targetCount: 10
-      dealAmount: 27
+      dealAmount: 28
       dealCount: 1
