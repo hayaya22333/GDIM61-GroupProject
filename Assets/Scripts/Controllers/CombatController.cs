@@ -244,14 +244,21 @@ public class CombatController : MonoBehaviour
     private void EndCombatWin()
     {
         combatEnd = true;
-        gameWinUI.SetActive(true);
-        GameController.Instance.combatIndex += 1;
+        if (GameController.Instance.combatIndex >= 2)
+        {
+            SceneManager.LoadScene(5);
+        }
+        else
+        {
+            gameWinUI.SetActive(true);
+            GameController.Instance.combatIndex += 1;
+        }
     }
 
     private void EndCombatLose()
     {
         combatEnd = true;
-        gameLoseUI.SetActive(true);
+        // gameLoseUI.SetActive(true);
         SceneManager.LoadScene(4);
     }
 
