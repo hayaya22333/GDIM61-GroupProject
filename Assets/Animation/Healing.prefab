@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 679809522049896795}
   - component: {fileID: 1324592646986895528}
   - component: {fileID: 7204034943383729713}
+  - component: {fileID: 8401675592305927793}
   m_Layer: 0
   m_Name: Healing
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1664167525
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 10dd4a51acb384b959a251ec3a47e64c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,3 +107,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8401675592305927793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659512427133708450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8b7f070c4a440e5a7dd210c47e691f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aliveTime: 2

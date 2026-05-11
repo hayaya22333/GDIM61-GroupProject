@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3267016164753025756}
   - component: {fileID: 213924882068337346}
   - component: {fileID: 7471033396938830249}
+  - component: {fileID: 712093223222051114}
   m_Layer: 0
   m_Name: slow animation
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1664167525
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: ca38030f5864b42b68fd5afc1de9c44d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,3 +107,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &712093223222051114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254145312271618989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8b7f070c4a440e5a7dd210c47e691f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aliveTime: 2
