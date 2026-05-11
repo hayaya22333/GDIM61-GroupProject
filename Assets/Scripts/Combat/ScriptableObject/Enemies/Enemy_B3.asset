@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49718ec9db3524248b46b545ab7b3ada, type: 3}
   m_Name: Enemy_B3
   m_EditorClassIdentifier: 
-  mainSprite: {fileID: 0}
+  mainSprite: {fileID: 21300000, guid: ff9a7c83497bb42f58eae0dfd8dc7361, type: 3}
   enemyName: 7
   enemyHP: 300
   enemyATK: 38
-  enemySPD: 110
+  enemySPD: 115
   enemySkill: 0
   drops: []
