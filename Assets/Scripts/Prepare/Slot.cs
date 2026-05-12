@@ -7,6 +7,7 @@ public class Slot : MonoBehaviour
 {
     public int index;
     public ChoiceCard currentCard;
+    public AudioSource prepare;
 
     [SerializeField] private TMP_Text text;
 
@@ -61,6 +62,7 @@ public class Slot : MonoBehaviour
                 GameController.Instance.combatCard.Add(id);
                 GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
                 Debug.Log(id);
+                prepare.Play();
             }
         }
 

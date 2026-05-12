@@ -19,6 +19,7 @@ public class PrepareController : MonoBehaviour
     // Hayaya: debugging....
     public bool cardsLocked = false;
     public static PrepareController Instance { get; private set; }
+    public AudioSource click;
 
     void Awake()
     {
@@ -40,7 +41,7 @@ public class PrepareController : MonoBehaviour
     {
         // Hayaya: added the following line to lock card slot on click scene change button.
         cardsLocked = true;
-
+        click.Play();
         SceneManager.LoadScene(i);
     }
 
