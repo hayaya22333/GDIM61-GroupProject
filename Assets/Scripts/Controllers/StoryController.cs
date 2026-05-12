@@ -60,7 +60,7 @@ public class StoryManager : MonoBehaviour
     private const string StoryPlayedKey = "StoryPlayed";
 
     private void Awake()
-    {
+    {/*
         if (PlayerPrefs.GetInt(StoryPlayedKey, 0) == 1)
         {
             Destroy(gameObject);
@@ -71,7 +71,7 @@ public class StoryManager : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-        }
+        }*/
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
@@ -83,6 +83,7 @@ public class StoryManager : MonoBehaviour
     {
         FindPageImage();
         ShowCurrentPage();
+        Debug.Log(currentPage);
     }
 
     private void Update()
@@ -183,6 +184,7 @@ public class StoryManager : MonoBehaviour
 
         SceneManager.LoadScene(0);
 
+        Destroy(this);
         Destroy(gameObject);
     }
 
