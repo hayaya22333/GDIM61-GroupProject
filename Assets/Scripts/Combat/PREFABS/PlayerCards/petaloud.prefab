@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 1973403218792871484, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: actionCardPrefab
       value: 
-      objectReference: {fileID: 5250467207491868801, guid: 759c581a8924bca4eb6490a54b933300, type: 3}
+      objectReference: {fileID: 5250467207491868801, guid: 68d69ae29090d49b7bbb1d28441c7efd, type: 3}
     - target: {fileID: 2414188481557646303, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_fontSize
       value: 30

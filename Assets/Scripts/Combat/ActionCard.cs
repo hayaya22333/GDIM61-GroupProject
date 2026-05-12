@@ -43,7 +43,7 @@ public class ActionCard : DragObject
         id = _id;
         parentCard = _parentCard;
         side = _parentCard.side;
-        //spriteRenderer.sprite = _skill.cardSprite;
+        spriteRenderer.sprite = _skill.cardSprite;
         displayText.text = "";
 
         foreach (SkillEffect effect in _skill.skillEffects)

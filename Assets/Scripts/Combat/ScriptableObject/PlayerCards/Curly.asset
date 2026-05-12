@@ -18,14 +18,14 @@ MonoBehaviour:
   cardSPD: 90
   cardDesciption: 
   skills:
-  - cardSprite: {fileID: 7482667652216324306, guid: 8566cef89acf94a3c8117e5a7d791d2e, type: 3}
+  - cardSprite: {fileID: 21300000, guid: 926e3c207a71d4d35982640e15711666, type: 3}
     skillEffects:
     - effectType: 1
       targetType: 3
       targetCount: 1
       dealAmount: 120
       dealCount: 1
-  - cardSprite: {fileID: 7482667652216324306, guid: 8566cef89acf94a3c8117e5a7d791d2e, type: 3}
+  - cardSprite: {fileID: 21300000, guid: 926e3c207a71d4d35982640e15711666, type: 3}
     skillEffects:
     - effectType: 1
       targetType: 3

@@ -248,7 +248,7 @@ SpriteRenderer:
   m_SortingLayerID: -1664167525
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bebccb12e059ae042aba97716060af8e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e61a0dc379d94215bdb5e8923ee4426, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 5164547518975457760}
   - component: {fileID: 1546554065645625249}
   m_Layer: 0
-  m_Name: ActionCard
+  m_Name: s corn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

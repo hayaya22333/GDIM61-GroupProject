@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: turnCountDown
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 1973403218792871484, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: actionCardPrefab
+      value: 
+      objectReference: {fileID: 5250467207491868801, guid: 2c74655ad419243088b68b305f99af0f, type: 3}
     - target: {fileID: 2414188481557646303, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_fontSize
       value: 30
