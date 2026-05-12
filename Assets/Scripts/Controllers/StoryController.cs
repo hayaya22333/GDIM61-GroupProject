@@ -182,7 +182,7 @@ public class StoryManager : MonoBehaviour
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
 
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
 
         Destroy(this);
         Destroy(gameObject);
