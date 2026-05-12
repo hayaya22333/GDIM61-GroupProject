@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour
     public void SwitchGameState(int stateIndex)
     {
         currentState = (GameState)stateIndex;
+        Debug.Log("click button");
         switch(currentState)
         {
             case GameState.Title:

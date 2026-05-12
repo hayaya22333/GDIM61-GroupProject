@@ -13,6 +13,12 @@ public class Pile : MonoBehaviour
 
     private void OnMouseDown()
     {   
+
+        if (StoryManager.Instance != null)
+        {
+            StoryManager.Instance.PollButtonClicked();
+        }
+        
         Collider2D pile = GetComponent<Collider2D>();
 
         for (int i = 0; i < spawnNumber; i++)
