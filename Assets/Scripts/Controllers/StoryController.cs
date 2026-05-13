@@ -9,7 +9,6 @@ public class StoryManager : MonoBehaviour
     public List<Sprite> storyPages = new List<Sprite>();
     public Image pageImage;
     public int pollStartPage = 25;
-
     private int currentPage = 0;
     private bool waitingForPollButton = false;
     private bool storyFinished = false;
@@ -43,20 +42,16 @@ public class StoryManager : MonoBehaviour
         Debug.Log(currentPage);
     }
 
-    private void Update()
+    public void ClickStoryArea()
     {
-        if (storyFinished)
+        if (storyFinished == true)
         {
             return;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (waitingForPollButton == false)
         {
-            if(waitingForPollButton == false)
-            {
-                NextPage();
-            }
-
+            NextPage();
         }
     }
 
