@@ -9,7 +9,12 @@ public class Pile : MonoBehaviour
     public Vector3 spawnPlace = new Vector3(0f, 1f, 0f);
     public int spawnNumber;
     public List<Transform> spawnPosition;
-    
+
+    void Awake()
+    {
+        gameObject.SetActive(true);
+    }
+
 
     private void OnMouseDown()
     {   

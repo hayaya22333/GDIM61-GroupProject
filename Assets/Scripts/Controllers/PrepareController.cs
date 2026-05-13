@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PrepareController : MonoBehaviour
 {
@@ -65,6 +67,33 @@ public class PrepareController : MonoBehaviour
             cardChoice[GameController.Instance.ownCard[i]].transform.position = new Vector3(leftX + step * i, y,z);
             ChoiceCard choiceCard = cardChoice[i].GetComponent<ChoiceCard>();
             choiceCard.DockPosition = cardChoice[GameController.Instance.ownCard[i]].transform.position;
+        }
+    }
+
+    public void StopCard(int id)
+    {
+        for( int i = 0; i < cardChoice.Length; i++)
+        {
+            ChoiceCard choiceCard = cardChoice[i].GetComponent<ChoiceCard>();
+            if (choiceCard.alreadyStay == true)
+            {
+                choiceCard.canStay = true;
+            }
+            else
+            {
+                choiceCard.canStay = false;
+            }
+        }
+        ChoiceCard choiceCard1 = cardChoice[id].GetComponent<ChoiceCard>();
+        choiceCard1.canStay = true;
+    }
+
+    public void LetCard()
+    {
+        for (int i = 0; i < cardChoice.Length; i++)
+        {
+            ChoiceCard choiceCard = cardChoice[i].GetComponent<ChoiceCard>();
+            choiceCard.canStay = true;
         }
     }
 

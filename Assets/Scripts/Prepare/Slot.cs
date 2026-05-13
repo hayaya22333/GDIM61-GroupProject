@@ -55,18 +55,24 @@ public class Slot : MonoBehaviour
                 return;
             }
 
+            if (choiceCard.isDragging == true)
+            {
+                return;
+            }
+
+
             text.text = "";
             currentCard = choiceCard;
             if (GameController.Instance.AlreadyHaveCard(id) == false)
             {
+                choiceCard.alreadyStay = true;
+                PrepareController.Instance.StopCard(id);
                 GameController.Instance.combatCard.Add(id);
                 GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
                 Debug.Log(id);
                 prepare.Play();
             }
         }
-
-        
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -79,11 +85,16 @@ public class Slot : MonoBehaviour
         if (other.CompareTag("Card"))
         {
             ChoiceCard choiceCard = other.GetComponent<ChoiceCard>();
-            currentCard = null;
-            int id = choiceCard.ID;
-
-            GameController.Instance.combatCard.Remove(id);
-            GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
+            if (currentCard == choiceCard)
+            {
+                currentCard = null;
+                int id = choiceCard.ID;
+                choiceCard.alreadyStay = false;
+                PrepareController.Instance.LetCard();
+                GameController.Instance.combatCard.Remove(id);
+                GameController.Instance.combatCardStore = new List<int>(GameController.Instance.combatCard);
+            }
+            
         }
     }
 }
