@@ -210,7 +210,6 @@ public class CombatController : MonoBehaviour
             case GameSide.Enemy:
                 activeEnemyCnt -= 1;
                 enemyIDs.Remove(cardID);
-                GameController.Instance.victimCnt += 1;
                 break;
             case GameSide.Player:
                 activePlayerCnt -= 1;
@@ -247,7 +246,7 @@ public class CombatController : MonoBehaviour
         combatEnd = true;
         if (GameController.Instance.combatIndex >= 2)
         {
-            SceneManager.LoadScene(6);
+            SceneManager.LoadScene(5);
         }
         else
         {
@@ -260,7 +259,7 @@ public class CombatController : MonoBehaviour
     {
         combatEnd = true;
         // gameLoseUI.SetActive(true);
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(4);
     }
 
     public void Click(int i)
