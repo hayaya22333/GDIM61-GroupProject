@@ -1497,7 +1497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6086372851865943105, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
       propertyPath: combatIndex
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6086372851865943105, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
       propertyPath: ownCard.Array.size
@@ -2104,15 +2104,15 @@ PrefabInstance:
     - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
       propertyPath: stageBackgrounds.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: 1ccab752e350a4b52bd735d8d7a0b387, type: 3}
+      objectReference: {fileID: 1706837977867725700, guid: a387d44b25326480c950f373fc50d92a, type: 3}
     - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
       propertyPath: stageBackgrounds.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: af33ada93d7084359b0492eadef572aa, type: 3}
+      objectReference: {fileID: 1606676657431474846, guid: 949200c2d6b9a4c448dc228225459b0b, type: 3}
     - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
       propertyPath: stageBackgrounds.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: 14675d0642b384d5294a068da6ffbb2c, type: 3}
+      objectReference: {fileID: 4892696453135729853, guid: f542f173da6724cd9ba8e6af6168fd68, type: 3}
     - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
       propertyPath: enemySetups.Array.data[0].values.Array.size
       value: 3
