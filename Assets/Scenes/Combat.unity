@@ -1497,7 +1497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6086372851865943105, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
       propertyPath: combatIndex
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6086372851865943105, guid: 80fef4b0d398b814ea14be9f4c5d544f, type: 3}
       propertyPath: ownCard.Array.size
