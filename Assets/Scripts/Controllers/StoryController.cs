@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class StoryManager : MonoBehaviour
 {
-    public static StoryManager Instance;
+    public static StoryManager Instance{get; private set;}
     public List<Sprite> storyPages = new List<Sprite>();
     public Image pageImage;
     public int pollStartPage = 25;
     private int currentPage = 0;
     private bool waitingForPollButton = false;
-    private bool storyFinished = false;
+    public bool storyFinished = false;
 
     private const string StoryPlayedKey = "StoryPlayed";
 

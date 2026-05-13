@@ -8,6 +8,7 @@ public class PollController : MonoBehaviour
     public static PollController pollController {get; private set;}
 
     public List<GameObject> cardPoll = new List<GameObject>();
+    [SerializeField] private GameObject introstory;
 
     public void Click(int i)
     {
@@ -25,6 +26,15 @@ public class PollController : MonoBehaviour
 
     void Update()
     {
+        if(introstory != null)
+        {
+            if(StoryManager.Instance.storyFinished == true)
+            {
+                introstory.SetActive(false);
+                Destroy(introstory);
+            }
+        }
+        
         if (cardPoll.Count == 0)
         {
             button.SetActive(true);
