@@ -81,10 +81,8 @@ public class GameController : MonoBehaviour
 
     private Dictionary<int, CardNode> cardMenu = new Dictionary<int, CardNode>();
 
-    // Hayaya: storing combat info
+    //storing combat stage index
     public int combatIndex = 0;
-    public int victimCnt = 0;
-    public List<int> totalOwnCard = new List<int>();
 
     public void CardDictionary()
     {
@@ -101,11 +99,6 @@ public class GameController : MonoBehaviour
         {
             ownCard.Add(id);
             ownCard.Sort();
-        }
-        // Hayaya: for summary info
-        if(totalOwnCard.Contains(id) == false)
-        {
-            ownCard.Add(id);
         }
     }
 
