@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Combat.unity
     guid: 463a971d0d0db47c4b6d4334aee774a4
   - enabled: 1
-    path: Assets/Scenes/GameLost.unity
+    path: Assets/Scenes/BE.unity
     guid: fdb89abdd90d25f44b5f862335c3dd96
   - enabled: 1
     path: Assets/Scenes/HE.unity
