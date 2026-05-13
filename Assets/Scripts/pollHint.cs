@@ -8,10 +8,13 @@ public class pollHint : MonoBehaviour
     public bool inStory = true;
     private GameObject story;
 
+    int ownCardBefore;
+
     void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
         sr.enabled = false;
+        ownCardBefore = GameController.Instance.ownCard.Count;
     }
 
     void Update()
@@ -26,7 +29,7 @@ public class pollHint : MonoBehaviour
             inStory = false;
         }
 
-        if (GameController.Instance.ownCard.Count >= 3 && !inStory)
+        if (GameController.Instance.ownCard.Count > ownCardBefore && !inStory)
         {
             sr.enabled = true;
         }
