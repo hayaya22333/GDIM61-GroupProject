@@ -5,6 +5,8 @@ using UnityEngine;
 public class pollHint : MonoBehaviour
 {
     private SpriteRenderer sr;
+    public bool inStory = true;
+    private GameObject story;
 
     void Start()
     {
@@ -14,7 +16,17 @@ public class pollHint : MonoBehaviour
 
     void Update()
     {
-        if (GameController.Instance.ownCard.Count >= 3)
+        story = GameObject.Find("StoryController");
+        if (story != null)
+        {
+            inStory = true;
+        }
+        else
+        {
+            inStory = false;
+        }
+
+        if (GameController.Instance.ownCard.Count >= 3 && !inStory)
         {
             sr.enabled = true;
         }
