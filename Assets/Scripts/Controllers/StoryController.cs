@@ -8,7 +8,7 @@ public class StoryManager : MonoBehaviour
     public static StoryManager Instance;
     public List<Sprite> storyPages = new List<Sprite>();
     public Image pageImage;
-    public int pollStartPage = 24;
+    public int pollStartPage = 25;
 
     private int currentPage = 0;
     private bool waitingForPollButton = false;
@@ -88,7 +88,7 @@ public class StoryManager : MonoBehaviour
 
         if (currentPage == pollStartPage)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
             return;
         }
 
