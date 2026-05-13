@@ -16,7 +16,7 @@ public class CombatController : MonoBehaviour
 {
 #region Variables
     public static CombatController Controller { get; private set; }
-    [SerializeField] List<Sprite> stageBackgrounds = new List<Sprite>();
+    [SerializeField] List<GameObject> stageBackgrounds = new List<GameObject>();
     [SerializeField] SpriteRenderer background;
 
     [Header("Stage Info")]
@@ -78,7 +78,7 @@ public class CombatController : MonoBehaviour
 
     void Start()
     {
-        background.sprite = stageBackgrounds[GameController.Instance.combatIndex];
+        Instantiate(stageBackgrounds[GameController.Instance.combatIndex]);
         enemyFixedIDs = enemySetups[GameController.Instance.combatIndex].values;
         playerFixedIDs = GameController.Instance.combatCardStore;
         
