@@ -228,6 +228,8 @@ public class CombatController : MonoBehaviour
         if (activeEnemyCnt == 0)
         {
             EndCombatWin();
+            GameController.Instance.ClearAllCombatCard();
+            GameController.Instance.LoseCards(deadPlayerCards);
         }
         else if (activePlayerCnt == 0)
         {
@@ -237,8 +239,6 @@ public class CombatController : MonoBehaviour
         {
             return;
         }
-
-        GameController.Instance.LoseCards(deadPlayerCards);
     }
 
     private void EndCombatWin()

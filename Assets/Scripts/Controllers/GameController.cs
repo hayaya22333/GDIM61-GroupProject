@@ -144,6 +144,11 @@ public class GameController : MonoBehaviour
         combatCard[index] = -1;
     }
 
+    public void ClearAllCombatCard()
+    {
+        combatCard.Clear();
+    }
+
     public int GetCombatCardID(int index)
     {
         if(index >= 0 && index < combatCard.Count)
