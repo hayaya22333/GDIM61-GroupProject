@@ -107,10 +107,10 @@ public class ActionCard : DragObject
         GameSide _targetSide = GameSide.Neutral;
         if (_targetCount <= 5)
         {
-            displayText.text += _targetCount + " ";
+            displayText.text += "<size=130%>" + _targetCount + "</size> ";
         }
         else{
-            displayText.text += "all ";
+            displayText.text += "<size=130%>ALL</size> ";
         }
 
         switch(_targetType)
@@ -137,20 +137,20 @@ public class ActionCard : DragObject
             displayText.text += "'s turn";
             if (Mathf.Abs(_dealAmount) <= 30)
             {
-                displayText.text += " slightly";
+                displayText.text += " <size=130%>slightly</size>";
             }
             else if (Mathf.Abs(_dealAmount) <= 60)
             {
-                displayText.text += " markedly";
+                displayText.text += " <size=130%>markedly</size>";
             }
             else
             {
-                displayText.text += " significantly";
+                displayText.text += " <size=130%>significantly</size>";
             }
         }
         else
         {
-            displayText.text += " for " + Mathf.Abs(_dealAmount).ToString() + " points";
+            displayText.text += " for <size=150%>" + Mathf.Abs(_dealAmount).ToString() + "</size> points";
 
             if (_dealCount > 1)
             {
