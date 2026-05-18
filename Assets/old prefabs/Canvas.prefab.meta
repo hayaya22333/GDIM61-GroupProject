@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/old prefabs/Canvas.prefab.meta
 guid: 34fd9da32d6f7004f83f83b9e67f94db
+=======
+guid: 1a8c91092723b0a438c578cbbabb68c7
+>>>>>>> Stashed changes:Assets/Scripts/Combat/PREFABS/Canvas.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

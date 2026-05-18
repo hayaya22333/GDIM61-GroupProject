@@ -7,6 +7,7 @@ public class pollHint : MonoBehaviour
     private SpriteRenderer sr;
     public bool inStory = true;
     private GameObject story;
+    public GameObject prepareButton;
 
     int ownCardBefore;
 
@@ -14,6 +15,8 @@ public class pollHint : MonoBehaviour
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
         sr.enabled = false;
+        prepareButton.SetActive(false);
+
         ownCardBefore = GameController.Instance.ownCard.Count;
     }
 
@@ -32,6 +35,7 @@ public class pollHint : MonoBehaviour
         if (GameController.Instance.ownCard.Count > ownCardBefore && !inStory)
         {
             sr.enabled = true;
+            prepareButton.SetActive(true);
         }
     }
 }
