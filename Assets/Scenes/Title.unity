@@ -1605,7 +1605,7 @@ GameObject:
   - component: {fileID: 1085699238}
   - component: {fileID: 1085699237}
   m_Layer: 5
-  m_Name: Click
+  m_Name: ClickHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

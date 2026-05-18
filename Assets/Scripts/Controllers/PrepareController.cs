@@ -65,6 +65,7 @@ public class PrepareController : MonoBehaviour
         {
             cardChoice[GameController.Instance.ownCard[i]].SetActive(true);
             cardChoice[GameController.Instance.ownCard[i]].transform.position = new Vector3(leftX + step * i, y,z);
+            Debug.Log(i);
             ChoiceCard choiceCard = cardChoice[i].GetComponent<ChoiceCard>();
             choiceCard.DockPosition = cardChoice[GameController.Instance.ownCard[i]].transform.position;
         }
