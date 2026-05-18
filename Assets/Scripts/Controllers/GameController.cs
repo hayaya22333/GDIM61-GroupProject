@@ -105,7 +105,7 @@ public class GameController : MonoBehaviour
         // Hayaya: for summary info
         if(totalOwnCard.Contains(id) == false)
         {
-            ownCard.Add(id);
+            totalOwnCard.Add(id);
         }
     }
 
