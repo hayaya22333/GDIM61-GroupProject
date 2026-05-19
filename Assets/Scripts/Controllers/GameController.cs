@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     public static GameController Instance { get; private set; }
     public GameState currentState { get; private set; }
 
+    public bool firstPoll = true;
+
     private void Awake()
     {
         currentState = GameState.Title;
