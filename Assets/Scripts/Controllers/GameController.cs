@@ -46,6 +46,7 @@ public class GameController : MonoBehaviour
         Level3
     }
 
+<<<<<<< HEAD
     void Start()
     {
         gameProcess = GameProcess.Level1;
@@ -53,6 +54,8 @@ public class GameController : MonoBehaviour
 
 =======
 >>>>>>> parent of 102d313 (new scene)
+=======
+>>>>>>> parent of e316109 (11)
     public void SwitchGameState(int stateIndex)
     {
         currentState = (GameState)stateIndex;
