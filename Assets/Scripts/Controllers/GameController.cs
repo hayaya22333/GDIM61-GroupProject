@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
     public GameState currentState { get; private set; }
+    public GameProcess gameProcess {get; private set;}
 
     public bool firstPoll = true;
 
@@ -36,6 +37,13 @@ public class GameController : MonoBehaviour
         PrepareTeam,
         Combat,
 
+    }
+
+    public enum GameProcess
+    {
+        Level1,
+        Level2,
+        Level3
     }
 
     public void SwitchGameState(int stateIndex)

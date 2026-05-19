@@ -146,3 +146,4 @@ public class StoryManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 }
+
