@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
         Combat,
 
     }
-
+/*
 <<<<<<< HEAD
     public enum GameProcess
     {
@@ -52,10 +52,7 @@ public class GameController : MonoBehaviour
         gameProcess = GameProcess.Level1;
     }
 
-=======
->>>>>>> parent of 102d313 (new scene)
-=======
->>>>>>> parent of e316109 (11)
+*/
     public void SwitchGameState(int stateIndex)
     {
         currentState = (GameState)stateIndex;
