@@ -12,7 +12,6 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
     public GameState currentState { get; private set; }
-    public GameProcess gameProcess {get; private set;}
 
     public bool firstPoll = true;
 
@@ -39,6 +38,7 @@ public class GameController : MonoBehaviour
 
     }
 
+<<<<<<< HEAD
     public enum GameProcess
     {
         Level1,
@@ -51,6 +51,8 @@ public class GameController : MonoBehaviour
         gameProcess = GameProcess.Level1;
     }
 
+=======
+>>>>>>> parent of 102d313 (new scene)
     public void SwitchGameState(int stateIndex)
     {
         currentState = (GameState)stateIndex;
