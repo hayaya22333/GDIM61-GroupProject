@@ -268,9 +268,17 @@ public class CombatController : MonoBehaviour
         SceneManager.LoadScene(5);
     }
 
-    public void Click(int i)
+    public void Click()
     {
-        SceneManager.LoadScene(i);
+        //Tina
+        if (GameController.Instance.gameProcess == GameController.GameProcess.Level1)
+        {
+            SceneManager.LoadScene(7);
+        }
+        else if(GameController.Instance.gameProcess == GameController.GameProcess.Level2)
+        {
+            SceneManager.LoadScene(8);
+        }
     }
 
 #endregion
