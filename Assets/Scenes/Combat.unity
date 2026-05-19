@@ -1664,6 +1664,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 262727746581182660, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 262727746581182660, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 262727746581182660, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1990527774}
+    - target: {fileID: 262727746581182660, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 262727746581182660, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: clickReturn
+      objectReference: {fileID: 0}
+    - target: {fileID: 262727746581182660, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CombatController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 262727746581182660, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 321544936395622622, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.2
@@ -1771,6 +1799,34 @@ PrefabInstance:
     - target: {fileID: 2900037303289987146, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394808746951445069, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394808746951445069, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394808746951445069, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1990527774}
+    - target: {fileID: 3394808746951445069, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394808746951445069, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: clickInstruction
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394808746951445069, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CombatController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394808746951445069, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3910802058604444183, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
       propertyPath: m_UiScaleMode
@@ -1925,6 +1981,11 @@ PrefabInstance:
       addedObject: {fileID: 482245591}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+--- !u!1 &7896802926050415468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3319852819024250601, guid: 2e26fa272fe997246a56182fee9b7a47, type: 3}
+  m_PrefabInstance: {fileID: 7896802926050415467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7944155649164461019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1997,6 +2058,10 @@ PrefabInstance:
       propertyPath: actionCardSpawn
       value: 
       objectReference: {fileID: 1778337782}
+    - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
+      propertyPath: instructionContent
+      value: 
+      objectReference: {fileID: 7896802926050415468}
     - target: {fileID: 5011611796160119280, guid: 7d9580ec09fb88c4f8019e34599be22f, type: 3}
       propertyPath: enemyPool.Array.size
       value: 8

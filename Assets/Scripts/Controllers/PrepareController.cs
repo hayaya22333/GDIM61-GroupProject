@@ -23,6 +23,8 @@ public class PrepareController : MonoBehaviour
     public static PrepareController Instance { get; private set; }
     public AudioSource click;
 
+    [SerializeField] private GameObject instructionContent;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -38,7 +40,21 @@ public class PrepareController : MonoBehaviour
         //detail.enabled = false;
         //BuildDock();
         ShowCard();
+        instructionContent.SetActive(false);
     }
+
+    public void clickInstruction()
+    {
+        instructionContent.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void clickReturn()
+    {
+        instructionContent.SetActive(false);
+        Time.timeScale = 0f;
+    }
+
     public void Click(int i)
     {
         // Hayaya: added the following line to lock card slot on click scene change button.

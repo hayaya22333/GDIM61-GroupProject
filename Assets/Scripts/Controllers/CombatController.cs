@@ -65,6 +65,9 @@ public class CombatController : MonoBehaviour
     // Temporary var
     public bool playerMoved = false;
 
+    [Header("Tina added")]
+    [SerializeField] private GameObject instructionContent;
+
 #region Start and Awake
     void Awake()
     {
@@ -90,6 +93,8 @@ public class CombatController : MonoBehaviour
         {
             Debug.Log("player card - " + id);
         }
+        //Tina
+        instructionContent.SetActive(false);
     }
 #endregion
     
@@ -269,4 +274,19 @@ public class CombatController : MonoBehaviour
     }
 
 #endregion
+
+
+# region UI-Tina
+    public void clickInstruction()
+    {
+        instructionContent.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void clickReturn()
+    {
+        instructionContent.SetActive(false);
+        Time.timeScale = 0f;
+    }
+# endregion
 }

@@ -10,6 +10,7 @@ public class PollController : MonoBehaviour
 
     public List<GameObject> cardPoll = new List<GameObject>();
     [SerializeField] private GameObject introstory;
+    [SerializeField] private GameObject instructionContent;
 
     private bool inStory = false;
 
@@ -23,8 +24,19 @@ public class PollController : MonoBehaviour
     void Start()
     {
         button.SetActive(false);
+        instructionContent.SetActive(false);
+    }
+    public void clickInstruction()
+    {
+        instructionContent.SetActive(true);
+        Time.timeScale = 0f;
     }
 
+    public void clickReturn()
+    {
+        instructionContent.SetActive(false);
+        Time.timeScale = 0f;
+    }
 
     void Update()
     {
