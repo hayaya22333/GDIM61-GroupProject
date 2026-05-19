@@ -46,6 +46,11 @@ public class GameController : MonoBehaviour
         Level3
     }
 
+    void Start()
+    {
+        gameProcess = GameProcess.Level1;
+    }
+
     public void SwitchGameState(int stateIndex)
     {
         currentState = (GameState)stateIndex;
