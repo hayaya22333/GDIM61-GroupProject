@@ -37,7 +37,7 @@ public class story23Controller : MonoBehaviour
         }
         else
         {
-            StoryEnd();
+            NextScene();
         }
     }
 
