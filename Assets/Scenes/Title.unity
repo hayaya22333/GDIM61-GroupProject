@@ -2066,6 +2066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d865aed48e00e4429697769baadd5e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstPoll: 1
   allCard:
   - {fileID: 11400000, guid: 238803797f4e84c3cbcdb4d37032ee55, type: 2}
   - {fileID: 11400000, guid: a38cb3179fbcc6442a34ae22ecdd9f1d, type: 2}
@@ -2888,8 +2889,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.913, y: 38.903}
-  m_SizeDelta: {x: 2150.219, y: 1222.147}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2487, y: 1340}
   m_Pivot: {x: 0.50000006, y: 0.50000006}
 --- !u!114 &2090534094
 MonoBehaviour:
