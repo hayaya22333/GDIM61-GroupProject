@@ -46,13 +46,13 @@ public class PrepareController : MonoBehaviour
     public void clickInstruction()
     {
         instructionContent.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
     }
 
     public void clickReturn()
     {
         instructionContent.SetActive(false);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
     }
 
     public void Click(int i)
