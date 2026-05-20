@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class story12Controller : MonoBehaviour
 {
     [SerializeField] private List<Sprite> story = new List<Sprite>();
-    [SerializeField] private GameObject continueButton;
+    //[SerializeField] private GameObject continueButton;
     [SerializeField] private GameObject clickArea;
     [SerializeField] private Image image;
 
@@ -16,7 +16,7 @@ public class story12Controller : MonoBehaviour
     void Start()
     {
         GameController.Instance.gameProcess = GameController.GameProcess.Level2;
-        continueButton.SetActive(false);
+        //continueButton.SetActive(false);
         clickArea.SetActive(true);
         imageIndex = 0;
         storyFinish = false;
@@ -45,7 +45,7 @@ public class story12Controller : MonoBehaviour
     {
         storyFinish = true;
         clickArea.SetActive(false);
-        continueButton.SetActive(true);
+        //continueButton.SetActive(true);
     }
 
     public void NextScene()
