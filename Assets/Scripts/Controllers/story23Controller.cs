@@ -31,9 +31,11 @@ public class story23Controller : MonoBehaviour
         }
 
         imageIndex += 1;
+
         if (imageIndex < story.Count)
         {
             image.sprite = story[imageIndex];
+            Debug.Log(imageIndex);
         }
         else
         {
