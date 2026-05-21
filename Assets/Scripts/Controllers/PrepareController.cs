@@ -15,7 +15,7 @@ public class PrepareController : MonoBehaviour
     [SerializeField] private GameObject[] cardChoice;
     //[SerializeField] private TMP_Text cardCount;
     [SerializeField] private Slot[] slot;
-    //public TMP_Text detail;
+    public TMP_Text detail;
     private List<ChoiceCard> choiceCards = new List<ChoiceCard>();
 
     // Hayaya: debugging....
@@ -37,10 +37,11 @@ public class PrepareController : MonoBehaviour
 
     public void Start()
     {
-        //detail.enabled = false;
+        detail.enabled = false;
         //BuildDock();
         ShowCard();
         instructionContent.SetActive(false);
+        detail.text = "";
     }
 
     public void clickInstruction()
