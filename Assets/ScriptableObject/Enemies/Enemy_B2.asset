@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49718ec9db3524248b46b545ab7b3ada, type: 3}
   m_Name: Enemy_B2
   m_EditorClassIdentifier: 
-  mainSprite: {fileID: 21300000, guid: 949c68495e4aa447887f3af9020ef7f1, type: 3}
+  mainSprite: {fileID: 21300000, guid: 24b28912c1134457fa08828f17bfc77a, type: 3}
   enemyName: 4
   enemyHP: 160
   enemyATK: 40
