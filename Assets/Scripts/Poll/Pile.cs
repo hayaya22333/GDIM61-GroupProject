@@ -9,6 +9,7 @@ public class Pile : MonoBehaviour
     public Vector3 spawnPlace = new Vector3(0f, 1f, 0f);
     public int spawnNumber;
     public List<Transform> spawnPosition;
+    [SerializeField] private AudioSource click;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class Pile : MonoBehaviour
         {
             StoryManager.Instance.PollButtonClicked();
         }
+        click.Play();
         /*
         Collider2D pile = GetComponent<Collider2D>();
 

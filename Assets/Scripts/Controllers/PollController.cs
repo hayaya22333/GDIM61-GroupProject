@@ -11,12 +11,14 @@ public class PollController : MonoBehaviour
     public List<GameObject> cardPoll = new List<GameObject>();
     [SerializeField] private GameObject introstory;
     [SerializeField] private GameObject instructionContent;
+    [SerializeField] private AudioSource click;
 
     private bool inStory = false;
 
     public void Click(int i)
     {
         SceneManager.LoadScene(i);
+        click.Play();
     }
 
     [SerializeField] private GameObject button;
@@ -30,12 +32,14 @@ public class PollController : MonoBehaviour
     {
         instructionContent.SetActive(true);
         //Time.timeScale = 0f;
+        click.Play();
     }
 
     public void clickReturn()
     {
         instructionContent.SetActive(false);
         //Time.timeScale = 0f;
+        click.Play();
     }
 
     void Update()

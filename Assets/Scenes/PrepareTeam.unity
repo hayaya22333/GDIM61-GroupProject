@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 362901187}
   - component: {fileID: 362901186}
   m_Layer: 0
-  m_Name: Audio Source click
+  m_Name: button audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2317,7 +2317,7 @@ GameObject:
   - component: {fileID: 1185477798}
   - component: {fileID: 1185477797}
   m_Layer: 0
-  m_Name: Audio Source prepare
+  m_Name: prepare audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2563,7 +2563,8 @@ MonoBehaviour:
   - {fileID: 794312537}
   detail: {fileID: 1717536126}
   cardsLocked: 0
-  click: {fileID: 362901186}
+  prepare: {fileID: 1185477797}
+  button: {fileID: 362901186}
   instructionContent: {fileID: 1172153193}
 --- !u!4 &1273835384
 Transform:
