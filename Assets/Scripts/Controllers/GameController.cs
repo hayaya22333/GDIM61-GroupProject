@@ -76,6 +76,12 @@ public class GameController : MonoBehaviour
         }
     }
 
+    // Hayaya: restart after defeat
+    public void RestartButton(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
+
     /* TODO: card transfer:
     1. refer each card to a unique card ID
     2. record ID between scenes using GC
