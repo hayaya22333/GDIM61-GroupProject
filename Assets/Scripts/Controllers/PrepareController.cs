@@ -64,8 +64,9 @@ public class PrepareController : MonoBehaviour
         // Hayaya: added the following line to lock card slot on click scene change button.
         cardsLocked = true;
         //click.Play();
-        SceneManager.LoadScene(i);
         button.Play();
+        SceneManager.LoadScene(i);
+        
     }
 
     //public void Click()
