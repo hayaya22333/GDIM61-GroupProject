@@ -62,7 +62,7 @@ public class GeneralCombatCard : MonoBehaviour
 
         if (turnCountDown <= 0)
         {
-            turnText.text = "GO";
+            turnText.text = "";
         }
         else
         {
