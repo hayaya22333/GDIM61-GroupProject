@@ -23,6 +23,7 @@ public class PrepareController : MonoBehaviour
     public static PrepareController Instance { get; private set; }
     public AudioSource prepare;
     [SerializeField] private AudioSource button;
+    [SerializeField] private AudioClip buttonClip;
 
     [SerializeField] private GameObject instructionContent;
 
@@ -61,12 +62,18 @@ public class PrepareController : MonoBehaviour
 
     public void Click(int i)
     {
+        //button.Play();
         // Hayaya: added the following line to lock card slot on click scene change button.
         cardsLocked = true;
         //click.Play();
-        button.Play();
         SceneManager.LoadScene(i);
         
+    }
+
+    public void PlayAudio()
+    {
+        button.PlayOneShot(buttonClip);
+        Debug.Log("Audio played");
     }
 
     //public void Click()

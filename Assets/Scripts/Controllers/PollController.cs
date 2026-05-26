@@ -17,8 +17,10 @@ public class PollController : MonoBehaviour
 
     public void Click(int i)
     {
-        SceneManager.LoadScene(i);
         click.Play();
+        Debug.Log("Audio Played");
+        SceneManager.LoadScene(i);
+        
     }
 
     [SerializeField] private GameObject button;
