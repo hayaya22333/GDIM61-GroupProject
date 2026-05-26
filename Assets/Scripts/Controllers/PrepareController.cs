@@ -21,9 +21,9 @@ public class PrepareController : MonoBehaviour
     // Hayaya: debugging....
     public bool cardsLocked = false;
     public static PrepareController Instance { get; private set; }
-    public AudioSource prepare;
-    [SerializeField] private AudioSource button;
-    [SerializeField] private AudioClip buttonClip;
+    //public AudioSource prepare;
+    //[SerializeField] private AudioSource button;
+    //[SerializeField] private AudioClip buttonClip;
 
     [SerializeField] private GameObject instructionContent;
 
@@ -50,14 +50,16 @@ public class PrepareController : MonoBehaviour
     {
         instructionContent.SetActive(true);
         //Time.timeScale = 0f;
-        button.Play();
+        //button.Play();
+        AudioManger.Instance.PlayClick();
     }
 
     public void clickReturn()
     {
         instructionContent.SetActive(false);
         //Time.timeScale = 0f;
-        button.Play();
+        //button.Play();
+        AudioManger.Instance.PlayClick();
     }
 
     public void Click(int i)
@@ -66,13 +68,15 @@ public class PrepareController : MonoBehaviour
         // Hayaya: added the following line to lock card slot on click scene change button.
         cardsLocked = true;
         //click.Play();
+        AudioManger.Instance.PlayClick();
         SceneManager.LoadScene(i);
         
     }
 
     public void PlayAudio()
     {
-        button.PlayOneShot(buttonClip);
+        AudioManger.Instance.PlayClick();
+        //button.PlayOneShot(buttonClip);
         Debug.Log("Audio played");
     }
 

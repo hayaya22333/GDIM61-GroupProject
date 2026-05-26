@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class StartController : MonoBehaviour
 {
-    [SerializeField] private AudioSource button;
+    //[SerializeField] private AudioSource button;
     public void Click()
     {
+        AudioManger.Instance.PlayClick();
         SceneManager.LoadScene(1);
-        button.Play();
+        //button.Play();
     }
 }
