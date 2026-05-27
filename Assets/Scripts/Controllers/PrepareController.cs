@@ -15,13 +15,16 @@ public class PrepareController : MonoBehaviour
     [SerializeField] private GameObject[] cardChoice;
     //[SerializeField] private TMP_Text cardCount;
     [SerializeField] private Slot[] slot;
-    //public TMP_Text detail;
+    public TMP_Text detail;
     private List<ChoiceCard> choiceCards = new List<ChoiceCard>();
 
     // Hayaya: debugging....
     public bool cardsLocked = false;
     public static PrepareController Instance { get; private set; }
-    public AudioSource click;
+    public AudioSource prepare;
+    [SerializeField] private AudioSource button;
+
+    [SerializeField] private GameObject instructionContent;
 
     void Awake()
     {
@@ -35,16 +38,35 @@ public class PrepareController : MonoBehaviour
 
     public void Start()
     {
-        //detail.enabled = false;
+        detail.enabled = false;
         //BuildDock();
         ShowCard();
+        instructionContent.SetActive(false);
+        detail.text = "";
     }
+
+    public void clickInstruction()
+    {
+        instructionContent.SetActive(true);
+        //Time.timeScale = 0f;
+        button.Play();
+    }
+
+    public void clickReturn()
+    {
+        instructionContent.SetActive(false);
+        //Time.timeScale = 0f;
+        button.Play();
+    }
+
     public void Click(int i)
     {
         // Hayaya: added the following line to lock card slot on click scene change button.
         cardsLocked = true;
-        click.Play();
+        //click.Play();
+        button.Play();
         SceneManager.LoadScene(i);
+        
     }
 
     //public void Click()
@@ -65,6 +87,7 @@ public class PrepareController : MonoBehaviour
         {
             cardChoice[GameController.Instance.ownCard[i]].SetActive(true);
             cardChoice[GameController.Instance.ownCard[i]].transform.position = new Vector3(leftX + step * i, y,z);
+            Debug.Log(i);
             ChoiceCard choiceCard = cardChoice[i].GetComponent<ChoiceCard>();
             choiceCard.DockPosition = cardChoice[GameController.Instance.ownCard[i]].transform.position;
         }

@@ -76,6 +76,22 @@ PrefabInstance:
       propertyPath: actionCardPrefab
       value: 
       objectReference: {fileID: 5250467207491868801, guid: 759c581a8924bca4eb6490a54b933300, type: 3}
+    - target: {fileID: 3902394044327708964, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: m_Size.x
+      value: 2.3226948
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902394044327708964, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: m_Size.y
+      value: 3.2341654
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902394044327708964, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.035488605
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902394044327708964, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.050529838
+      objectReference: {fileID: 0}
     - target: {fileID: 5181665223917938060, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -117,3 +133,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardID: 2
+  cardNode: {fileID: 11400000, guid: 7aa2e5b209f104bbd8c3e3eb966502e1, type: 2}
