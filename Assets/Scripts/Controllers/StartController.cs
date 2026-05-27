@@ -9,6 +9,5 @@ public class StartController : MonoBehaviour
     public void Click()
     {
         SceneManager.LoadScene(1);
-        button.Play();
     }
 }

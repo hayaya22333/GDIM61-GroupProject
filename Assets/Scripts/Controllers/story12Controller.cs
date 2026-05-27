@@ -10,6 +10,7 @@ public class story12Controller : MonoBehaviour
     //[SerializeField] private GameObject continueButton;
     [SerializeField] private GameObject clickArea;
     [SerializeField] private Image image;
+    [SerializeField] private AudioSource flip;
 
     private int imageIndex = 0;
     private bool storyFinish = false;
@@ -25,6 +26,7 @@ public class story12Controller : MonoBehaviour
 
     public void NextSprite()
     {
+        flip.Play();
         if (storyFinish == true)
         {
             return;
