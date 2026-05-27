@@ -1642,7 +1642,8 @@ MonoBehaviour:
   - {fileID: 774704196062038262, guid: fda31534861fb4521842e871dcdd494c, type: 3}
   introstory: {fileID: 338115296}
   instructionContent: {fileID: 114266675}
-  click: {fileID: 1563276259}
+  buttonAudio: {fileID: 1563276259}
+  buttonclip: {fileID: 8300000, guid: 2b7f6d9059ae2483e84a1e228730d780, type: 3}
   button: {fileID: 795220838}
 --- !u!4 &866522147
 Transform:

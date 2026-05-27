@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using System;
 
 public class PrepareController : MonoBehaviour
 {
@@ -22,10 +23,11 @@ public class PrepareController : MonoBehaviour
     public bool cardsLocked = false;
     public static PrepareController Instance { get; private set; }
     //public AudioSource prepare;
-    //[SerializeField] private AudioSource button;
-    //[SerializeField] private AudioClip buttonClip;
+    [SerializeField] private AudioSource button;
+    [SerializeField] private AudioClip buttonClip;
 
     [SerializeField] private GameObject instructionContent;
+    public event Action<AudioSource, AudioClip> PlayAudioPleasePP;
 
     void Awake()
     {
@@ -51,7 +53,7 @@ public class PrepareController : MonoBehaviour
         instructionContent.SetActive(true);
         //Time.timeScale = 0f;
         //button.Play();
-        AudioManger.Instance.PlayClick();
+        AudioManger.Instance.PlayClick(button, buttonClip);
     }
 
     public void clickReturn()
@@ -59,7 +61,7 @@ public class PrepareController : MonoBehaviour
         instructionContent.SetActive(false);
         //Time.timeScale = 0f;
         //button.Play();
-        AudioManger.Instance.PlayClick();
+        AudioManger.Instance.PlayClick(button, buttonClip);
     }
 
     public void Click(int i)
@@ -68,14 +70,15 @@ public class PrepareController : MonoBehaviour
         // Hayaya: added the following line to lock card slot on click scene change button.
         cardsLocked = true;
         //click.Play();
-        AudioManger.Instance.PlayClick();
+        AudioManger.Instance.PlayClick(button, buttonClip);
+        PlayAudioPleasePP?.Invoke(button, buttonClip);
         SceneManager.LoadScene(i);
         
     }
 
     public void PlayAudio()
     {
-        AudioManger.Instance.PlayClick();
+        AudioManger.Instance.PlayClick(button, buttonClip);
         //button.PlayOneShot(buttonClip);
         Debug.Log("Audio played");
     }

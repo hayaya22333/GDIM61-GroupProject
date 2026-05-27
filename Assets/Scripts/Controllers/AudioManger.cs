@@ -4,8 +4,14 @@ public class AudioManger : MonoBehaviour
 {
     public static AudioManger Instance;
 
-    public AudioSource audioSource;
-    public AudioClip buttonClip;
+    //public AudioSource audioSource;
+    //public AudioClip buttonClip;
+    void Start()
+    {
+        StartController.Instance.PlayAudioPlease += PlayClick;
+        PollController.pollController.PlayAudioPleaseP += PlayClick;
+        PrepareController.Instance.PlayAudioPleasePP += PlayClick;
+    }
 
     void Awake()
     {   
@@ -19,9 +25,8 @@ public class AudioManger : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void PlayClick()
+    public void PlayClick(AudioSource audioSource, AudioClip buttonClip)
     {
         audioSource.PlayOneShot(buttonClip);
     }
-    
 }

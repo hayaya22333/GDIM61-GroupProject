@@ -821,6 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 2133763229}
+  buttonclip: {fileID: 8300000, guid: 2b7f6d9059ae2483e84a1e228730d780, type: 3}
 --- !u!4 &1431510755
 Transform:
   m_ObjectHideFlags: 0
@@ -940,8 +941,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86e13c0e84444ad09f1df7300132f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 2133763229}
-  buttonClip: {fileID: 8300000, guid: 2b7f6d9059ae2483e84a1e228730d780, type: 3}
 --- !u!4 &1659774833
 Transform:
   m_ObjectHideFlags: 0
