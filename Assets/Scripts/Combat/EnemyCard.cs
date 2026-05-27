@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class EnemyCard : GeneralCombatCard
 {
     private float turnDuration = 2;
     [SerializeField] protected FightNode scriptableObj;
-    public TextMeshPro atkText;
 
     void Awake()
     {
@@ -24,7 +22,6 @@ public class EnemyCard : GeneralCombatCard
         atk = scriptableObj.enemyATK;
         _spriteRenderer.sprite = scriptableObj.mainSprite;
         prepared = true;
-        atkText.text = atk.ToString();
     }
 
     public override void UniqueStart()

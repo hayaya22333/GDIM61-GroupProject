@@ -29,7 +29,6 @@ public class GeneralCombatCard : MonoBehaviour
     [SerializeField] private GameObject healVFX;
     [SerializeField] private GameObject damageVFX;
     [SerializeField] private GameObject slowVFX;
-    [SerializeField] private GameObject speedVFX;
 
     [Header("Card Attributes")]
     public GameSide side = GameSide.Neutral;
@@ -62,7 +61,7 @@ public class GeneralCombatCard : MonoBehaviour
 
         if (turnCountDown <= 0)
         {
-            turnText.text = "";
+            turnText.text = "GO";
         }
         else
         {
@@ -162,14 +161,8 @@ public class GeneralCombatCard : MonoBehaviour
         if (_targetID == id)
         {
             turnCountDown += _slowedCount * 100;
-            if (_slowedCount > 0)
-            {
-                Instantiate(slowVFX, transform.position, transform.rotation);
-            }
-            else
-            {
-                Instantiate(speedVFX, transform.position, transform.rotation);
-            }
+
+            Instantiate(slowVFX, transform.position, transform.rotation);
         }
     }
 }

@@ -6,5 +6,10 @@ public class PollCard : MonoBehaviour
 {
     //public PollController _pollController;
     public int cardID;
-    public CardNode cardNode;
+
+    public void OnMouseDown()
+    {
+        Debug.Log("Get card");
+        gameObject.SetActive(false);
+    }
 }

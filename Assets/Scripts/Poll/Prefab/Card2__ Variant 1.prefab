@@ -88,22 +88,6 @@ PrefabInstance:
       propertyPath: turnCountDown
       value: 10000
       objectReference: {fileID: 0}
-    - target: {fileID: 3902394044327708964, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
-      propertyPath: m_Size.x
-      value: 2.3061595
-      objectReference: {fileID: 0}
-    - target: {fileID: 3902394044327708964, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
-      propertyPath: m_Size.y
-      value: 3.2656033
-      objectReference: {fileID: 0}
-    - target: {fileID: 3902394044327708964, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.043756247
-      objectReference: {fileID: 0}
-    - target: {fileID: 3902394044327708964, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.07103121
-      objectReference: {fileID: 0}
     - target: {fileID: 5181665223917938060, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -157,4 +141,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardID: 0
-  cardNode: {fileID: 11400000, guid: 238803797f4e84c3cbcdb4d37032ee55, type: 2}

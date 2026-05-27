@@ -65,9 +65,6 @@ public class CombatController : MonoBehaviour
     // Temporary var
     public bool playerMoved = false;
 
-    [Header("Tina added")]
-    [SerializeField] private GameObject instructionContent;
-
 #region Start and Awake
     void Awake()
     {
@@ -93,8 +90,6 @@ public class CombatController : MonoBehaviour
         {
             Debug.Log("player card - " + id);
         }
-        //Tina
-        instructionContent.SetActive(false);
     }
 #endregion
     
@@ -233,8 +228,6 @@ public class CombatController : MonoBehaviour
         if (activeEnemyCnt == 0)
         {
             EndCombatWin();
-            GameController.Instance.ClearAllCombatCard();
-            GameController.Instance.LoseCards(deadPlayerCards);
         }
         else if (activePlayerCnt == 0)
         {
@@ -244,6 +237,8 @@ public class CombatController : MonoBehaviour
         {
             return;
         }
+
+        GameController.Instance.LoseCards(deadPlayerCards);
     }
 
     private void EndCombatWin()
@@ -267,33 +262,10 @@ public class CombatController : MonoBehaviour
         SceneManager.LoadScene(4);
     }
 
-    public void Click()
+    public void Click(int i)
     {
-        //Tina
-        if (GameController.Instance.gameProcess == GameController.GameProcess.Level1)
-        {
-            SceneManager.LoadScene(7);
-        }
-        else if(GameController.Instance.gameProcess == GameController.GameProcess.Level2)
-        {
-            SceneManager.LoadScene(8);
-        }
+        SceneManager.LoadScene(i);
     }
 
 #endregion
-
-
-# region UI-Tina
-    public void clickInstruction()
-    {
-        instructionContent.SetActive(true);
-        //Time.timeScale = 0f;
-    }
-
-    public void clickReturn()
-    {
-        instructionContent.SetActive(false);
-        //Time.timeScale = 0f;
-    }
-# endregion
 }

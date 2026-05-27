@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,9 +150,6 @@ MonoBehaviour:
   card: {fileID: 11400000, guid: 7aa2e5b209f104bbd8c3e3eb966502e1, type: 2}
   ID: 2
   spriteRenderer: {fileID: 2300561032812339427}
-  canStay: 1
-  alreadyStay: 0
-  DockPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &5221943359771875872
 GameObject:
   m_ObjectHideFlags: 0

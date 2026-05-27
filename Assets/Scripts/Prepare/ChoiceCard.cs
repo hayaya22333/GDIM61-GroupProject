@@ -53,14 +53,4 @@ public class ChoiceCard : DragObject
         }
     }
 
-    private void OnMouseOver()
-    {
-        PrepareController.Instance.detail.text = card.cardDesciption;
-    }
-
-    private void OnMouseExit()
-    {
-        PrepareController.Instance.detail.text = "";
-    }
-
 }

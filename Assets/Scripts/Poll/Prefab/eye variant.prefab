@@ -96,22 +96,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 6089456570022042010, guid: e835eb635aa204bbca95eae337a13c1c, type: 2}
-    - target: {fileID: 3902394044327708964, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
-      propertyPath: m_Size.x
-      value: 2.3226948
-      objectReference: {fileID: 0}
-    - target: {fileID: 3902394044327708964, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
-      propertyPath: m_Size.y
-      value: 3.2341654
-      objectReference: {fileID: 0}
-    - target: {fileID: 3902394044327708964, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.035488605
-      objectReference: {fileID: 0}
-    - target: {fileID: 3902394044327708964, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.050529838
-      objectReference: {fileID: 0}
     - target: {fileID: 4321731108104717994, guid: 4d1dc2c593c23a24bbe8f958e03810c1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -173,4 +157,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardID: 5
-  cardNode: {fileID: 11400000, guid: 27d194049d6964a1a9d4f9106a7e92c6, type: 2}
