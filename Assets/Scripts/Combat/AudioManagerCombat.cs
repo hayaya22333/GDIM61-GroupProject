@@ -9,10 +9,21 @@ public class AudioManagerCombat : MonoBehaviour
     [SerializeField] private AudioSource accelerate;
     [SerializeField] private AudioSource slow;
 
+    public AudioSource combatBGM;
+    public AudioSource bossBGM;
+
     void Start()
     {
         CombatController.Controller.Attack += HandleAttack;
         CombatController.Controller.Slow += HandleSlow;
+
+        if (GameController.Instance.combatIndex < 2)
+        {
+            combatBGM.Play();
+        }
+        else {
+            bossBGM.Play();
+        }
     }
 
     void HandleAttack(int i, int j, int _damage)

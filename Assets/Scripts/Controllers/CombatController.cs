@@ -42,7 +42,7 @@ public class CombatController : MonoBehaviour
     public Transform actionCardSpawn;
 
     [Header("Game Status")]
-    [SerializeField] private int gameLevel;
+    public int gameLevel;
     public bool combatEnd = false;
     public bool inTurn = false;
     [SerializeField] private int activePlayerCnt;
@@ -235,7 +235,7 @@ public class CombatController : MonoBehaviour
         {
             EndCombatWin();
             GameController.Instance.ClearAllCombatCard();
-            GameController.Instance.LoseCards(deadPlayerCards);
+            //GameController.Instance.LoseCards(deadPlayerCards);
         }
         else if (activePlayerCnt == 0)
         {
